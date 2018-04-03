@@ -138,7 +138,7 @@
   users.mutableUsers = false;
   users.defaultUserShell = pkgs.bash;
 
-  users.extraUsers.mark = {
+  users.users.mark = {
     isNormalUser = true;
     createHome = true;
     description = "Mark Karpov";
