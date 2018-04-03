@@ -258,7 +258,8 @@
     enable = true;
     latitude = "52";
     longitude = "85";
+    temperature.day = 5500;
+    temperature.night = 3700;
   };
-  systemd.services.redshift.restartIfChanged = false;
 
 }
