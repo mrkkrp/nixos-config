@@ -281,4 +281,9 @@
     temperature.night = 3700;
   };
 
+  ##########################################################
+  # Virtualization
+
+  virtualisation.docker.enable = true;
+
 }
