@@ -29,6 +29,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   # This is only needed for BIOS systems:
   # boot.loader.grub.device = "/dev/sda";
+  boot.loader.timeout = 0;
   boot.earlyVconsoleSetup = true;
 
   ##########################################################
