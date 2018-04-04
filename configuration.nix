@@ -32,7 +32,7 @@
   boot.earlyVconsoleSetup = true;
 
   ##########################################################
-  # Extra file systems
+  # Extra file systems and swap
 
   fileSystems = {
     "/home/mark/store" = {
@@ -40,6 +40,10 @@
       fsType = "ext4";
     };
   };
+
+  swapDevices = [
+    { device = "/dev/sd2"; }
+  ];
 
   ##########################################################
   # Packages
