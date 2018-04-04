@@ -162,6 +162,7 @@
       inkscape
       kid3
       lame
+      networkmanagerapplet
       pwsafe
       qbittorrent
       qiv
@@ -192,16 +193,17 @@
       allowedTCPPorts = [];
       allowedUDPPorts = [];
     };
-    # networkmanager.enable = true;
-    wireless = {
-      enable = true;
-      networks = {
-        "new-one" = {
-          psk = "noganoga";
-        };
-      };
-    };
+    networkmanager.enable = true;
   };
+
+  # wireless = {
+  #   enable = true;
+  #   networks = {
+  #     "new-one" = {
+  #       psk = "noganoga";
+  #     };
+  #   };
+  # };
 
   ##########################################################
   # Misc services
