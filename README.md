@@ -97,7 +97,7 @@ systems it seems.
 
 If you have additional file systems (additional SSD/HDD drives) you want to
 be mounted by default, add them to `fileSystems` (example is given in the
-configuration).
+configuration). Add swap devices to `swapDevices`.
 
 ## Installation
 
