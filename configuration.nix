@@ -111,7 +111,6 @@
     nano
     networkmanager
     nginxMainline
-    nix-repl
     ntfs3g
     ntp
     openssl
