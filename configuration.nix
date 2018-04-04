@@ -178,6 +178,7 @@
       e  = "emacsclient";
       ls = "ls --human-readable --almost-all --color=auto";
     };
+    shellInit = "export PATH=~/.local/bin:$PATH";
     enableCompletion = true;
   };
 
