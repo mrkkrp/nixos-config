@@ -117,9 +117,12 @@ If everything went well, reboot:
 
 ## Mics setup for normal user
 
-TODO This is done by running several bash scripts.
+This is done by running several bash scripts.
 
 ```
+$ git clone git@github.com:mrkkrp/nix-workstation.git ~/nix-workstation
+$ cd nix-workstation
 $ ./git.sh
+$ ./emacs.sh
 $ ./projects.sh
 ```
