@@ -27,18 +27,19 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.device = "/dev/sda";
+  # This is only needed for BIOS systems:
+  # boot.loader.grub.device = "/dev/sda";
   boot.earlyVconsoleSetup = true;
 
   ##########################################################
   # Extra file systems
 
-  # fileSystems = {
-  #   "/home/mark/store" = {
-  #     device = "/devv/sdb1";
-  #     fsType = "ext4";
-  #   };
-  # };
+  fileSystems = {
+    "/home/mark/store" = {
+      device = "/dev/sdb1";
+      fsType = "ext4";
+    };
+  };
 
   ##########################################################
   # Packages
@@ -247,11 +248,14 @@
     enable = true;
     layout = "us";
     libinput.enable = true;
+    videoDrivers = ["nvidia"]; # or "ati_unfree"
 
     desktopManager = {
       xfce.enable = true;
       default = "xfce";
     };
+
+    displayManager.sddm.enable = true;
   };
 
   services.redshift = {

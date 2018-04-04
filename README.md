@@ -44,8 +44,8 @@ quite reachable (after that `ping` also starts working).
 ## Partitioning and formatting
 
 * Use `lsblk` to see what devices/partitions you have.
-* Use `fdisk` to edit partition table of device you want to install NixOS
-  to.
+* Use `fdisk` (BIOS) or `gdisk` (UEFI) to edit partition table of device you
+  want to install NixOS to.
 * Use `mkfs.ext4` and such to create file systems. It's a good idea to
   assign labels using the `-L` flag to make file system configuration
   independent from device changes. Let's assign `nixos` to the partition for
@@ -92,7 +92,8 @@ Use `configuration.nix` from this repo and edit it as needed:
 ```
 
 Set `boot.loader.grub.device` to specify on which disk GRUB boot loader is
-to be installed. Without it, NixOS cannot boot.
+to be installed. Without it, NixOS cannot boot. This is only for BIOS
+systems it seems.
 
 If you have additional file systems (additional SSD/HDD drives) you want to
 be mounted by default, add them to `fileSystems` (example is given in the
@@ -121,14 +122,4 @@ TODO This is done by running several bash scripts.
 ```
 $ ./git.sh
 $ ./projects.sh
-```
-
-## Redshift
-
-Configuration in `configuration.nix` takes care of Redshift, but you'll need
-to start/enable it as a user service and probably reboot:
-
-```
-$ systemctl --user start redshift.service
-$ systemctl --user enable redshift.service
 ```
