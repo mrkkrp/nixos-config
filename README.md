@@ -122,6 +122,7 @@ This is done by running several bash scripts.
 ```
 $ git clone git@github.com:mrkkrp/nix-workstation.git ~/nix-workstation
 $ cd nix-workstation
+$ ./xfce.sh
 $ ./git.sh
 $ ./emacs.sh
 $ ./stack.sh
