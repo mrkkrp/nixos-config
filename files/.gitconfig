@@ -1,12 +1,6 @@
 [user]
 	email = markkarpov92@gmail.com
 	name = mrkkrp
-[url "https://mrkkrp@github.com"]
-    insteadOf = https://github.com
-[url "https://mrkkrp@git.gitbook.com"]
-    insteadOf = https://git.gitbook.com
-[credential]
-	helper = cache --timeout=43200
 [core]
 	excludesfile = ~/.gitignore
 [magit]
