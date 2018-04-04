@@ -167,6 +167,7 @@
       pwsafe
       qbittorrent
       qiv
+      tdesktop
       vlc
     ];
 
