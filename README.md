@@ -124,5 +124,6 @@ $ git clone git@github.com:mrkkrp/nix-workstation.git ~/nix-workstation
 $ cd nix-workstation
 $ ./git.sh
 $ ./emacs.sh
+$ ./stack.sh
 $ ./projects.sh
 ```
