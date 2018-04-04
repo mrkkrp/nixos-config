@@ -262,7 +262,14 @@
       default = "xfce";
     };
 
-    displayManager.sddm.enable = true;
+    displayManager.lightdm = {
+      enable = true;
+      extraSeatDefaults = ''
+        greeter-show-manual-login=true
+        greeter-hide-users=true
+        allow-guest=false
+      '';
+    };
   };
 
   services.redshift = {
