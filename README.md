@@ -127,3 +127,10 @@ $ ./emacs.sh
 $ ./stack.sh
 $ ./projects.sh
 ```
+
+I usually create a hard link to `/etc/nixos/configuration.nix` so the file
+in the repo is always up to date:
+
+```
+$ sudo ln /etc/nixos/configuration.nix configuration.nix
+```
