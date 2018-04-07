@@ -64,7 +64,7 @@ git clone git@github.com:hasky-mode/hasky-stack.git
 
 # MMark
 
-mkdir -pv ~/projects/programs/mmark-md && cd ~/projects/programs/mmark-md
+mkdir -pv ~/projects/programs/mmark && cd ~/projects/programs/mmark
 git clone git@github.com:mmark-md/flycheck-mmark.git
 git clone git@github.com:mmark-md/mmark.git
 git clone git@github.com:mmark-md/mmark-cli.git
