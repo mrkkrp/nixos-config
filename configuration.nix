@@ -214,6 +214,11 @@
   services.printing.enable = true;
 
   ##########################################################
+  # GNUPG
+
+  programs.gnupg.agent.enable = true;
+
+  ##########################################################
   # Time
 
   time.timeZone = "Asia/Novosibirsk";
