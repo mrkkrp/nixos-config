@@ -216,6 +216,7 @@
 
   # services.openssh.enable = true;
   services.printing.enable = true;
+  services.tor.enable = true;
 
   ##########################################################
   # GNUPG
