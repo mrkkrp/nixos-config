@@ -115,6 +115,10 @@ If everything went well, reboot:
 # reboot
 ```
 
+## Copy your SSH and GPG keys
+
+Now is the right time to do that.
+
 ## Mics setup for normal user
 
 This is done by running several bash scripts.
@@ -122,6 +126,7 @@ This is done by running several bash scripts.
 ```
 $ git clone git@github.com:mrkkrp/nix-workstation.git ~/nix-workstation
 $ cd nix-workstation
+$ ./misc.sh
 $ ./xfce.sh
 $ ./git.sh
 $ ./emacs.sh
