@@ -161,6 +161,8 @@
       coq
       flac
       gimp
+      haskell.packages.ghc842.hasktags
+      hlint
       inkscape
       kid3
       lame
