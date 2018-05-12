@@ -31,6 +31,7 @@ git clone git@github.com:mrkkrp/cue-sheet.git
 git clone git@github.com:mrkkrp/flac.git
 git clone git@github.com:mrkkrp/flac-picture.git
 git clone git@github.com:mrkkrp/forma.git
+git clone git@github.com:mrkkrp/ghc-syntax-highlighter.git
 git clone git@github.com:mrkkrp/hspec-megaparsec.git
 git clone git@github.com:mrkkrp/htaglib.git
 git clone git@github.com:mrkkrp/html-entity-map.git
