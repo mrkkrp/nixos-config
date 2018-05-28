@@ -299,4 +299,34 @@
 
   virtualisation.docker.enable = true;
 
+  ##########################################################
+  # Nginx
+
+  services.nginx.config = ''
+  worker_processes auto;
+
+  events {
+    worker_connections 1024;
+  }
+
+  http {
+    include ${pkgs.nginxMainline}/conf/mime.types;
+    default_type application/octet-stream;
+    sendfile on;
+
+    server {
+      listen 5000;
+      server_name localhost;
+
+      location / {
+        root /home/mark/projects/programs/haskell/markkarpov.com/_build/;
+        index posts.html index.htm;
+        error_page 404 = /404.html;
+      }
+    }
+  }
+  '';
+  services.nginx.user = "mark";
+  services.nginx.enable = true;
+
 }
