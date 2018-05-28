@@ -119,6 +119,7 @@
     ntfs3g
     ntp
     openssl
+    openvpn
     p7zip
     patch
     pavucontrol
