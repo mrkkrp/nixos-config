@@ -119,7 +119,7 @@ If everything went well, reboot:
 
 Now is the right time to do that.
 
-## Mics setup for normal user
+## Misc setup for normal user
 
 This is done by running several bash scripts.
 
