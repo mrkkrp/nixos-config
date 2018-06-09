@@ -115,6 +115,15 @@ If everything went well, reboot:
 # reboot
 ```
 
+## Add root channel
+
+I use `nixos-unstable` usually (although lately it has become rather…
+unstable):
+
+```
+# nix-channel --add https://nixos.org/channels/nixos-unstable nixos
+```
+
 ## Copy your SSH and GPG keys
 
 Now is the right time to do that.
