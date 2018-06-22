@@ -51,12 +51,10 @@ git clone git@github.com:mrkkrp/parser-combinators.git
 git clone git@github.com:mrkkrp/path-io.git
 git clone git@github.com:mrkkrp/req-conduit.git
 git clone git@github.com:mrkkrp/req.git
-git clone git@github.com:mrkkrp/slug.git
 git clone git@github.com:mrkkrp/tagged-identity.git
 git clone git@github.com:mrkkrp/text-metrics.git
 git clone git@github.com:mrkkrp/wave.git
 git clone git@github.com:mrkkrp/zip.git
-git clone git@github.com:stackbuilders/cassava-megaparsec.git
 git clone git@github.com:stackbuilders/stache.git
 
 # Hasky mode
