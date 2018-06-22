@@ -272,8 +272,8 @@
     videoDrivers = ["nvidia"]; # or "ati_unfree"
 
     desktopManager = {
-      xfce.enable = true;
-      default = "xfce";
+      plasma5.enable = true;
+      default = "plasma5";
     };
 
     displayManager.lightdm = {
