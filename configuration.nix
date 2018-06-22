@@ -274,13 +274,8 @@
       default = "plasma5";
     };
 
-    displayManager.lightdm = {
+    displayManager.sddm = {
       enable = true;
-      extraSeatDefaults = ''
-        greeter-show-manual-login=true
-        greeter-hide-users=true
-        allow-guest=false
-      '';
     };
   };
 
