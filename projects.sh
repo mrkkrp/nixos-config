@@ -41,7 +41,6 @@ git clone git@github.com:mrkkrp/htaglib.git
 git clone git@github.com:mrkkrp/html-entity-map-gen.git
 git clone git@github.com:mrkkrp/html-entity-map.git
 git clone git@github.com:mrkkrp/identicon.git
-git clone git@github.com:mrkkrp/imprint.git
 git clone git@github.com:mrkkrp/lame.git
 git clone git@github.com:mrkkrp/markkarpov.com.git
 git clone git@github.com:mrkkrp/megaparsec.git
