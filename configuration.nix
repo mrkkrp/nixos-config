@@ -83,6 +83,7 @@
     bash
     binutils
     bzip2
+    cargo
     cool-retro-term
     coreutils
     cups
@@ -127,6 +128,7 @@
     pulseaudioFull
     python3Full
     ruby
+    rustc
     sudo
     texlive.combined.scheme-full
     tor
