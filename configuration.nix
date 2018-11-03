@@ -164,8 +164,10 @@
       coq
       flac
       gimp
-      (haskell.lib.dontCheck haskell.packages.ghc843.hasktags)
-      hlint
+      haskellPackages.Agda
+      haskellPackages.brittany
+      haskellPackages.hasktags
+      haskellPackages.hlint
       inkscape
       kid3
       lame
