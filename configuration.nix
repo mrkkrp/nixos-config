@@ -105,7 +105,7 @@
     gnused
     gnutar
     gnutls
-    google-chrome-dev
+    google-chrome
     groff
     htop
     inetutils
