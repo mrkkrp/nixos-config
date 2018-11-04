@@ -140,6 +140,7 @@ $ ./xfce.sh # or ./kde.sh
 $ ./git.sh
 $ ./emacs.sh
 $ ./stack.sh
+$ ./agda.sh
 $ ./projects.sh
 ```
 
