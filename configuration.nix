@@ -233,7 +233,7 @@
   ##########################################################
   # Time
 
-  time.timeZone = "Asia/Novosibirsk";
+  time.timeZone = "Europe/Paris";
   services.ntp.enable = true;
 
   ##########################################################
@@ -273,7 +273,7 @@
     enable = true;
     layout = "us";
     libinput.enable = true;
-    videoDrivers = ["nvidia"]; # or "ati_unfree"
+    # videoDrivers = ["nvidia"]; # or "ati_unfree"
 
     desktopManager = {
       plasma5.enable = true;

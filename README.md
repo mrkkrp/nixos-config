@@ -5,41 +5,14 @@ configure it how I like it.
 
 ## Intro
 
-Boot from installation medium. If you have UEFI system, you should boot in
-UEFI mode. To use Dvorak keyboard layout in terminal, execute:
+Boot from installation medium. Use graphical installation medium, especially
+if you'll need to use WiFi for internet connection. If you have UEFI system,
+you should boot in UEFI mode. To use Dvorak keyboard layout in terminal,
+execute:
 
 ```
 # loadkeys dvorak
 ```
-
-## Internet connection
-
-Internet connection is necessary for the installation process. If you have
-ethernet, that's good: internet should be already available, check it:
-
-```
-# ping 8.8.8.8
-```
-
-Otherwise, you'll probably want to use Wi-Fi. For that create
-`/etc/wpa_supplicant.conf` with the following contents:
-
-```
-network={
-  ssid="network-name"
-  psk="password"
-}
-```
-
-Then start `wpa_supplicant.service`:
-
-```
-# systemctl start wpa_supplicant.service
-```
-
-Strangely, if you try `ping 8.8.8.8` now it may still tell you that the
-network is unreachable, but if you try e.g. `curl` you should find that it's
-quite reachable (after that `ping` also starts working).
 
 ## Partitioning and formatting
 
