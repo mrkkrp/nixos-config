@@ -167,6 +167,7 @@
       gimp
       haskellPackages.Agda
       haskellPackages.brittany
+      haskellPackages.ghcid
       haskellPackages.hasktags
       haskellPackages.hlint
       inkscape
