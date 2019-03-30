@@ -67,6 +67,9 @@
     ];
     gc.automatic = false;
     maxJobs = pkgs.stdenv.lib.mkForce 6;
+    nixPath = [
+      "nixpkgs=/home/mark/nixpkgs"
+    ];
   };
 
   environment.systemPackages = with pkgs; [

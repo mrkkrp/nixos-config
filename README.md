@@ -10,7 +10,7 @@ if you'll need to use WiFi for internet connection. If you have UEFI system,
 you should boot in UEFI mode. To use Dvorak keyboard layout in terminal,
 execute:
 
-```
+```console
 # loadkeys dvorak
 ```
 
@@ -33,19 +33,19 @@ code EF00 (EFI system?) and it should be formatted as `vfat` file system
 Mount the target file system on which NixOS shoud be installed on `/mnt`,
 e.g.:
 
-```
+```console
 # mount /dev/nixos /mnt
 ```
 
 Also mount the boot partition now to `/mnt/boot`:
 
-```
+```console
 # mount /dev/boot /mnt/boot
 ```
 
 Activate swap devices now:
 
-```
+```console
 # spawon /dev/swapfile
 ```
 
@@ -53,13 +53,13 @@ Activate swap devices now:
 
 Generate initial configuration:
 
-```
+```console
 # nixos-generate-config --root /mnt
 ```
 
 Use `configuration.nix` from this repo and edit it as needed:
 
-```
+```console
 # curl https://raw.githubusercontent.com/mrkkrp/nix-workstation/master/configuration.nix --output /mnt/etc/nixos/configuration.nix
 # nano /mnt/etc/nixos/configuration.nix
 ```
@@ -76,7 +76,7 @@ configuration). Add swap devices to `swapDevices`.
 
 Do the installation:
 
-```
+```console
 # nixos-install
 ```
 
@@ -84,22 +84,22 @@ Enter root password when asked.
 
 If everything went well, reboot:
 
-```
+```console
 # reboot
-```
-
-## Add root channel
-
-I use `nixos-unstable` usually (although lately it has become rather…
-unstable):
-
-```
-# nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 ```
 
 ## Copy your SSH and GPG keys
 
 Now is the right time to do that.
+
+## Clone nixpkgs repo
+
+Nix channels suck, so just clone the nixpkgs repo and checkout some good
+commit (see https://nixos.org/channels):
+
+```console
+$ git clone git@github.com:nixos/nixpkgs.git nixpkgs
+```
 
 ## Misc setup for normal user
 
