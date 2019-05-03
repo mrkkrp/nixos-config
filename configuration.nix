@@ -271,7 +271,7 @@
   };
 
   ##########################################################
-  # X server and XFCE
+  # X server
 
   services.xserver = {
     enable = true;
