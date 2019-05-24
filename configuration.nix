@@ -69,6 +69,7 @@
     maxJobs = pkgs.stdenv.lib.mkForce 6;
     nixPath = [
       "nixpkgs=/home/mark/nixpkgs"
+      "nixos-config=/etc/nixos/configuration.nix"
     ];
   };
 
