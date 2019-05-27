@@ -88,7 +88,6 @@
     binutils
     bzip2
     cargo
-    cool-retro-term
     coreutils
     cups
     diffutils
@@ -99,6 +98,7 @@
     emacs
     file
     findutils
+    fish
     gcc
     gdb
     git
@@ -184,21 +184,22 @@
       tdesktop
       vlc
     ];
-
+    shell = "${pkgs.fish}/bin/fish";
   };
 
   ##########################################################
-  # Bash
+  # Fish
 
-  programs.bash = {
+  programs.fish = {
+    enable = true;
+    shellInit = ''
+      set -U fish_greeting ""
+      set -U fish_user_paths $fish_user_paths ~/.local/bin
+    '';
     shellAliases = {
       e  = "emacsclient";
       ls = "ls --human-readable --almost-all --color=auto";
     };
-    shellInit = ''
-      export PATH=~/.local/bin:$PATH
-    '';
-    enableCompletion = true;
   };
 
   ##########################################################
