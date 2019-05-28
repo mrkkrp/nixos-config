@@ -105,14 +105,14 @@ $ git clone git@github.com:nixos/nixpkgs.git nixpkgs
 
 This is done by running several bash scripts.
 
-```
+```console
 $ git clone git@github.com:mrkkrp/nix-workstation.git ~/nix-workstation
 $ cd nix-workstation
 $ ./misc.sh
-$ ./kde.sh
 $ ./git.sh
 $ ./emacs.sh
 $ ./stack.sh
+$ ./kde.sh
 $ ./agda.sh
 $ ./projects.sh
 ```
@@ -120,6 +120,6 @@ $ ./projects.sh
 I usually create a hard link to `/etc/nixos/configuration.nix` so the file
 in the repo is always up to date:
 
-```
+```console
 $ sudo ln /etc/nixos/configuration.nix configuration.nix
 ```
