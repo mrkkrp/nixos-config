@@ -286,8 +286,9 @@
       default = "plasma5";
     };
 
-    displayManager.sddm = {
-      enable = true;
+    displayManager = {
+      sddm.enable = true;
+      sessionCommands = "export PATH=$HOME/.local/bin:$PATH";
     };
   };
 
