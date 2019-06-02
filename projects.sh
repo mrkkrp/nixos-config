@@ -55,6 +55,7 @@ git clone git@github.com:mrkkrp/text-metrics.git
 git clone git@github.com:mrkkrp/wave.git
 git clone git@github.com:mrkkrp/zip.git
 git clone git@github.com:stackbuilders/stache.git
+git clone git@github.com:tweag/ormolu.git
 
 # Hasky mode
 
