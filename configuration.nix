@@ -183,6 +183,7 @@
       stack
       tdesktop
       vlc
+      wmctrl
     ];
     shell = "${pkgs.fish}/bin/fish";
   };
