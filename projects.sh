@@ -2,7 +2,7 @@
 #
 # Create project directory tree and clone some repos
 
-set -e
+set -euo pipefail
 
 # Coq
 mkdir -pv ~/projects/programs/coq && cd ~/projects/programs/coq

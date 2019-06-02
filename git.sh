@@ -2,7 +2,7 @@
 #
 # Configure Git
 
-set -e
+set -euo pipefail
 
 cp -v files/.gitconfig ~/.gitconfig
 cp -v files/.gitignore ~/.gitignore

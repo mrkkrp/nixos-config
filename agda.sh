@@ -2,7 +2,7 @@
 #
 # Configure Agda
 
-set -e
+set -euo pipefail
 
 AGDA_STDLIB=$(nix eval --raw nixpkgs.AgdaStdlib.out.outPath)
 

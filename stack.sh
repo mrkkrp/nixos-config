@@ -2,7 +2,7 @@
 #
 # Configure stack
 
-set -e
+set -euo pipefail
 
 mkdir -p ~/.stack
 cp -v files/.stack/config.yaml ~/.stack/config.yaml
