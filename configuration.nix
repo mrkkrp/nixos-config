@@ -175,6 +175,7 @@
       haskellPackages.hasktags
       haskellPackages.hlint
       inkscape
+      inotify-tools
       kid3
       lame
       pwsafe
