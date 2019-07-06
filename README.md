@@ -55,14 +55,11 @@ Generate initial configuration:
 
 ```console
 # nixos-generate-config --root /mnt
-```
-
-Use `configuration.nix` from this repo and edit it as needed:
-
-```console
-# curl https://raw.githubusercontent.com/mrkkrp/nix-workstation/master/configuration.nix --output /mnt/etc/nixos/configuration.nix
 # nano /mnt/etc/nixos/configuration.nix
 ```
+
+Edit the `configuration.nix` as needed to create a minimal system for
+bootstrapping. Make sure that the system will have `git` and a normal user.
 
 Set `boot.loader.grub.device` to specify on which disk GRUB boot loader is
 to be installed. Without it, NixOS cannot boot. This is only for BIOS
@@ -88,25 +85,51 @@ If everything went well, reboot:
 # reboot
 ```
 
-## Copy your SSH and GPG keys
-
-Now is the right time to do that.
-
 ## Clone nixpkgs repo
 
 Nix channels suck, so just clone the nixpkgs repo and checkout some good
-commit (see https://nixos.org/channels):
+commit (see [channels][channels] and [howoldis][howoldis]):
 
 ```console
 $ git clone git@github.com:nixos/nixpkgs.git nixpkgs
 ```
+
+## Clone this repo
+
+```console
+$ git clone git@github.com:mrkkrp/nix-workstation.git nix-workstation
+```
+
+Create a proper new configuration under `devices` using previously generated
+`/etc/nixos/hardware-configuration.nix` and some of the existing
+configurations for inspiration.
+
+Set `NIX_PATH` so that the `nixos-config` component points to the new
+configuration. Also make sure to set `nixpkgs` component to point to the
+`nixpkgs` checkout you created in the previous step.
+
+If everything went well you'll see something like this:
+
+```console
+$ echo $NIX_PATH
+/home/mark/.nix-defexpr/channels nixpkgs=/home/mark/nixpkgs nixos-config=/home/mark/nix-workstation/devices/fou/configuration.nix
+```
+
+Build the system:
+
+```consoule
+# nixos-rebuild switch
+```
+
+## Copy your SSH and GPG keys
+
+Now is the right time to do that.
 
 ## Misc setup for normal user
 
 This is done by running several bash scripts.
 
 ```console
-$ git clone git@github.com:mrkkrp/nix-workstation.git ~/nix-workstation
 $ cd nix-workstation
 $ ./misc.sh
 $ ./git.sh
@@ -117,9 +140,5 @@ $ ./agda.sh
 $ ./projects.sh
 ```
 
-I usually create a hard link to `/etc/nixos/configuration.nix` so the file
-in the repo is always up to date:
-
-```console
-$ sudo ln /etc/nixos/configuration.nix configuration.nix
-```
+[channels]: https://nixos.org/channels
+[howoldis]: https://howoldis.herokuapp.com/
