@@ -57,13 +57,6 @@ git clone git@github.com:mrkkrp/zip.git
 git clone git@github.com:stackbuilders/stache.git
 git clone git@github.com:tweag/ormolu.git
 
-# Hasky mode
-
-mkdir -pv ~/projects/programs/hasky-mode && cd ~/projects/programs/hasky-mode
-git clone git@github.com:hasky-mode/hasky-cabal.git
-git clone git@github.com:hasky-mode/hasky-extensions.git
-git clone git@github.com:hasky-mode/hasky-stack.git
-
 # MMark
 
 mkdir -pv ~/projects/programs/mmark && cd ~/projects/programs/mmark
