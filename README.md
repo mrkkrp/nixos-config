@@ -132,7 +132,6 @@ This is done by running several bash scripts.
 ```console
 $ cd nix-workstation
 $ ./emacs.sh
-$ ./stack.sh
 $ ./kde.sh
 $ ./agda.sh
 $ ./projects.sh

@@ -158,6 +158,7 @@
     symlinks = {
       ".gitconfig" = pkgs.gitconfig;
       ".nixpkgs/config.nix" = pkgs.nixconfig;
+      ".stack/config.yaml" = pkgs.stackconfig;
     };
   };
 

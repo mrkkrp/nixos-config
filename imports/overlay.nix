@@ -4,4 +4,5 @@ self: super:
   i3config = self.callPackage ./i3config { };
   mutate = self.callPackage ./mutate { };
   nixconfig = self.callPackage ./nixconfig { };
+  stackconfig = self.callPackage ./stackconfig { };
 }
