@@ -133,7 +133,6 @@ This is done by running several bash scripts.
 $ cd nix-workstation
 $ ./emacs.sh
 $ ./kde.sh
-$ ./agda.sh
 $ ./projects.sh
 ```
 
