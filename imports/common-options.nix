@@ -1,6 +1,10 @@
 # These are the options which are shared between all configurations/devices.
 { config, pkgs, ... }:
 {
+  imports = [
+    ./symlinks/service.nix
+  ];
+
   networking = {
     firewall = {
       enable = true;
@@ -16,6 +20,9 @@
       pulseaudio = true;
       allowUnfree = true;
     };
+    overlays = [
+      (import ../packages/overlay.nix)
+    ];
   };
 
   services.tor.enable = true;
@@ -30,76 +37,82 @@
   virtualisation.docker.enable = true;
   programs.gnupg.agent.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    alsaLib
-    alsaOss
-    alsaPlugins
-    alsaTools
-    alsaUtils
-    aspell
-    aspellDicts.en
-    aspellDicts.ru
-    autoconf
-    automake
-    binutils
-    bzip2
-    cargo
-    coreutils
-    cups
-    diffutils
-    docker
-    dosfstools
-    e2fsprogs
-    eject
-    emacs
-    file
-    findutils
-    fish
-    gcc
-    gdb
-    git
-    glibc
-    gnugrep
-    gnumake
-    gnupg
-    gnused
-    gnutar
-    gnutls
-    google-chrome
-    groff
-    htop
-    inetutils
-    less
-    libtool
-    man
-    man-pages
-    mupdf
-    nano
-    networkmanager
-    nginxMainline
-    nixops
-    ntfs3g
-    ntp
-    openssl
-    openvpn
-    p7zip
-    patch
-    pavucontrol
-    postgresql
-    pulseaudioFull
-    python3Full
-    ruby
-    rustc
-    sudo
-    texlive.combined.scheme-full
-    tor
-    unzip
-    vim
-    virtualbox
-    wget
-    which
-    zip
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      alsaLib
+      alsaOss
+      alsaPlugins
+      alsaTools
+      alsaUtils
+      aspell
+      aspellDicts.en
+      aspellDicts.ru
+      autoconf
+      automake
+      binutils
+      bzip2
+      cargo
+      coreutils
+      cups
+      diffutils
+      docker
+      dosfstools
+      e2fsprogs
+      eject
+      file
+      findutils
+      fish
+      gcc
+      gdb
+      git
+      glibc
+      gnugrep
+      gnumake
+      gnupg
+      gnused
+      gnutar
+      gnutls
+      google-chrome
+      groff
+      htop
+      inetutils
+      less
+      libtool
+      man
+      man-pages
+      mupdf
+      nano
+      networkmanager
+      nginxMainline
+      nixops
+      ntfs3g
+      ntp
+      openssl
+      openvpn
+      p7zip
+      patch
+      pavucontrol
+      postgresql
+      pulseaudioFull
+      python3Full
+      ruby
+      rustc
+      sudo
+      texlive.combined.scheme-full
+      tor
+      unzip
+      vim
+      virtualbox
+      wget
+      which
+      zip
+    ];
+
+    etc = {
+      "i3/config".source = pkgs.i3config;
+    };
+
+  };
 
   security.sudo.enable = true;
   users.mutableUsers = false;
@@ -109,6 +122,7 @@
     isNormalUser = true;
     createHome = true;
     description = "Mark Karpov";
+    uid = 1000;
     extraGroups = [
       "audio"
       "docker"
@@ -121,11 +135,13 @@
       bazel
       cabal-install
       coq
+      emacs
       flac
       gimp
       haskellPackages.ghcid
       haskellPackages.hasktags
       haskellPackages.hlint
+      i3
       inkscape
       inotify-tools
       kid3
@@ -139,6 +155,36 @@
       wmctrl
     ];
     shell = "${pkgs.fish}/bin/fish";
+
+    symlinks = {
+      ".gitconfig" = pkgs.gitconfig;
+    };
+  };
+
+  services.xserver = {
+    enable = true;
+    layout = "us";
+    libinput.enable = true;
+
+    # desktopManager.default = "none";
+
+    # windowManager = {
+    #   default = "i3";
+    #   i3 = {
+    #     enable = true;
+    #     configFile = "/etc/i3/config";
+    #   };
+    # };
+
+    desktopManager = {
+      plasma5.enable = true;
+      default = "plasma5";
+    };
+
+    displayManager = {
+      sddm.enable = true;
+      sessionCommands = "export PATH=$HOME/.local/bin:$PATH";
+    };
   };
 
   programs.fish = {

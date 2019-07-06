@@ -35,22 +35,6 @@ in rec {
     package = pkgs.pulseaudioFull;
   };
 
-  services.xserver = {
-    enable = true;
-    layout = "us";
-    libinput.enable = true;
-
-    desktopManager = {
-      plasma5.enable = true;
-      default = "plasma5";
-    };
-
-    displayManager = {
-      sddm.enable = true;
-      sessionCommands = "export PATH=$HOME/.local/bin:$PATH";
-    };
-  };
-
   services.nginx.virtualHosts = {
     "localhost" = {
        listen = [
