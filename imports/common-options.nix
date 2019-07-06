@@ -141,7 +141,6 @@
       haskellPackages.ghcid
       haskellPackages.hasktags
       haskellPackages.hlint
-      i3
       inkscape
       inotify-tools
       kid3
@@ -165,8 +164,6 @@
     enable = true;
     layout = "us";
     libinput.enable = true;
-
-    # desktopManager.default = "none";
 
     # windowManager = {
     #   default = "i3";
