@@ -1,0 +1,3 @@
+{ mutate }:
+mutate ./config.nix {
+}

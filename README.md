@@ -131,7 +131,6 @@ This is done by running several bash scripts.
 
 ```console
 $ cd nix-workstation
-$ ./misc.sh
 $ ./emacs.sh
 $ ./stack.sh
 $ ./kde.sh
