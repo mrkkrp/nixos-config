@@ -21,7 +21,7 @@
       allowUnfree = true;
     };
     overlays = [
-      (import ../packages/overlay.nix)
+      (import ./overlay.nix)
     ];
   };
 
