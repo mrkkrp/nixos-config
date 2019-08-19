@@ -146,6 +146,8 @@
       inotify-tools
       kid3
       lame
+      ocaml
+      opam
       pwsafe
       qbittorrent
       qiv
