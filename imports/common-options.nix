@@ -46,6 +46,7 @@
       alsaUtils
       aspell
       aspellDicts.en
+      aspellDicts.fr
       aspellDicts.ru
       autoconf
       automake
