@@ -136,5 +136,5 @@ $ ./kde.sh
 $ ./projects.sh
 ```
 
-[channels]: https://nixos.org/channels
+[channels]: https://channels.nix.gsc.io
 [howoldis]: https://howoldis.herokuapp.com/
