@@ -97,6 +97,8 @@ $ git clone git@github.com:nixos/nixpkgs.git nixpkgs
 ## Clone this repo
 
 ```console
+$ mkdir -p ~/projects/mrkkrp
+$ cd projects/mrkkrp
 $ git clone git@github.com:mrkkrp/nix-workstation.git nix-workstation
 ```
 
