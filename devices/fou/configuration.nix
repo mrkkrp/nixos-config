@@ -2,7 +2,7 @@
 
 let
   nixPkgsRepo = "/home/mark/nixpkgs";
-  nixConfigRepo = "/home/mark/nix-workstation";
+  nixConfigRepo = "/home/mark/projects/mrkkrp/nix-workstation";
 in rec {
 
   imports = [

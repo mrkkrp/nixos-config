@@ -106,7 +106,12 @@ configurations for inspiration.
 
 Set `NIX_PATH` so that the `nixos-config` component points to the new
 configuration. Also make sure to set `nixpkgs` component to point to the
-`nixpkgs` checkout you created in the previous step.
+`nixpkgs` checkout you created in the previous step. For `fish` the command
+could be something like this:
+
+```console
+set -pgx NIX_PATH nixos_config=/home/mark/projects/mrkkrp/nix-workstation/devices/<device>/configuration.nix
+```
 
 If everything went well you'll see something like this:
 
@@ -133,7 +138,6 @@ This is done by running several bash scripts.
 $ cd nix-workstation
 $ ./emacs.sh
 $ ./kde.sh
-$ ./projects.sh
 ```
 
 [channels]: https://channels.nix.gsc.io
