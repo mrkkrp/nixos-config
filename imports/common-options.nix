@@ -191,10 +191,13 @@
 
   programs.fish = {
     enable = true;
-    shellInit = ''
-      set -U fish_greeting ""
-      set -U fish_user_paths $fish_user_paths ~/.local/bin
-    '';
+    shellInit =
+      let functionP = builtins.readFile ./function-p.fish;
+      in ''
+           set -U fish_greeting ""
+           set -U fish_user_paths $fish_user_paths ~/.local/bin
+           ${functionP}
+         '';
     shellAliases = {
       e  = "emacsclient";
       ls = "ls --human-readable --almost-all --color=auto";
