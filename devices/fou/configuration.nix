@@ -44,7 +44,7 @@ in rec {
          }
        ];
        locations."/" = {
-         root = "/home/mark/projects/programs/haskell/markkarpov.com/_build/";
+         root = "/home/mark/projects/mrkkrp/markkarpov.com/_build/";
          index = "posts.html index.htm";
          extraConfig = "error_page 404 = /404.html;";
        };
