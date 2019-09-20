@@ -136,6 +136,7 @@
       bazel
       cabal-install
       coq
+      direnv
       emacs
       flac
       gimp
@@ -197,6 +198,7 @@
            set -U fish_greeting ""
            set -U fish_user_paths $fish_user_paths ~/.local/bin
            ${functionP}
+           direnv hook fish | source
          '';
     shellAliases = {
       e  = "emacsclient";
