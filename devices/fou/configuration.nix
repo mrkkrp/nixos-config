@@ -12,7 +12,6 @@ in rec {
 
   networking.hostName = "fou";
   time.timeZone = "Europe/Paris";
-  system.stateVersion = "17.09";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

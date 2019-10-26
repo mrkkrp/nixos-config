@@ -1,6 +1,8 @@
 # These are the options which are shared between all configurations/devices.
 { config, pkgs, ... }:
 {
+  system.stateVersion = "19.09";
+
   imports = [
     ./symlinks/service.nix
   ];
@@ -25,12 +27,15 @@
     ];
   };
 
+  location = {
+    latitude = 48.864716;
+    longitude = 2.349014;
+  };
+
   services.tor.enable = true;
   services.ntp.enable = true;
   services.redshift = {
     enable = true;
-    latitude = "52";
-    longitude = "85";
     temperature.day = 5500;
     temperature.night = 3700;
   };
