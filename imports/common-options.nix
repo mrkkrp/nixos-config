@@ -71,6 +71,7 @@
       gcc
       gdb
       git
+      git-lfs
       glibc
       gnugrep
       gnumake
