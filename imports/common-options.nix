@@ -139,6 +139,7 @@
     ];
     hashedPassword = "$6$rBDWl6/g.dgUp$l6fYq.V1jzQRzsY9o6hSqsB77XAWVjSTLmcrzbjW7zl9DvNeO2LfjOHEOzH7j9Mr1WFofl6FO3CkyITN/UzRp0";
     packages = with pkgs; [
+      (wine.override { wineBuild = "wineWow"; })
       bazel
       cabal-install
       coq
