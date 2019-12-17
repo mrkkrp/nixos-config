@@ -1,6 +1,6 @@
 [user]
 	email = markkarpov92@gmail.com
-	name = mrkkrp
+	name = Mark Karpov
     signingkey = 2889FF7C
 [core]
 	excludesfile = @gitignore@
