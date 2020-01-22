@@ -114,11 +114,6 @@
       which
       zip
     ];
-
-    etc = {
-      "i3/config".source = pkgs.i3config;
-    };
-
   };
 
   security.sudo.enable = true;
@@ -177,14 +172,6 @@
     enable = true;
     layout = "us";
     libinput.enable = true;
-
-    # windowManager = {
-    #   default = "i3";
-    #   i3 = {
-    #     enable = true;
-    #     configFile = "/etc/i3/config";
-    #   };
-    # };
 
     desktopManager = {
       plasma5.enable = true;
