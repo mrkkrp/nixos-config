@@ -106,26 +106,10 @@ Create a proper new configuration under `devices` using previously generated
 `/etc/nixos/hardware-configuration.nix` and some of the existing
 configurations for inspiration.
 
-Set `NIX_PATH` so that the `nixos-config` component points to the new
-configuration. Also make sure to set `nixpkgs` component to point to the
-`nixpkgs` checkout you created in the previous step. For `fish` the command
-could be something like this:
-
-```console
-set -pgx NIX_PATH nixos_config=/home/mark/projects/mrkkrp/nixos-config/devices/<device>/configuration.nix
-```
-
-If everything went well you'll see something like this:
-
-```console
-$ echo $NIX_PATH
-/home/mark/.nix-defexpr/channels nixpkgs=/home/mark/nixpkgs nixos-config=/home/mark/nixos-config/devices/fou/configuration.nix
-```
-
 Build the system:
 
 ```consoule
-# nixos-rebuild switch
+# nixos-rebuild switch -I nixos-config=/home/mark/projects/mrkkrp/nixos-config/devices/<device>/configuration.nix
 ```
 
 ## Copy your SSH and GPG keys
