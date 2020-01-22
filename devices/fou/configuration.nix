@@ -13,6 +13,11 @@ in rec {
   networking.hostName = "fou";
   time.timeZone = "Europe/Paris";
 
+  location = {
+    latitude = 48.864716;
+    longitude = 2.349014;
+  };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.earlyVconsoleSetup = true;
