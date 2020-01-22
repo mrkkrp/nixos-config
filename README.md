@@ -99,7 +99,7 @@ $ git clone git@github.com:nixos/nixpkgs.git nixpkgs
 ```console
 $ mkdir -p ~/projects/mrkkrp
 $ cd projects/mrkkrp
-$ git clone git@github.com:mrkkrp/nix-workstation.git nix-workstation
+$ git clone git@github.com:mrkkrp/nixos-config.git nixos-config
 ```
 
 Create a proper new configuration under `devices` using previously generated
@@ -112,14 +112,14 @@ configuration. Also make sure to set `nixpkgs` component to point to the
 could be something like this:
 
 ```console
-set -pgx NIX_PATH nixos_config=/home/mark/projects/mrkkrp/nix-workstation/devices/<device>/configuration.nix
+set -pgx NIX_PATH nixos_config=/home/mark/projects/mrkkrp/nixos-config/devices/<device>/configuration.nix
 ```
 
 If everything went well you'll see something like this:
 
 ```console
 $ echo $NIX_PATH
-/home/mark/.nix-defexpr/channels nixpkgs=/home/mark/nixpkgs nixos-config=/home/mark/nix-workstation/devices/fou/configuration.nix
+/home/mark/.nix-defexpr/channels nixpkgs=/home/mark/nixpkgs nixos-config=/home/mark/nixos-config/devices/fou/configuration.nix
 ```
 
 Build the system:
@@ -137,7 +137,7 @@ Now is the right time to do that.
 This is done by running several bash scripts.
 
 ```console
-$ cd nix-workstation
+$ cd nixos-config
 $ ./emacs.sh
 $ ./kde.sh
 ```
