@@ -1,5 +1,5 @@
 [Data]
-DataCount=7
+DataCount=8
 
 [Data_1]
 Comment=KMenuEdit Global Shortcuts
@@ -996,7 +996,7 @@ Type=SIMPLE_ACTION_DATA
 ActionsCount=1
 
 [Data_8Actions0]
-CommandURL=qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock
+CommandURL=loginctl lock-session
 Type=COMMAND_URL
 
 [Data_8Conditions]
@@ -1010,7 +1010,7 @@ TriggersCount=1
 [Data_8Triggers0]
 Key=Alt+6
 Type=SHORTCUT
-Uuid={ed28baae-e57a-478c-83e3-b9f89ccf9cb9}
+Uuid={356b4ad2-aa73-46b8-b036-f98654c1b402}
 
 [Gestures]
 Disabled=true
