@@ -60,6 +60,7 @@
       dosfstools
       e2fsprogs
       eject
+      fd
       file
       findutils
       fish
@@ -97,6 +98,7 @@
       postgresql
       pulseaudioFull
       python3Full
+      ripgrep
       ruby
       rustc
       sudo
