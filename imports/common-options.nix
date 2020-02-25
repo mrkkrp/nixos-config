@@ -143,6 +143,7 @@
       haskellPackages.ghcid
       haskellPackages.hasktags
       haskellPackages.hlint
+      haskellPackages.mmark-cli
       inkscape
       inotify-tools
       kid3
