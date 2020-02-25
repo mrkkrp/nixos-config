@@ -57,6 +57,7 @@
       cups
       diffutils
       docker
+      docker-compose
       dosfstools
       e2fsprogs
       eject
