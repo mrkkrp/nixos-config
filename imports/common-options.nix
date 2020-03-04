@@ -140,14 +140,13 @@
       emacs
       flac
       gimp
+      google-cloud-sdk
       haskellPackages.ghcid
       haskellPackages.hasktags
       haskellPackages.hlint
       haskellPackages.mmark-cli
       inkscape
       inotify-tools
-      kid3
-      lame
       ocaml
       opam
       pwsafe
@@ -155,6 +154,7 @@
       qiv
       stack
       tdesktop
+      tmate
       vlc
       wmctrl
     ];
