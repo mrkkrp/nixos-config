@@ -80,6 +80,7 @@
       groff
       htop
       inetutils
+      killall
       less
       libtool
       man
