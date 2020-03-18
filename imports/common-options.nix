@@ -45,11 +45,6 @@
 
   environment = {
     systemPackages = with pkgs; [
-      alsaLib
-      alsaOss
-      alsaPlugins
-      alsaTools
-      alsaUtils
       aspell
       aspellDicts.en
       aspellDicts.fr
@@ -58,23 +53,17 @@
       automake
       binutils
       bzip2
-      cargo
       coreutils
-      cups
       diffutils
-      docker
-      docker-compose
       dosfstools
       e2fsprogs
       eject
+      emacs
       fd
       file
       findutils
-      fish
       gcc
       gdb
-      git
-      git-lfs
       glibc
       gnugrep
       gnumake
@@ -82,7 +71,6 @@
       gnused
       gnutar
       gnutls
-      google-chrome
       groff
       htop
       inetutils
@@ -91,7 +79,6 @@
       libtool
       man
       man-pages
-      mupdf
       nano
       networkmanager
       nginxMainline
@@ -103,18 +90,13 @@
       p7zip
       patch
       pavucontrol
-      postgresql
       pulseaudioFull
       python3Full
       ripgrep
       ruby
-      rustc
       sudo
-      texlive.combined.scheme-full
-      tor
       unzip
       vim
-      virtualbox
       wget
       which
       zip
@@ -140,13 +122,24 @@
     hashedPassword = "$6$rBDWl6/g.dgUp$l6fYq.V1jzQRzsY9o6hSqsB77XAWVjSTLmcrzbjW7zl9DvNeO2LfjOHEOzH7j9Mr1WFofl6FO3CkyITN/UzRp0";
     packages = with pkgs; [
       (wine.override { wineBuild = "wineWow"; })
+      alsaLib
+      alsaOss
+      alsaPlugins
+      alsaTools
+      alsaUtils
       bazel
       cabal-install
+      cargo
       coq
       direnv
-      emacs
+      docker
+      docker-compose
+      fish
       flac
       gimp
+      git
+      git-lfs
+      google-chrome
       google-cloud-sdk
       haskellPackages.ghcid
       haskellPackages.hasktags
@@ -154,14 +147,20 @@
       haskellPackages.mmark-cli
       inkscape
       inotify-tools
+      mupdf
       ocaml
       opam
+      postgresql
       pwsafe
       qbittorrent
       qiv
+      rustc
       stack
       tdesktop
+      texlive.combined.scheme-full
       tmate
+      tor
+      virtualbox
       vlc
       wmctrl
     ];
