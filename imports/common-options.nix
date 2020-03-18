@@ -163,6 +163,7 @@
       virtualbox
       vlc
       wmctrl
+      zoom-us
     ];
     shell = "${pkgs.fish}/bin/fish";
 
