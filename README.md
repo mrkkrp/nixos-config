@@ -1,5 +1,7 @@
 # NixOS instructions
 
+**The current configuration is to be used with: `bf7c0f0461e047bec108a5c5d5d1b144289a65ba`.**
+
 This document describes how to install [NixOS](https://nixos.org) and
 configure it how I like it.
 
