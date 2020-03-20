@@ -2,6 +2,8 @@
 
 **The current configuration is to be used with: `bf7c0f0461e047bec108a5c5d5d1b144289a65ba`.**
 
+See also: https://grahamc.com/blog/nixos-on-dell-9560
+
 This document describes how to install [NixOS](https://nixos.org) and
 configure it how I like it.
 
