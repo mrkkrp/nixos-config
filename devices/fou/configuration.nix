@@ -21,7 +21,6 @@ in rec {
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.earlyVconsoleSetup = true;
 
   nix = {
     package = pkgs.nixUnstable;

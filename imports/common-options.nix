@@ -180,11 +180,11 @@
 
     desktopManager = {
       plasma5.enable = true;
-      default = "plasma5";
     };
 
     displayManager = {
       sddm.enable = true;
+      defaultSession = "plasma5";
       sessionCommands = "export PATH=$HOME/.local/bin:$PATH";
     };
   };
@@ -206,9 +206,13 @@
   };
 
   i18n = {
-    consoleFont = "Lat2-Terminus16";
-    consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
+  };
+
+  console = {
+    earlySetup = true;
+    keyMap = "us";
+    font = "Lat2-Terminus16";
   };
 
   fonts = {
