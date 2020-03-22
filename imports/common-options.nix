@@ -33,7 +33,6 @@
     ];
   };
 
-  services.tor.enable = true;
   services.ntp.enable = true;
   services.redshift = {
     enable = true;
@@ -160,7 +159,6 @@
       tdesktop
       texlive.combined.scheme-full
       tmate
-      tor
       virtualbox
       vlc
       wmctrl
