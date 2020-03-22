@@ -155,6 +155,7 @@
       qbittorrent
       qiv
       rustc
+      shellcheck
       stack
       tdesktop
       texlive.combined.scheme-full
