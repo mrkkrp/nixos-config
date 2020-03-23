@@ -126,7 +126,6 @@ This is done by running several bash scripts.
 
 ```console
 $ cd nixos-config
-$ ./emacs.sh
 $ ./kde.sh
 ```
 
