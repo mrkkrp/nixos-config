@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# contributor: Mark Karpov
+# name: Basic layout of test suite section
+# key: tests
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+test-suite ${1:tests}
+  main-is:            Spec.hs
+  hs-source-dirs:     tests
+  type:               exitcode-stdio-1.0
+  build-depends:      base             >= 4.11 && < 5.0
+                    , ${2:`(f-filename default-directory)`}
+  build-tools:        hspec-discover   >= 2.0 && < 3.0
+  other-modules:      Module
+  if flag(dev)
+    ghc-options:      -Wall -Werror
+  else
+    ghc-options:      -O2 -Wall
+  default-language:   Haskell2010

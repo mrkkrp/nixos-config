@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# contributor: Mark Karpov
+# name: Standard Haskell header
+# key: header
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+-- |
+-- Module      :  `(haskell-guess-module-name)`
+-- Copyright   :  © ${1:`(format-time-string "%Y")`} ${2:`user-full-name`}
+-- License     :  ${3:BSD 3 clause}
+--
+-- Maintainer  :  `user-full-name` <`user-mail-address`>
+-- Stability   :  experimental
+-- Portability :  portable
+--
+-- $0
