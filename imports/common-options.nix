@@ -201,14 +201,14 @@
 
   programs.fish = {
     enable = true;
-    shellInit =
-      let functionP = builtins.readFile ./function-p.fish;
-      in ''
-           set -U fish_greeting ""
-           set -U fish_user_paths $fish_user_paths ~/.local/bin
-           ${functionP}
-           direnv hook fish | source
-         '';
+    shellInit = ''
+      set -U fish_greeting ""
+      set -U fish_user_paths $fish_user_paths ~/.local/bin
+      ${builtins.readFile ./fish/p.fish}
+      ${builtins.readFile ./fish/p-mk.fish}
+      ${builtins.readFile ./fish/p-gh.fish}
+      direnv hook fish | source
+    '';
     shellAliases = {
       e  = "emacsclient";
       ls = "ls --human-readable --almost-all --color=auto";

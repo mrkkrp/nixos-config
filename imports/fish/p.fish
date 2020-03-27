@@ -7,7 +7,7 @@ function p
             set ds (find "$HOME/projects/$argv[1]" -mindepth 1 -maxdepth 1 -type d -name "$argv[2]*" | sort)
             # Project name and org name are specified
         case '*'
-            echo "This command take 1 or 2 arguments:"
+            echo "This command takes 1 or 2 arguments:"
             echo "p <project-name>"
             echo "p <org-name> <project-name>"
             return 1
