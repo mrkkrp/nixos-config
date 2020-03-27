@@ -120,14 +120,5 @@ Build the system:
 
 Now is the right time to do that.
 
-## Misc setup for normal user
-
-This is done by running several bash scripts.
-
-```console
-$ cd nixos-config
-$ ./kde.sh
-```
-
 [channels]: https://channels.nix.gsc.io
 [howoldis]: https://howoldis.herokuapp.com/
