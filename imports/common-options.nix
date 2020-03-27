@@ -188,7 +188,13 @@
     displayManager = {
       sddm.enable = true;
       defaultSession = "plasma5";
-      sessionCommands = "export PATH=$HOME/.local/bin:$PATH";
+      sessionCommands = ''
+        export PATH=$HOME/.local/bin:$PATH
+        kwriteconfig5 --file $HOME/.config/kaccessrc --group Keyboard --key StickyKeys --type bool true
+        kwriteconfig5 --file $HOME/.config/kcminputrc --group Keyboard --key RepeatDelay 600
+        kwriteconfig5 --file $HOME/.config/kcminputrc --group Keyboard --key RepeatRate 50
+        kwriteconfig5 --file $HOME/.config/kxkbrc --group Layout --key Options "terminate:ctrl_alt_bksp,compose:sclk"
+      '';
     };
   };
 
