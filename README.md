@@ -27,49 +27,27 @@ it.
 Partition  | Size      |  Code | Purpose
 :----------|:----------|:------|:-------------
 1          | 500 MiB   | EF00  | EFI partition
-2          | 3 MiB     | 8300  | cryptsetup luks key
-4          | remaining | 8300  | root file system
-
-8300 is because the partitions are encrypted. The cryptsetup luks key
-partition is 3 MiB so that it can fit the default 2 MiB LUKS header as well
-as the key.
+2          | remaining | 8300  | root file system
 
 ## LUKS disk encryption
-
-Create an encrypted disk to hold our key, the key to this drive is what
-you'll type in to unlock the rest of your drives. Remember it:
-
-```console
-$ cryptsetup luksFormat /dev/nvme0n1p2
-$ cryptsetup luksOpen /dev/nvme0n1p2 cryptkey
-```
-
-Fill our key disk with random data, which will be our key:
-
-```console
-$ dd if=/dev/urandom of=/dev/mapper/cryptkey bs=1024 count=14000
-```
 
 Create an encrypted root with a key you can remember:
 
 ```console
-$ cryptsetup luksFormat /dev/nvme0n1p4
+$ cryptsetup luksFormat /dev/nvme0n1p2
 ```
 
-Now add the cryptkey as a decryption key to the root partition, this way you
-can only decrypt the cryptkey on startup, and use the cryptkey to decrypt
-the root.
+Then open it:
 
 ```console
-$ cryptsetup luksAddKey /dev/nvme0n1p4 /dev/mapper/cryptkey
+$ cryptsetup luksOpen /dev/nvme0n1p2 cryptroot
 ```
 
 ## File systems
 
-Now we open the swap and the root and make some filesystems.
+Create the file system for the root partition:
 
 ```console
-$ cryptsetup luksOpen --key-file=/dev/mapper/cryptkey /dev/nvme0n1p3 cryptroot
 $ mkfs.ext4 /dev/mapper/cryptroot
 ```
 
@@ -79,15 +57,23 @@ Rebuild the boot partition:
 $ mkfs.vfat /dev/nvme0n1p1
 ```
 
-NOT CLEAR Then for a not fun bit, matching entries in `/dev/disk/by-uuid/`
-to the partitions we want to mount where. Running `ls -l /dev/disk/by-uuid/`
-shows which devices have which UUIDs. To determine what `dm-1` and `dm-2`, I
-ran `ls -la /dev/mapper`.
+Check the disk mapping:
+
+```console
+$ ls -l /dev/disk/by-uuid/
+```
+
+Descrypted root partition will be the one that is linked to something like
+`dm-0`. You can confirm it by running:
+
+```console
+$ ls -la /dev/mapper
+```
 
 Mount the decrypted cryptroot to `/mnt`:
 
 ```console
-$ mount /dev/disk/by-uuid/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF /mnt
+$ mount /dev/disk/by-uuid/<the-uuid> /mnt
 ```
 
 Setup and mount the boot partition:
@@ -103,36 +89,17 @@ Generate initial configuration:
 
 ```console
 # nixos-generate-config --root /mnt
-# nano /mnt/etc/nixos/hardware-configuration.nix
-# nano /mnt/etc/nixos/configuration.nix
 ```
 
-Edit `hardware-configuration.nix` to setup the LUKS configuration:
+Hardware configuration should already be OK. Edit the
+`/mnt/etc/nixos/configuration.nix` as needed to create a minimal system for
+bootstrapping:
 
-```nix
-{
-  # cryptkey must be done first, and the list seems to be
-  # alphabetically sorted, so take care that cryptroot / cryptswap,
-  # whatever you name them, come after cryptkey.
-  boot.initrd.luks.devices = {
-    cryptkey = {
-      device = "/dev/disk/by-uuid/BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB";
-    };
-    cryptroot = {
-      device = "/dev/disk/by-uuid/DDDDDDDD-DDDD-DDDD-DDDD-DDDDDDDDDDDD";
-      keyFile = "/dev/mapper/cryptkey";
-    };
-  };
-}
-```
-
-Edit the `configuration.nix` as needed to create a minimal system for
-bootstrapping. Make sure that the system has `git` and a normal user.
-
-It should already be correct, but check that:
-
-* `fileSystems."/boot".device` refers to `/dev/disk/by-uuid/AAAA-AAAA`
-* `fileSystems."/".device` refers to `/dev/disk/by-uuid/FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF`
+* Make sure that the system has `git` and a normal user.
+* Make sure to set `networking.networkmanager.enable = true`, otherwise you
+  won't have WiFi when you boot into your new system.
+* Make sure to enable SDDM and Plasma (just uncomment the relevant lines in
+  the template).
 
 ## Installation
 
@@ -144,13 +111,19 @@ Do the installation:
 
 Enter root password when asked.
 
-If everything went well, reboot:
+If everything went well, reboot.
 
-```console
-# reboot
-```
+## Setting password for the normal user
 
-## Clone nixpkgs repo
+It may be necessary to first login as `root` and set password for the normal
+user with the `passwd` command. After that you can re-login as the normal
+user.
+
+## Copy your SSH and GPG keys
+
+Now is the right time to do that.
+
+## The final rebuild
 
 Nix channels suck, so just clone the nixpkgs repo and checkout the commit
 specified at the top of this page (or see [channels][channels] and
@@ -158,29 +131,30 @@ specified at the top of this page (or see [channels][channels] and
 
 ```console
 $ git clone git@github.com:nixos/nixpkgs.git nixpkgs
+$ git checkout <see-top-of-the-page>
 ```
 
-## Clone this repo
+Clone this repo:
 
 ```console
 $ mkdir -p ~/projects/mrkkrp
-$ cd projects/mrkkrp
+$ cd ~/projects/mrkkrp
 $ git clone git@github.com:mrkkrp/nixos-config.git nixos-config
 ```
 
-Create a proper new configuration under `devices` using previously generated
-`/etc/nixos/hardware-configuration.nix` and some of the existing
-configurations for inspiration.
+Create a proper new configuration under `devices` by copying previously
+generated `/etc/nixos/hardware-configuration.nix` and re-using some of the
+existing configurations.
 
 Build the system:
 
 ```consoule
-# nixos-rebuild switch -I nixos-config=/home/mark/projects/mrkkrp/nixos-config/devices/<device>/configuration.nix
+# nixos-rebuild switch \
+  -I nixos-config=/home/mark/projects/mrkkrp/nixos-config/devices/<device>/configuration.nix \
+  -I nixpkgs=/home/mark/nixpkgs
 ```
 
-## Copy your SSH and GPG keys
-
-Now is the right time to do that.
+Reboot.
 
 [channels]: https://channels.nix.gsc.io
 [howoldis]: https://howoldis.herokuapp.com/
