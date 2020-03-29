@@ -169,6 +169,7 @@
     shell = "${pkgs.fish}/bin/fish";
 
     symlinks = {
+      ".config/kglobalshortcutsrc" = ./kglobalshortcutsrc;
       ".config/khotkeysrc" = ./khotkeysrc;
       ".emacs.d/init.el" = ./emacs/init.el;
       ".emacs.d/snippets" = ./emacs/snippets;
