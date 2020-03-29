@@ -131,6 +131,7 @@
       cabal-install
       cargo
       coq
+      darktable
       direnv
       docker
       docker-compose
