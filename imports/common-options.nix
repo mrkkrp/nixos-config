@@ -171,6 +171,7 @@
     symlinks = {
       ".config/kglobalshortcutsrc" = ./kglobalshortcutsrc;
       ".config/khotkeysrc" = ./khotkeysrc;
+      ".config/konsolerc" = ./konsolerc;
       ".emacs.d/init.el" = ./emacs/init.el;
       ".emacs.d/snippets" = ./emacs/snippets;
       ".gitconfig" = pkgs.gitconfig;
