@@ -169,10 +169,10 @@
     shell = "${pkgs.fish}/bin/fish";
 
     symlinks = {
-      ".config/kglobalshortcutsrc" = ./kglobalshortcutsrc;
-      ".config/khotkeysrc" = ./khotkeysrc;
-      ".config/konsolerc" = ./konsolerc;
-      ".config/kwinrulesrc" = ./kwinrulesrc;
+      ".config/kglobalshortcutsrc" = ./.config/kglobalshortcutsrc;
+      ".config/khotkeysrc" = ./.config/khotkeysrc;
+      ".config/konsolerc" = ./.config/konsolerc;
+      ".config/kwinrulesrc" = ./.config/kwinrulesrc;
       ".emacs.d/init.el" = ./emacs/init.el;
       ".emacs.d/snippets" = ./emacs/snippets;
       ".gitconfig" = pkgs.gitconfig;
