@@ -4,7 +4,7 @@
   system.stateVersion = "19.09";
 
   imports = [
-    ./symlinks/service.nix
+    ./symlinks/activation-script.nix
   ];
 
   networking = {

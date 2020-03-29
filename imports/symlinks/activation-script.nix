@@ -8,7 +8,7 @@ let
   ));
 
   activationScriptForUser = user: flip mapAttrsToList user.symlinks (reltarget: src:
-    "update_symlink \"${src}\" \"${user.home}/${reltarget}\""
+    "update_symlink \"${user.name}\" \"${src}\" \"${user.home}/${reltarget}\""
   );
 
   activationScript = ''
@@ -16,8 +16,6 @@ let
     ${concatStringsSep "\n" (flatten (map activationScriptForUser usersWithKeys))}
   '';
 in {
-  ###### interface
-
   options = {
 
     users.users = mkOption {
@@ -32,8 +30,6 @@ in {
       });
     };
   };
-
-  ###### implementation
 
   config = ({
     system.activationScripts.usersymlinks = activationScript;

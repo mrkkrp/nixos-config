@@ -1,42 +1,39 @@
+#!/usr/bin/env bash
 
-scratch=$(mktemp -d -t tmp.XXXXXXXXXX);
 update_symlink() {
+    local USER
     local SRC
     local DEST
     local OUTDIR
 
-    SRC="$1"
-    DEST="$2"
+    USER="$1"
+    SRC="$2"
+    DEST="$3"
     OUTDIR=$(dirname "$DEST");
+
+    # If parent directory of the link to create does not exist, create it.
     if [ ! -d "$OUTDIR" ]; then
-        if [ ! -z "${SUDO:-}" ]; then
-            sudo mkdir -p "$OUTDIR"
-        else
-            mkdir -p "$OUTDIR"
-        fi
+        mkdir -p "$OUTDIR"
+        chown "$USER:users" "$OUTDIR"
     fi
 
-    if [ ! -h "$DEST" ] && [ -d "$DEST" ]; then
-        echo "DEST ($DEST) is a directory??"
+    # Check if destination is not a directory.
+    if [ ! -L "$DEST" ] && [ -d "$DEST" ]; then
+        echo "DEST ($DEST) is a directory?"
         return 1
     fi
 
-    if [ -f "$DEST" ]; then
+    # If destination is already a symlink, return early if it already links
+    # to the right path.
+    if [ -L "$DEST" ]; then
         local CURSRC
         CURSRC=$(realpath "$DEST")
-        if [ "x$CURSRC" == "x$SRC" ]; then
+        if [ "$CURSRC" == "$SRC" ]; then
             return 0
         fi
     fi
 
-    if [ -d "$DEST" ]; then
-        rm "$DEST"
-    fi
-
-    ln -s "$SRC" "$scratch/tmp"
-    if [ ! -z "${SUDO:-}" ]; then
-        sudo mv "$scratch/tmp" "$DEST"
-    else
-        mv "$scratch/tmp" "$DEST"
-    fi
+    # Otherwise create the symlink and then move it to the distination.
+    ln -s "$SRC" "/tmp/temp-symlink"
+    mv "/tmp/temp-symlink" "$DEST"
 }
