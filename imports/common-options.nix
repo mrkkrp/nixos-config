@@ -199,6 +199,7 @@
         kwriteconfig5 --file $HOME/.config/kcminputrc --group Keyboard --key RepeatDelay 600
         kwriteconfig5 --file $HOME/.config/kcminputrc --group Keyboard --key RepeatRate 50
         kwriteconfig5 --file $HOME/.config/kxkbrc --group Layout --key Options "terminate:ctrl_alt_bksp,compose:sclk"
+        kwriteconfig5 --file $HOME/.config/kxkbrc --group Layout --key ResetOldOptions --type bool true
       '';
     };
   };
