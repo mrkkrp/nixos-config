@@ -925,10 +925,6 @@ produced."
   ("<next> r c" . copy-to-register)
   ("<next> r i" . insert-register))
 
-(use-package replace
-  :bind
-  ("<next> q r" . query-replace))
-
 (use-package rich-minority
   :init
   (setq
@@ -1059,7 +1055,7 @@ produced."
 
 (use-package visual-regexp
   :bind
-  ("<next> q e" . vr/query-replace))
+  ("<next> q q" . vr/query-replace))
 
 (use-package wdired
   :after (dired)
