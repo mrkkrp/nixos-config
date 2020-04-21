@@ -63,7 +63,7 @@ Check the disk mapping:
 $ ls -l /dev/disk/by-uuid/
 ```
 
-Descrypted root partition will be the one that is linked to something like
+Decrypted root partition will be the one that is linked to something like
 `dm-0`. You can confirm it by running:
 
 ```console
