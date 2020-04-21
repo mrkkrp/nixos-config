@@ -364,7 +364,8 @@ move point."
    flyspell-mode-map
    (("C-," . nil)
     ("C-." . nil)
-    ("C-;" . mk-flyspell-correct-previous)))
+    ("C-;" . mk-flyspell-correct-previous)
+    ("<next> f b" . flyspell-buffer)))
   :hook
   ((gitignore-mode . flyspell-prog-mode)
    (haskell-cabal-mode . flyspell-prog-mode)
@@ -422,7 +423,8 @@ HEIGHT, if supplied, specifies height of letters to use."
   :after (fix-input)
   :init
   (setq-default
-   ispell-dictionary "en")
+   ispell-program-name "hunspell"
+   ispell-dictionary "en_US")
   :config
   (defun mk-use-lang (input-method dictionary)
     "Switch to INPUT-METHOD and Ispell DICTIONARY."
@@ -431,16 +433,15 @@ HEIGHT, if supplied, specifies height of letters to use."
   (defun mk-use-en ()
     "Switch to English."
     (interactive)
-    (mk-use-lang nil "english"))
+    (mk-use-lang nil "en_US"))
   (defun mk-use-fr ()
     "Switch to French."
     (interactive)
-    (mk-use-lang nil "french"))
+    (mk-use-lang nil "fr-moderne"))
   (defun mk-use-ru ()
     "Switch to Russian."
     (interactive)
-    (mk-use-lang "mk-dvorak-russian" "ru"))
-  (add-to-list 'ispell-extra-args "--sug-mode=ultra")
+    (mk-use-lang "mk-dvorak-russian" "russian"))
   :bind
   ("<next> e n" . mk-use-en)
   ("<next> f r" . mk-use-fr)

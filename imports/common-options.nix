@@ -44,10 +44,6 @@
 
   environment = {
     systemPackages = with pkgs; [
-      aspell
-      aspellDicts.en
-      aspellDicts.fr
-      aspellDicts.ru
       autoconf
       automake
       binutils
@@ -146,6 +142,10 @@
       haskellPackages.hasktags
       haskellPackages.hlint
       haskellPackages.mmark-cli
+      hunspell
+      hunspellDicts.en-us-large
+      hunspellDicts.fr-moderne
+      hunspellDicts.ru-ru
       inkscape
       inotify-tools
       mupdf
