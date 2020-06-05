@@ -82,7 +82,6 @@
       ntp
       openssl
       openvpn
-      p7zip
       patch
       pavucontrol
       pulseaudioFull
