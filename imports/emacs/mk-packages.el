@@ -467,9 +467,9 @@ HEIGHT, if supplied, specifies height of letters to use."
    ("C-c r" . haskell-process-restart)))
 
 (use-package haskell-mode
+  :after (lsp-haskell)
   :init
   (setq
-   haskell-ask-also-kill-buffers nil
    haskell-process-load-or-reload-prompt t
    haskell-process-show-debug-tips nil
    haskell-process-type 'stack-ghci
@@ -491,14 +491,9 @@ HEIGHT, if supplied, specifies height of letters to use."
    (";" . nil)
    (")" . nil)
    ("}" . nil)
-   ("]" . nil)
-   :map
-   haskell-mode-map
-   ("M-," . pop-tag-mark)
-   ("M-." . haskell-mode-jump-to-def)
-   ("<next> g t" . haskell-mode-generate-tags))
+   ("]" . nil))
   :hook
-  ((haskell-mode . interactive-haskell-mode)))
+  ((haskell-mode . lsp)))
 
 (use-package hasky-extensions
   :after (haskell-mode)
@@ -634,6 +629,20 @@ produced."
    LaTeX-mode-map
    ("C-c C-l" . mk-pdf-latex-export)
    ("C-c C-v" . mk-pdf-latex-preview)))
+
+(use-package lsp-haskell
+  :demand
+  :config
+  (setq lsp-haskell-process-path-hie "haskell-language-server-wrapper")
+  (lsp-haskell-set-config "formattingProvider" :ormolu)
+  (lsp-haskell--set-configuration))
+
+(use-package lsp-ui
+  :config
+  (setq lsp-ui-doc-enable nil)
+  :bind
+  (("<next> ' d" . lsp-describe-thing-at-point)
+   ("<next> ' f" . lsp-format-buffer)))
 
 (use-package magit
   :init

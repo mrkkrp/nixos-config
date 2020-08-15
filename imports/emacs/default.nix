@@ -36,6 +36,9 @@ let
       ivy
       js2-mode
       kill-or-bury-alive
+      lsp-haskell
+      lsp-mode
+      lsp-ui
       magit
       markdown-mode
       merlin

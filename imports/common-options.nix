@@ -138,6 +138,7 @@
       google-chrome
       google-cloud-sdk
       haskellPackages.ghcid
+      haskellPackages.haskell-language-server
       haskellPackages.hasktags
       haskellPackages.hlint
       haskellPackages.mmark-cli
