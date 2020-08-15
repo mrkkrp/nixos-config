@@ -10,7 +10,7 @@
          }
        ];
        locations."/" = {
-         root = "/home/mark/projects/mrkkrp/markkarpov.com/result/_build/";
+         root = "/home/mark/projects/mrkkrp/markkarpov.com/result/";
          index = "posts.html index.htm";
          extraConfig = "error_page 404 = /404.html;";
        };
