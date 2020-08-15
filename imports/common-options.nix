@@ -150,6 +150,7 @@
       mupdf
       ocaml
       opam
+      openconnect
       postgresql
       pwsafe
       qbittorrent
