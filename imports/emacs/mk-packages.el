@@ -793,6 +793,7 @@ produced."
   ((compilation-mode . modalka-mode)
    (conf-toml-mode . modalka-mode)
    (conf-unix-mode . modalka-mode)
+   (diff-mode . modalka-mode)
    (gitignore-mode . modalka-mode)
    (haskell-cabal-mode . modalka-mode)
    (help-mode . modalka-mode)
