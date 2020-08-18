@@ -641,7 +641,8 @@ produced."
   :config
   (setq lsp-ui-doc-enable nil)
   :bind
-  (("<next> ' d" . lsp-describe-thing-at-point)
+  (("<next> ' '" . lsp-execute-code-action)
+   ("<next> ' d" . lsp-describe-thing-at-point)
    ("<next> ' f" . lsp-format-buffer)))
 
 (use-package magit
