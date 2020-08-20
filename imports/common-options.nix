@@ -216,6 +216,7 @@
       direnv hook fish | source
     '';
     shellAliases = {
+      cal = "cal -m";
       e  = "emacsclient";
       ls = "ls --human-readable --almost-all --color=auto";
     };
