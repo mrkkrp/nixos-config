@@ -6,7 +6,7 @@ function p-mk
             cd "$target"
         case '*'
             echo "This command takes 2 arguments:"
-            echo "p_ph <org-name> <project-name>"
+            echo "p-mk <org-name> <project-name>"
             return 1
     end
 end
