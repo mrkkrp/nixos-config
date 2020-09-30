@@ -842,9 +842,25 @@ produced."
   ("<next> y p" . mk-yank-primary))
 
 (use-package mule
+  :config
+  (defun mk-russian-phrase (text)
+    "Put TEXT into the system clipboard.
+
+When called interactively it'll read the phrase using the Russian
+input method."
+    (interactive
+     (list
+      (let ((original-input-method current-input-method)
+            result)
+        (set-input-method "mk-dvorak-russian")
+        (setq result (read-string "Russian input: " nil nil nil t))
+        (set-input-method original-input-method)
+        result)))
+    (gui-set-selection 'CLIPBOARD text))
   :bind
   ("<next> c c" . revert-buffer-with-coding-system)
-  ("<next> c s" . set-buffer-file-coding-system))
+  ("<next> c s" . set-buffer-file-coding-system)
+  ("<next> x x" . mk-russian-phrase))
 
 (use-package mwheel
   :demand
