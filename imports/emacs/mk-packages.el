@@ -543,6 +543,7 @@ HEIGHT, if supplied, specifies height of letters to use."
   :hook
   ((gitignore-mode . hl-todo-mode)
    (haskell-cabal-mode . hl-todo-mode)
+   (markdown-mode . hl-todo-mode)
    (prog-mode . hl-todo-mode)
    (proof-mode . hl-todo-mode)
    (yaml-mode . hl-todo-mode)))
