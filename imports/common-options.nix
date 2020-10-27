@@ -158,6 +158,7 @@
       qiv
       rustc
       shellcheck
+      shutter
       stack
       tdesktop
       texlive.combined.scheme-full
