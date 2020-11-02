@@ -148,8 +148,8 @@
       hunspellDicts.ru-ru
       inkscape
       inotify-tools
-      mupdf
       ocaml
+      okular
       opam
       openconnect
       postgresql
