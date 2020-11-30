@@ -127,6 +127,7 @@
       cargo
       coq
       darktable
+      dbeaver
       direnv
       docker
       docker-compose
@@ -148,6 +149,7 @@
       hunspellDicts.ru-ru
       inkscape
       inotify-tools
+      insomnia
       ocaml
       okular
       opam
