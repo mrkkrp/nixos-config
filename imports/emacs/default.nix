@@ -11,7 +11,6 @@ let
       ace-popup-menu
       ace-window
       aggressive-indent
-      auctex
       avy
       avy-menu
       char-menu
@@ -67,4 +66,4 @@ let
       zzz-to-char
     ];
   };
-in pkgs.emacs26WithPackages (epkgs: [(mkConfig epkgs)])
+in pkgs.emacs27WithPackages (epkgs: [(mkConfig epkgs)])

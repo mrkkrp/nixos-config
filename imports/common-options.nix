@@ -16,12 +16,6 @@
     networkmanager.enable = true;
   };
 
-  nix = {
-    extraOptions = ''
-      experimental-features = nix-command
-    '';
-  };
-
   nixpkgs = {
     system = "x86_64-linux";
     config = {
