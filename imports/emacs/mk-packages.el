@@ -345,7 +345,7 @@ not specified, traverse 12 words by default.
 Return T if misspelled word is found and NIL otherwise.  Never
 move point."
     (interactive "P")
-    (let* ((Δ (- (point-max) (point)))
+    (let* ((delta (- (point-max) (point)))
            (counter (string-to-number (or words "12")))
            (result
             (catch 'result
@@ -357,7 +357,7 @@ move point."
                 (backward-word 1)
                 (setq counter (1- counter))
                 nil))))
-      (goto-char (- (point-max) Δ))
+      (goto-char (- (point-max) delta))
       result))
   :bind
   (:map
