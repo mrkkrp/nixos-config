@@ -28,16 +28,6 @@
      (interactive)
      (apply ,fnc ,@args rest)))
 
-(defun mk-visit-file (filename)
-  "Visit specified file FILENAME.
-
-If the file does not exist, print a message about the fact, but
-don't create new empty buffer."
-  (let ((filename (f-full filename)))
-    (if (f-exists? filename)
-        (find-file filename)
-      (message "%s does not exist" filename))))
-
 (defun mk-switch-to-messages ()
   "Switch to the *Messages* buffer."
   (interactive)
@@ -57,14 +47,6 @@ don't create new empty buffer."
         (switch-to-buffer original-buffer))
     (split-window-sensibly)
     (other-window 1)))
-
-(defun mk-shell-quote-arg (arg)
-  "Quote ARG for using in the shell.
-
-This function is different from ‘shell-quote-argument’ in that it
-can be used for text transformations in Yasnippet without
-backslash flood."
-  (replace-regexp-in-string "\\W" "\\\\\\&" (remove ?\\ arg)))
 
 (defun mk-grab-input (prompt &optional initial-input add-space)
   "Grab input from user.
