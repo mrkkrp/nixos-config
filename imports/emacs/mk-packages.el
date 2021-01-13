@@ -867,15 +867,9 @@ input method."
   :mode "\\.nix$")
 
 (use-package package
-  :config
-  (advice-add 'package-install :filter-args (lambda (args) (list (car args) t)))
-  (use-package mk-package)
   :bind
-  ("<next> l p" . list-packages)
-  ("<next> m e" . mk-melpa-page)
   ("<next> p f" . package-install-file)
-  ("<next> p i" . package-install)
-  ("<next> p p" . mk-package-page))
+  ("<next> p i" . package-install))
 
 (use-package paragraphs
   :bind
