@@ -582,50 +582,6 @@ HEIGHT, if supplied, specifies height of letters to use."
   ("<escape>" . kill-or-bury-alive)
   ("<next> a a" . kill-or-bury-alive-purge-buffers))
 
-(use-package latex
-  :config
-
-  (defun mk-pdf-latex-generate (&optional output-dir)
-    "Generate PDF document from currently opened LaTeX document.
-
-If given, OUTPUT-DIR specifies directory where all the temporary
-and result files a are stored.  If it's not given, new directory
-with unique name is used instead.  Return name of PDF file
-produced."
-    (let* ((output-dir (or output-dir (make-temp-file "pdflatex" t)))
-           (buffer-file-name (buffer-file-name))
-           (output-pdf (f-join output-dir
-                               (f-swap-ext (f-base buffer-file-name)
-                                           "pdf"))))
-      (if (not buffer-file-name)
-          (error "Must be visiting a file")
-        (save-window-excursion
-          (shell-command
-           (concat "pdflatex -output-directory "
-                   (shell-quote-argument output-dir)
-                   " "
-                   (shell-quote-argument buffer-file-name))))
-        (message "Written %s" output-pdf)
-        output-pdf)))
-
-  (defun mk-pdf-latex-preview ()
-    "Generate temporary PDF file and open it with external application."
-    (interactive)
-    (call-process "xdg-open" nil 0 nil (mk-pdf-latex-generate)))
-
-  (defun mk-pdf-latex-export ()
-    "Create PDF document based on current TeX/LaTeX file."
-    (interactive)
-    (mk-pdf-latex-generate default-directory))
-
-  (advice-add 'TeX-insert-quote :filter-args (lambda (&rest _rest) (list t)))
-
-  :bind
-  (:map
-   LaTeX-mode-map
-   ("C-c C-l" . mk-pdf-latex-export)
-   ("C-c C-v" . mk-pdf-latex-preview)))
-
 (use-package lsp-haskell
   :demand
   :config
