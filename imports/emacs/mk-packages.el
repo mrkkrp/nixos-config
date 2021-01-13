@@ -864,26 +864,7 @@ input method."
   (mouse-wheel-mode 0))
 
 (use-package nix-mode
-  :mode "\\.nix$"
-  :config
-
-  (defun mk-nixos-package (symbol)
-    "Find information about a NixOS package given SYMBOL."
-    (interactive (list (mk-grab-input "NixOS package: ")))
-    (browse-url
-     (concat "https://nixos.org/nixos/packages.html?query="
-             (url-hexify-string symbol))))
-
-  (defun mk-nixos-option (symbol)
-    "Find information abouta NixOS option given SYMBOL."
-    (interactive (list (mk-grab-input "NixOS option: ")))
-    (browse-url
-     (concat "https://nixos.org/nixos/options.html#"
-             (url-hexify-string symbol))))
-
-  :bind
-  ("<next> n o" . mk-nixos-option)
-  ("<next> n p" . mk-nixos-package))
+  :mode "\\.nix$")
 
 (use-package package
   :config

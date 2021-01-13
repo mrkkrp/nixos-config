@@ -48,20 +48,6 @@
     (split-window-sensibly)
     (other-window 1)))
 
-(defun mk-grab-input (prompt &optional initial-input add-space)
-  "Grab input from user.
-
-If there is an active region, use its contents, otherwise read
-text from the minibuffer.  PROMPT is a prompt to show,
-INITIAL-INPUT is the initial input.  If INITIAL-INPUT and
-ADD-SPACE are not NIL, add one space after the initial input."
-  (if mark-active
-      (buffer-substring (region-beginning)
-                        (region-end))
-    (read-string prompt
-                 (concat initial-input
-                         (when (and initial-input add-space) " ")))))
-
 (defun mk-get-existing-projects (dir)
   "Return a list of existing projects under DIR.
 
