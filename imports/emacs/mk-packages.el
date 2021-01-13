@@ -414,11 +414,6 @@ HEIGHT, if supplied, specifies height of letters to use."
   :bind
   ("<next> g g" . git-link))
 
-(use-package grep
-  :after (ripgrep)
-  :bind
-  ("<next> g r" . mk-grep))
-
 (use-package ispell
   :after (fix-input)
   :init
@@ -964,7 +959,9 @@ input method."
 
 (use-package ripgrep
   :demand
-  :commands (ripgrep-regexp))
+  :commands (ripgrep-regexp)
+  :bind
+  ("<next> g r" . mk-grep))
 
 (use-package scroll-bar
   :demand
