@@ -153,22 +153,6 @@ makes result string be quoted as for yanking into shell."
                      (shell-quote-argument φ)
                    φ)))))))
 
-(defun mk-compile-init-files ()
-  "Byte compile init files (all *.el files under ‘mk-dir’ directory)."
-  (interactive)
-  (let (once)
-    (save-window-excursion
-      ;; TODO this often includes flycheck temporary files.  Avoid that.
-      (dolist (item (cons (f-full user-init-file)
-                          (directory-files mk-dir t "\\`[^#].*\\.el\\'" t)))
-        (let ((compiled (byte-compile-dest-file item)))
-          (when (or (not (f-file? compiled))
-                    (file-newer-than-file-p item compiled))
-            (byte-compile-file item)
-            (setq once t)))))
-    (unless once
-      (message "Byte compiled init files exist and are up to date"))))
-
 (provide 'mk-utils)
 
 ;;; mk-utils.el ends here
