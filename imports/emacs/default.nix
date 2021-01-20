@@ -40,7 +40,6 @@ let
       lsp-ui
       magit
       markdown-mode
-      merlin
       modalka
       mustache-mode
       nix-mode

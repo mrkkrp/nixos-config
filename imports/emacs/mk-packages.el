@@ -620,10 +620,6 @@ HEIGHT, if supplied, specifies height of letters to use."
    ("M-n" . mk-transpose-line-down)
    ("M-p" . mk-transpose-line-up)))
 
-(use-package merlin
-  :hook
-  ((tuareg-mode . merlin-mode)))
-
 (use-package minibuf-eldef
   :demand
   :init
@@ -1005,6 +1001,11 @@ input method."
    display-time-default-load-average nil)
   :config
   (display-time-mode 1))
+
+(use-package tuareg-mode
+  :after (lsp-mode)
+  :hook
+  ((tuareg-mode . lsp)))
 
 (use-package typit
   :bind

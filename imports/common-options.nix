@@ -146,6 +146,7 @@
       inotify-tools
       insomnia
       ocaml
+      ocamlPackages.ocaml-lsp
       okular
       opam
       openconnect
