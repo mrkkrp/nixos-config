@@ -16,6 +16,7 @@
     networkmanager.enable = true;
   };
 
+  nix.autoOptimiseStore = true;
   nixpkgs = {
     system = "x86_64-linux";
     config = {
