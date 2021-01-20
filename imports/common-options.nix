@@ -28,6 +28,25 @@
   };
 
   services.ntp.enable = true;
+  services.logrotate = {
+    enable = true;
+    paths = {
+      journal = {
+        path = "/var/log/journal";
+        user = "root";
+        group = "systemd-journal";
+        frequency = "daily";
+        keep = 10;
+      };
+      nginx = {
+        path = "/var/log/nginx";
+        user = "mark";
+        group = "nginx";
+        frequency = "daily";
+        keep = 10;
+      };
+    };
+  };
   services.redshift = {
     enable = true;
     temperature.day = 5500;
