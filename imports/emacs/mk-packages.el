@@ -585,9 +585,7 @@ HEIGHT, if supplied, specifies height of letters to use."
 (use-package lsp-haskell
   :demand
   :config
-  (setq lsp-haskell-process-path-hie "haskell-language-server-wrapper")
-  (lsp-haskell-set-config "formattingProvider" :ormolu)
-  (lsp-haskell--set-configuration))
+  )
 
 (use-package lsp-ui
   :config
