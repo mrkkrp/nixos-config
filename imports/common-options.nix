@@ -67,7 +67,6 @@
       dosfstools
       e2fsprogs
       eject
-      emacs
       fd
       file
       findutils
@@ -139,7 +138,6 @@
       alsaUtils
       bazel
       cabal-install
-      cargo
       coq
       darktable
       dbeaver
@@ -174,12 +172,10 @@
       pwsafe
       qbittorrent
       qiv
-      rustc
       shellcheck
       shutter
       stack
       tdesktop
-      texlive.combined.scheme-full
       tmate
       virtualbox
       vlc
