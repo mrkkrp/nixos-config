@@ -114,7 +114,7 @@
   ("M-x" . counsel-M-x))
 
 (use-package custom
-  :config
+  :preface
   (defun mk-switch-theme (theme)
     "Switch to theme THEME, loading it if necessary."
     (interactive
@@ -178,7 +178,7 @@
    dired-listing-switches "-GAlh --group-directories-first"
    dired-recursive-copies 'always
    dired-recursive-deletes 'always)
-  :config
+  :preface
 
   (defun mk-dired-first-file ()
     "Jump to the first file in current directory."
@@ -229,7 +229,7 @@
   (electric-indent-mode 0))
 
 (use-package elisp-mode
-  :config
+  :preface
   (defun mk-eval-last-sexp ()
     "Evaluate last S-expression and replace it with the result."
     (interactive)
@@ -263,7 +263,7 @@
    require-final-newline t
    vc-display-status nil
    version-control t)
-  :config
+  :preface
 
   (defun mk-single-empty-line ()
     "Make sure we don't have too wide gaps."
@@ -281,8 +281,8 @@ exit."
     (when (or arg (yes-or-no-p "Exit Emacs?"))
       (save-buffers-kill-emacs)))
 
+  :config
   (advice-add 'revert-buffer :filter-args (lambda (&rest _rest) (list nil t)))
-
   :bind
   ("<f12>" . mk-exit-emacs)
   ("<next> a s" . write-file)
@@ -334,7 +334,7 @@ exit."
   ((flycheck-mode . flycheck-mmark-setup)))
 
 (use-package flyspell
-  :config
+  :preface
   (defun mk-flyspell-correct-previous (&optional words)
     "Correct word before point, reach distant words.
 
@@ -384,10 +384,7 @@ move point."
   (flyspell-lazy-mode 1))
 
 (use-package frame
-  :config
-
-  (blink-cursor-mode 0)
-
+  :preface
   (defun mk-set-font (font &optional height)
     "Set font FONT as main font for all frames.
 
@@ -398,11 +395,11 @@ HEIGHT, if supplied, specifies height of letters to use."
     (when height
       (set-face-attribute 'default nil :height height))
     (set-face-attribute 'variable-pitch nil :family font))
-
+  :config
+  (blink-cursor-mode 0)
   (when window-system
     (mk-set-font "DejaVu Sans Mono" 120)
     (toggle-frame-fullscreen))
-
   :bind
   ("<next> d f" . delete-frame)
   ("<next> f o" . mk-set-font)
@@ -420,7 +417,7 @@ HEIGHT, if supplied, specifies height of letters to use."
   (setq-default
    ispell-program-name "hunspell"
    ispell-dictionary "en_US")
-  :config
+  :preface
   (defun mk-use-lang (input-method dictionary)
     "Switch to INPUT-METHOD and Ispell DICTIONARY."
     (set-input-method input-method)
@@ -469,7 +466,7 @@ HEIGHT, if supplied, specifies height of letters to use."
    haskell-process-show-debug-tips nil
    haskell-process-type 'stack-ghci
    haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans"))
-  :config
+  :preface
   (defun mk-haskell-insert-symbol ()
     "Insert one of the Haskell symbols that are difficult to type."
     (interactive)
@@ -547,7 +544,7 @@ HEIGHT, if supplied, specifies height of letters to use."
   :init
   (setq-default
    ivy-use-selectable-prompt t)
-  :config
+  :preface
   (defun mk-anti-ivy-advice (func &rest args)
     "Temporarily disable Ivy and call function FUNC with arguments ARGS."
     (interactive)
@@ -555,6 +552,7 @@ HEIGHT, if supplied, specifies height of letters to use."
       (if (called-interactively-p 'any)
           (call-interactively func)
         (apply func args))))
+  :config
   (advice-add 'dired-create-directory :around 'mk-anti-ivy-advice)
   (dolist (buffer '("^\\*Backtrace\\*$"
                     "^\\*Compile-Log\\*$"
@@ -631,6 +629,15 @@ HEIGHT, if supplied, specifies height of letters to use."
   :init
   (setq-default
    modalka-cursor-type 'box)
+  :preface
+  (defun mk-modalka-mode-no-git-commit ()
+    "Enable ‘modalka-mode’ unless get edit git commit message."
+    (unless (string-equal (buffer-name) "COMMIT_EDITMSG")
+      (modalka-mode 1)))
+  (defun mk-open-default-dir ()
+    "Open default directory."
+    (interactive)
+    (find-file default-directory))
   :config
   (modalka-define-kbd "SPC" "C-SPC")
   ;; ' (handy as self-inserting)
@@ -720,16 +727,6 @@ HEIGHT, if supplied, specifies height of letters to use."
   (modalka-define-kbd "Y" "M-y")
   (modalka-define-kbd "Z" "C-z")
 
-  (defun mk-modalka-mode-no-git-commit ()
-    "Enable ‘modalka-mode’ unless get edit git commit message."
-    (unless (string-equal (buffer-name) "COMMIT_EDITMSG")
-      (modalka-mode 1)))
-
-  (defun mk-open-default-dir ()
-    "Open default directory."
-    (interactive)
-    (find-file default-directory))
-
   :bind
   (("<return>" . modalka-mode)
    :map
@@ -788,7 +785,7 @@ HEIGHT, if supplied, specifies height of letters to use."
   ("<next> y p" . mk-yank-primary))
 
 (use-package mule
-  :config
+  :preface
   (defun mk-russian-phrase (text)
     "Put TEXT into the system clipboard.
 
@@ -914,11 +911,12 @@ input method."
    blink-matching-paren 'jump-offscreen
    kill-read-only-ok t
    suggest-key-bindings nil)
-  :config
+  :preface
   (defun mk-auto-fill-mode ()
     "Enable ‘auto-fill-mode’ limiting it to comments."
     (setq-local comment-auto-fill-only-comments t)
     (auto-fill-mode 1))
+  :config
   (column-number-mode 1)
   :bind
   ("C-." . undo)
@@ -983,7 +981,7 @@ input method."
   ("C-s" . swiper))
 
 (use-package tabify
-  :config
+  :preface
   (defun mk-untabify ()
     "Untabify the current buffer."
     (interactive)
@@ -1075,7 +1073,7 @@ input method."
   (setq
    ztree-dir-filter-list nil
    ztree-draw-unicode-lines t)
-  :config
+  :preface
   (defun mk-ztree-dir ()
     "Show tree of the current ‘default-directory’."
     (interactive)
