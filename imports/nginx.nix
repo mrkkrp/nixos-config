@@ -18,4 +18,5 @@
   };
   services.nginx.user = "mark";
   services.nginx.enable = true;
+  systemd.services.nginx.serviceConfig.ProtectHome = "read-only";
 }
