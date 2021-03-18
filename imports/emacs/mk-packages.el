@@ -338,12 +338,12 @@ exit."
   (defun mk-flyspell-correct-previous (&optional words)
     "Correct word before point, reach distant words.
 
-WORDS words at maximum are traversed backward until misspelled
-word is found.  If it's not found, give up.  If argument WORDS is
-not specified, traverse 12 words by default.
+WORDS words at maximum are traversed backward until a misspelled
+word is found.  If the argument WORDS is not specified, traverse
+12 words by default.
 
-Return T if misspelled word is found and NIL otherwise.  Never
-move point."
+Return T if a misspelled word is found and NIL otherwise.  Never
+move the point."
     (interactive "P")
     (let* ((delta (- (point-max) (point)))
            (counter (string-to-number (or words "12")))
