@@ -133,24 +133,13 @@
   :init
   (setq
    cyphejor-rules
-   '(:upcase
-     ("bookmark"    "→")
-     ("buffer"      "β")
+   '(:downcase
      ("diff"        "Δ")
-     ("dired"       "δ")
-     ("emacs"       "ε")
-     ("eshell"      "εsh")
      ("inferior"    "i" :prefix)
      ("interaction" "i" :prefix)
      ("interactive" "i" :prefix)
-     ("lisp"        "λ" :postfix)
-     ("menu"        "▤" :postfix)
      ("mode"        "")
-     ("package"     "↓")
-     ("python"      "π")
-     ("shell"       "sh" :postfix)
-     ("text"        "ξ")
-     ("wdired"      "↯δ")))
+     ("wdired"      "Wd")))
   :config
   (cyphejor-mode 1))
 
