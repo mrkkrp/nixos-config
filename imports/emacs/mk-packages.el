@@ -580,7 +580,8 @@ HEIGHT, if supplied, specifies height of letters to use."
   :bind
   (("<next> ' '" . lsp-execute-code-action)
    ("<next> ' d" . lsp-describe-thing-at-point)
-   ("<next> ' f" . lsp-format-buffer)))
+   ("<next> ' f" . lsp-format-buffer)
+   ("<next> ' s" . lsp-find-definition)))
 
 (use-package magit
   :init
