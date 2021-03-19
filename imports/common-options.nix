@@ -67,7 +67,6 @@
       dosfstools
       e2fsprogs
       eject
-      fd
       file
       findutils
       gcc
@@ -82,7 +81,6 @@
       groff
       htop
       inetutils
-      killall
       less
       libtool
       man
@@ -90,17 +88,11 @@
       nano
       networkmanager
       nginxMainline
-      nixops
       ntfs3g
       ntp
-      openssl
-      openvpn
       patch
       pavucontrol
       pulseaudioFull
-      python3Full
-      ripgrep
-      ruby
       sudo
       unzip
       vim
@@ -136,14 +128,13 @@
       alsaPlugins
       alsaTools
       alsaUtils
-      bazel
       cabal-install
-      coq
       darktable
       dbeaver
       direnv
       docker
       docker-compose
+      fd
       fish
       flac
       gimp
@@ -168,10 +159,14 @@
       okular
       opam
       openconnect
+      openssl
+      openvpn
       postgresql
       pwsafe
+      python3Full
       qbittorrent
       qiv
+      ripgrep
       shellcheck
       shutter
       stack
