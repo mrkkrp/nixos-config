@@ -9,6 +9,8 @@ in rec {
     ./hardware-configuration.nix
     ./../../imports/common-options.nix
     ./../../imports/nginx.nix
+    ./../../imports/pulseaudio.nix
+    # ./../../imports/jack.nix
     ];
 
   networking.hostName = "fou";

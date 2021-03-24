@@ -20,7 +20,6 @@
   nixpkgs = {
     system = "x86_64-linux";
     config = {
-      pulseaudio = true;
       allowUnfree = true;
     };
     overlays = [
@@ -91,8 +90,6 @@
       ntfs3g
       ntp
       patch
-      pavucontrol
-      pulseaudioFull
       sudo
       unzip
       vim
@@ -114,6 +111,7 @@
     extraGroups = [
       "audio"
       "docker"
+      "jackaudio"
       "networkmanager"
       "video"
       "wheel"
