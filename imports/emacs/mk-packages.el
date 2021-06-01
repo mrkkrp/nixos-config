@@ -587,7 +587,8 @@ HEIGHT, if supplied, specifies height of letters to use."
   :init
   (setq magit-clone-set-remote.pushDefault t)
   :bind
-  (("<next> m c" . magit-clone)
+  (("<next> m b" . magit-blame)
+   ("<next> m c" . magit-clone)
    ("<next> m i" . magit-init)
    ("<next> m s" . magit-status)
    :map
