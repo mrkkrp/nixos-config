@@ -144,7 +144,7 @@
       haskellPackages.haskell-language-server
       haskellPackages.hasktags
       haskellPackages.hlint
-      haskellPackages.mmark-cli
+      # haskellPackages.mmark-cli
       hunspell
       hunspellDicts.en-us-large
       hunspellDicts.fr-moderne
