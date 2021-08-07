@@ -27,7 +27,7 @@
     ];
   };
 
-  services.ntp.enable = true;
+  services.chrony.enable = true;
   services.logrotate = {
     enable = true;
     paths = {
@@ -88,7 +88,6 @@
       networkmanager
       nginxMainline
       ntfs3g
-      ntp
       patch
       sudo
       unzip
