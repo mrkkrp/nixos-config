@@ -217,14 +217,14 @@
     shellInit = ''
       set -U fish_greeting ""
       set -U fish_user_paths $fish_user_paths ~/.local/bin
+      ${builtins.readFile ./fish/e.fish}
       ${builtins.readFile ./fish/p.fish}
       ${builtins.readFile ./fish/p-mk.fish}
       ${builtins.readFile ./fish/p-gh.fish}
       direnv hook fish | source
     '';
     shellAliases = {
-      cal = "cal -m";
-      e  = "emacsclient";
+      cal = "cal -m3";
       ls = "ls --human-readable --almost-all --color=auto";
     };
   };
