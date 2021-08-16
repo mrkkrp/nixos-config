@@ -134,6 +134,7 @@
       fd
       fish
       flac
+      ghc
       gimp
       git
       git-lfs
