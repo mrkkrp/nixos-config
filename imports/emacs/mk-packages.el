@@ -876,6 +876,10 @@ input method."
   :bind
   ("<next> g r" . mk-grep))
 
+(use-package rust-mode
+  :hook
+  ((rust-mode . lsp)))
+
 (use-package scroll-bar
   :demand
   :config

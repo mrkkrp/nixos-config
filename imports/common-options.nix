@@ -165,6 +165,7 @@
       qbittorrent
       qiv
       ripgrep
+      rustup
       shellcheck
       shutter
       stack
