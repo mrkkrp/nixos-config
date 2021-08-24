@@ -238,7 +238,6 @@
   console = {
     earlySetup = true;
     keyMap = "us";
-    font = pkgs.lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
   };
 
   fonts = {

@@ -40,4 +40,6 @@ in rec {
     enable = true;
     package = pkgs.pulseaudioFull;
   };
+
+  console.font = pkgs.lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 }
