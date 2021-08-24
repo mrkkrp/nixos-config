@@ -85,7 +85,7 @@ $ mount /dev/disk/by-uuid/AAAA-AAAA /mnt/boot
 
 ## Initial configuration
 
-Generate initial configuration:
+Generate an initial configuration:
 
 ```console
 # nixos-generate-config --root /mnt
@@ -109,9 +109,7 @@ Do the installation:
 # nixos-install
 ```
 
-Enter root password when asked.
-
-If everything went well, reboot.
+Enter the root password when asked. Reboot.
 
 ## Setting password for the normal user
 
@@ -142,7 +140,7 @@ $ cd ~/projects/mrkkrp
 $ git clone git@github.com:mrkkrp/nixos-config.git nixos-config
 ```
 
-Create a proper new configuration under `devices` by copying previously
+Create a proper new configuration under `devices` by copying the previously
 generated `/etc/nixos/hardware-configuration.nix` and re-using some of the
 existing configurations.
 
