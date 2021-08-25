@@ -120,6 +120,7 @@
       (import ./emacs pkgs)
       (import ./project-jumper pkgs)
       (wine.override { wineBuild = "wineWow"; })
+      alacritty
       alsaLib
       alsaOss
       alsaPlugins
@@ -171,6 +172,7 @@
       stack
       tdesktop
       tmate
+      tmux
       virtualbox
       vlc
       wmctrl
@@ -179,9 +181,9 @@
     shell = "${pkgs.fish}/bin/fish";
 
     symlinks = {
+      ".alacritty.yml" = ./.config/.alacritty.yml;
       ".config/kglobalshortcutsrc" = ./.config/kglobalshortcutsrc;
       ".config/khotkeysrc" = ./.config/khotkeysrc;
-      ".config/konsolerc" = ./.config/konsolerc;
       ".config/kwinrulesrc" = ./.config/kwinrulesrc;
       ".emacs.d/init.el" = ./emacs/init.el;
       ".emacs.d/snippets" = ./emacs/snippets;

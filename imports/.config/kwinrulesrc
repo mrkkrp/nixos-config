@@ -1,9 +1,9 @@
 [1]
 Description=Window settings for emacs
-clientmachine=localhost
 clientmachinematch=0
 position=3840,0
 positionrule=3
+screenrule=3
 title=emacs@fou
 titlematch=1
 types=1
@@ -13,7 +13,6 @@ wmclassmatch=1
 
 [2]
 Description=Window settings for google-chrome
-clientmachine=localhost
 clientmachinematch=0
 fullscreen=false
 fullscreenrule=1
@@ -21,7 +20,7 @@ noborder=true
 noborderrule=2
 position=3840,0
 positionrule=3
-title=New Tab - Google Chrome
+screenrule=3
 titlematch=0
 types=1
 windowrole=browser
@@ -31,23 +30,19 @@ wmclasscomplete=false
 wmclassmatch=1
 
 [3]
-Description=Window settings for konsole
-clientmachine=localhost
+Description=Window settings for alacritty
 clientmachinematch=0
-fullscreen=false
+fullscreen=true
 fullscreenrule=3
 noborder=true
 noborderrule=3
 position=0,0
 positionrule=3
-screen=0
+screen=1
 screenrule=3
-title=~ : fish — Konsole
 titlematch=0
 types=1
-windowrole=mainwindow#1
-windowrolematch=1
-wmclass=konsole
+wmclass=alacritty
 wmclasscomplete=false
 wmclassmatch=1
 

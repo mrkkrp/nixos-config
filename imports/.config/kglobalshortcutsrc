@@ -24,7 +24,7 @@ display=Display\tMeta+P,Display\tMeta+P,Switch Display
 
 [khotkeys]
 _k_friendly_name=Custom Shortcuts Service
-{0b7d3797-a17a-414b-baa4-f21f91dc5282}=Alt+4,none,konsole
+{0b7d3797-a17a-414b-baa4-f21f91dc5282}=Alt+4,none,alacritty
 {0e2e1249-f9fa-4bea-ba2e-3a0ebd957df3}=Alt+1,none,dolphin
 {3068f105-d044-4722-a7d2-6d2fa5d26921}=Alt+3,none,emacs
 {356b4ad2-aa73-46b8-b036-f98654c1b402}=Alt+6,none,lock-screen
