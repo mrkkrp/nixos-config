@@ -3,10 +3,12 @@
 let
   nixPkgsRepo = "/home/mark/nixpkgs";
   nixConfigRepo = "/home/mark/projects/mrkkrp/nixos-config";
+  nixosHardware = import ./../../imports/nixos-hardware.nix;
 in rec {
 
   imports = [
     ./hardware-configuration.nix
+    "${nixosHardware}/lenovo/thinkpad/x1"
     ./../../imports/common-options.nix
     ./../../imports/nginx.nix
     ./../../imports/pulseaudio.nix
