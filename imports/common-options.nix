@@ -156,7 +156,6 @@
       ocaml
       ocamlPackages.ocaml-lsp
       okular
-      opam
       openconnect
       openssl
       openvpn
