@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# contributor: Mark Karpov
-# name: Ending of Emacs lisp source
-# key: ending
-# --
-(provide '`(f-base (buffer-file-name))`)
-
-;;; `(f-filename (buffer-file-name))` ends here

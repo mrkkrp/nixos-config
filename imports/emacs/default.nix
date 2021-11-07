@@ -56,7 +56,6 @@ let
       visual-regexp
       whole-line-or-region
       yaml-mode
-      yasnippet
       zenburn-theme
       ztree
       zygospore

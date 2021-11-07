@@ -186,7 +186,6 @@
       ".config/khotkeysrc" = ./.config/khotkeysrc;
       ".config/kwinrulesrc" = ./.config/kwinrulesrc;
       ".emacs.d/init.el" = ./emacs/init.el;
-      ".emacs.d/snippets" = ./emacs/snippets;
       ".gitconfig" = pkgs.gitconfig;
       ".nixpkgs/config.nix" = pkgs.nixconfig;
       ".stack/config.yaml" = pkgs.stackconfig;

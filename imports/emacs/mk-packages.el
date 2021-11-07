@@ -1023,16 +1023,6 @@ input method."
    xref-after-jump-hook (list #'recenter)
    xref-after-return-hook nil))
 
-(use-package yasnippet
-  :demand
-  :init
-  (setq
-   yas-snippet-dirs (list (expand-file-name "snippets" user-emacs-directory)))
-  :config
-  (yas-global-mode 1)
-  :bind
-  ("<next> y a" . yas-reload-all))
-
 (use-package zenburn-theme
   :config
   (when window-system
