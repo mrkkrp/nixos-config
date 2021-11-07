@@ -476,29 +476,6 @@ HEIGHT, if supplied, specifies height of letters to use."
   :hook
   ((haskell-mode . lsp)))
 
-(use-package hasky-extensions
-  :after (haskell-mode)
-  :commands (hasky-extensions)
-  :bind
-  (:map
-   haskell-mode-map
-   ("C-c y" . hasky-extensions))
-  :hook
-  ((hasky-extensions-prettifying . mk-single-empty-line)
-   (hasky-extensions-prettifying . whitespace-cleanup)))
-
-(use-package hasky-stack
-  :commands (hasky-stack-execute hasky-stack-package-action hasky-stack-new)
-  :init
-  (setq
-   hasky-stack-auto-target t
-   hasky-stack-auto-open-coverage-reports t
-   hasky-stack-auto-newest-version t)
-  :bind
-  ("<next> h e" . hasky-stack-execute)
-  ("<next> h o" . hasky-stack-package-action)
-  ("<next> h i" . hasky-stack-new))
-
 (use-package help
   :bind
   ("<next> f k" . describe-key))

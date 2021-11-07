@@ -28,8 +28,6 @@ let
       git-link
       gitignore-mode
       haskell-mode
-      hasky-extensions
-      hasky-stack
       highlight-symbol
       hl-todo
       ivy
