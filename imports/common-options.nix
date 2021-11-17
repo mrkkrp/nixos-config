@@ -228,7 +228,6 @@
       direnv hook fish | source
     '';
     shellAliases = {
-      cal = "cal -m3";
       ls = "ls --human-readable --almost-all --color=auto";
     };
   };
