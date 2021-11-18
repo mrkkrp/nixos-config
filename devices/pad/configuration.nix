@@ -8,7 +8,7 @@ in rec {
 
   imports = [
     ./hardware-configuration.nix
-    "${nixosHardware}/lenovo/thinkpad/x1"
+    "${nixosHardware}/lenovo/thinkpad/x1/9th-gen"
     ./../../imports/common-options.nix
     ./../../imports/nginx.nix
     ./../../imports/pulseaudio.nix
@@ -25,7 +25,6 @@ in rec {
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   nix = {
     package = pkgs.nixUnstable;
