@@ -141,10 +141,9 @@
       git-lfs
       google-chrome
       google-cloud-sdk
-      haskellPackages.ghcid
       haskellPackages.haskell-language-server
-      haskellPackages.hasktags
       haskellPackages.hlint
+      haskellPackages.implicit-hie
       # haskellPackages.mmark-cli
       hunspell
       hunspellDicts.en-us-large
@@ -169,7 +168,6 @@
       rustup
       shellcheck
       shutter
-      stack
       tdesktop
       tmate
       tmux
