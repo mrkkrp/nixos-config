@@ -193,6 +193,7 @@
 
   services.xserver = {
     enable = true;
+    dpi = null;
     layout = "us";
     libinput.enable = true;
 
@@ -202,7 +203,7 @@
 
     displayManager = {
       sddm.enable = true;
-      defaultSession = "plasma5";
+      defaultSession = "plasma";
       sessionCommands = ''
         export PATH=$HOME/.local/bin:$PATH
         kwriteconfig5 --file $HOME/.config/kaccessrc --group Keyboard --key StickyKeys --type bool true

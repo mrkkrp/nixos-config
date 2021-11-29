@@ -26,7 +26,7 @@ let
       flycheck-mmark
       flyspell-lazy
       git-link
-      gitignore-mode
+      git-modes
       haskell-mode
       highlight-symbol
       hl-todo
