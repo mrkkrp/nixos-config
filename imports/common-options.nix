@@ -16,7 +16,13 @@
     networkmanager.enable = true;
   };
 
-  nix.autoOptimiseStore = true;
+  nix = {
+    autoOptimiseStore = true;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
   nixpkgs = {
     system = "x86_64-linux";
     config = {
