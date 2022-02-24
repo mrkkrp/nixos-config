@@ -212,6 +212,7 @@
       defaultSession = "plasma";
       sessionCommands = ''
         export PATH=$HOME/.local/bin:$PATH
+        export PATH=$HOME/.cabal/bin:$PATH
         kwriteconfig5 --file $HOME/.config/kaccessrc --group Keyboard --key StickyKeys --type bool true
         kwriteconfig5 --file $HOME/.config/kcminputrc --group Keyboard --key RepeatDelay 600
         kwriteconfig5 --file $HOME/.config/kcminputrc --group Keyboard --key RepeatRate 50
