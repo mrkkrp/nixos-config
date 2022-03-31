@@ -1,6 +1,6 @@
 # NixOS instructions
 
-**The current configuration is to be used with: `73369f8d0864854d1acfa7f1e6217f7d6b6e3fa1`.**
+**The current configuration is to be used with: `710fed5a2483f945b14f4a58af2cd3676b42d8c8`.**
 
 See also: https://grahamc.com/blog/nixos-on-dell-9560
 
