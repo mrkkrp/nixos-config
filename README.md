@@ -34,13 +34,13 @@ Partition  | Size      |  Code | Purpose
 Create an encrypted root with a key you can remember:
 
 ```console
-$ cryptsetup luksFormat /dev/nvme0n1p2
+# cryptsetup luksFormat /dev/nvme0n1p2
 ```
 
 Then open it:
 
 ```console
-$ cryptsetup luksOpen /dev/nvme0n1p2 cryptroot
+# cryptsetup luksOpen /dev/nvme0n1p2 cryptroot
 ```
 
 ## File systems
@@ -48,13 +48,13 @@ $ cryptsetup luksOpen /dev/nvme0n1p2 cryptroot
 Create the file system for the root partition:
 
 ```console
-$ mkfs.ext4 /dev/mapper/cryptroot
+# mkfs.ext4 /dev/mapper/cryptroot
 ```
 
 Rebuild the boot partition:
 
 ```console
-$ mkfs.vfat /dev/nvme0n1p1
+# mkfs.vfat /dev/nvme0n1p1
 ```
 
 Check the disk mapping:
@@ -73,14 +73,14 @@ $ ls -la /dev/mapper
 Mount the decrypted cryptroot to `/mnt`:
 
 ```console
-$ mount /dev/disk/by-uuid/<the-uuid> /mnt
+# mount /dev/disk/by-uuid/<the-uuid> /mnt
 ```
 
 Setup and mount the boot partition:
 
 ```console
-$ mkdir /mnt/boot
-$ mount /dev/disk/by-uuid/AAAA-AAAA /mnt/boot
+# mkdir /mnt/boot
+# mount /dev/disk/by-uuid/AAAA-AAAA /mnt/boot
 ```
 
 ## Initial configuration
@@ -128,7 +128,9 @@ specified at the top of this page (or see [channels][channels] and
 [howoldis][howoldis]):
 
 ```console
+$ cd
 $ git clone git@github.com:nixos/nixpkgs.git nixpkgs
+$ cd nixpkgs
 $ git checkout <see-top-of-the-page>
 ```
 
