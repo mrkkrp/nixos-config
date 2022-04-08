@@ -10,8 +10,8 @@
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [];
-      allowedUDPPorts = [];
+      allowedTCPPorts = [ ];
+      allowedUDPPorts = [ ];
     };
     networkmanager.enable = true;
   };
@@ -161,6 +161,7 @@
       inkscape
       inotify-tools
       insomnia
+      nixpkgs-fmt
       ocaml
       ocamlPackages.ocaml-lsp
       okular

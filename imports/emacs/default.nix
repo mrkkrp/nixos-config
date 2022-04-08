@@ -62,4 +62,5 @@ let
       zzz-to-char
     ];
   };
-in pkgs.emacs27WithPackages (epkgs: [(mkConfig epkgs)])
+in
+pkgs.emacs27WithPackages (epkgs: [ (mkConfig epkgs) ])

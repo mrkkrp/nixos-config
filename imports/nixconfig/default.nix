@@ -1,3 +1,2 @@
 { mutate }:
-mutate ./config.nix {
-}
+mutate ./config.nix { }

@@ -3,17 +3,17 @@
 {
   services.nginx.virtualHosts = {
     "localhost" = {
-       listen = [
-         {
-           addr = "localhost";
-           port = 5000;
-         }
-       ];
-       locations."/" = {
-         root = "/home/mark/projects/mrkkrp/markkarpov.com/result/";
-         index = "posts.html index.htm";
-         extraConfig = "error_page 404 = /404.html;";
-       };
+      listen = [
+        {
+          addr = "localhost";
+          port = 5000;
+        }
+      ];
+      locations."/" = {
+        root = "/home/mark/projects/mrkkrp/markkarpov.com/result/";
+        index = "posts.html index.htm";
+        extraConfig = "error_page 404 = /404.html;";
+      };
     };
   };
   services.nginx.user = "mark";
