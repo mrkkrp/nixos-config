@@ -1,26 +1,23 @@
 # NixOS instructions
 
-See also: https://grahamc.com/blog/nixos-on-dell-9560
-
-This repo describes how to install [NixOS](https://nixos.org) and configure
-it.
+This document describes how to install [NixOS](https://nixos.org) and
+configure it.
 
 ## Intro
 
-* Disable secure boot.
-* Disable RAID mode (e.g. System Configuration -> SATA Operation -> Select
-  AHCI.).
-* If you have a UEFI system, you should boot in UEFI mode.
-* Boot from installation medium. Use graphical installation medium,
-  especially if you'll need to use WiFi for internet connection.
+* Disable the secure boot.
+* Disable the RAID mode (e.g. System Configuration -> SATA Operation ->
+  Select AHCI.).
+* If you have a UEFI system, you should boot in the UEFI mode.
+* Boot from your installation medium. Use the graphical installation medium,
+  because it provides an easier interface for turning on WiFi.
 
 ## Partitioning and formatting
 
 * Use `lsblk` to see what devices/partitions you have.
-* If you don't have devices at `/dev/nvme_*` you forgot to turn off RAID
+* If you don't have devices at `/dev/nvme_*` you forgot to turn off the RAID
   mode.
-* Use `fdisk` (BIOS) or `gdisk` (UEFI) to edit partition table of device you
-  want to install NixOS to.
+* Use `fdisk` (BIOS) or `gdisk` (UEFI) to edit the partition table.
 
 Partition  | Size      |  Code | Purpose
 :----------|:----------|:------|:-------------
@@ -117,7 +114,12 @@ user.
 
 ## Copy your SSH and GPG keys
 
-Now is the right time to do that.
+Now is the right time to do that. Be sure to set `600` mode for
+`~/.ssh/id_rsa`:
+
+```console
+$ chmod 600 ~/.ssh/id_rsa
+```
 
 ## The final rebuild
 
@@ -134,7 +136,7 @@ generated `etc/nixos/configuration.nix` and
 `/etc/nixos/hardware-configuration.nix`. Add a new entry in `flake.nix`
 following the existing examples.
 
-Build the system:
+Build the system (execute from `~/projects/mrkkrp/nixos-config`):
 
 ```consoule
 # nixos-rebuild switch --flake .#<hostname>
