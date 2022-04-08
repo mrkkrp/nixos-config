@@ -453,8 +453,7 @@ HEIGHT, if supplied, specifies height of letters to use."
   (setq
    haskell-process-load-or-reload-prompt t
    haskell-process-show-debug-tips nil
-   haskell-process-type 'stack-ghci
-   haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans"))
+   haskell-process-type 'cabal-new-repl)
   :preface
   (defun mk-haskell-insert-symbol ()
     "Insert one of the Haskell symbols that are difficult to type."

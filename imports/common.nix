@@ -193,7 +193,6 @@
       ".emacs.d/init.el" = ./emacs/init.el;
       ".gitconfig" = pkgs.gitconfig;
       ".nixpkgs/config.nix" = pkgs.nixconfig;
-      ".stack/config.yaml" = pkgs.stackconfig;
       ".tmux.conf" = ./.config/.tmux.conf;
     };
   };

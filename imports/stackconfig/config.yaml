@@ -1,5 +1,0 @@
-nix:
-  enable: true
-  pure: false
-
-recommend-stack-upgrade: false
