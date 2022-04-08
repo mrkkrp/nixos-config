@@ -1,0 +1,43 @@
+cabal-version:   2.4
+name:            project-jumper
+version:         0.0.1.0
+license:         BSD-3-Clause
+license-file:    LICENSE.md
+maintainer:      Mark Karpov <markkarpov92@gmail.com>
+author:          Mark Karpov <markkarpov92@gmail.com>
+homepage:        https://github.com/mrkkrp/nixos-config
+bug-reports:     https://github.com/mrkkrp/nixos-config/issues
+synopsis:        A utility for jumping to local project directories
+description:     A utility for jumping to local project directories.
+category:        CLI
+build-type:      Simple
+extra-doc-files:
+    README.md
+
+flag dev
+    description: Turn on development settings.
+    default:     False
+    manual:      True
+
+executable project-jumper
+    main-is:          Main.hs
+    hs-source-dirs:   app
+    other-modules:    Paths_project_jumper
+    default-language: Haskell2010
+    build-depends:
+        ansi-terminal,
+        base,
+        filepath,
+        gitrev,
+        optparse-applicative,
+        path,
+        path-io,
+        text
+
+    if flag(dev)
+        ghc-options:
+            -Wall -Werror -Wcompat -Wincomplete-record-updates
+            -Wincomplete-uni-patterns -Wnoncanonical-monad-instances
+
+    else
+        ghc-options: -O2 -Wall
