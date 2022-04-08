@@ -21,6 +21,8 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+    gc.automatic = false;
+    package = pkgs.nixUnstable;
   };
 
   nixpkgs = {
