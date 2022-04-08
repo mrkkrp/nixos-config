@@ -161,7 +161,6 @@
       inkscape
       inotify-tools
       insomnia
-      niv
       ocaml
       ocamlPackages.ocaml-lsp
       okular
