@@ -1,7 +1,5 @@
 # NixOS instructions
 
-**The current configuration is to be used with: `710fed5a2483f945b14f4a58af2cd3676b42d8c8`.**
-
 See also: https://grahamc.com/blog/nixos-on-dell-9560
 
 This repo describes how to install [NixOS](https://nixos.org) and configure
@@ -123,17 +121,6 @@ Now is the right time to do that.
 
 ## The final rebuild
 
-Nix channels suck, so just clone the nixpkgs repo and checkout the commit
-specified at the top of this page (or see [channels][channels] and
-[howoldis][howoldis]):
-
-```console
-$ cd
-$ git clone git@github.com:nixos/nixpkgs.git nixpkgs
-$ cd nixpkgs
-$ git checkout <see-top-of-the-page>
-```
-
 Clone this repo:
 
 ```console
@@ -142,19 +129,24 @@ $ cd ~/projects/mrkkrp
 $ git clone git@github.com:mrkkrp/nixos-config.git nixos-config
 ```
 
-Create a proper new configuration under `devices` by copying the previously
-generated `/etc/nixos/hardware-configuration.nix` and re-using some of the
-existing configurations.
+Create a new configuration under `devices` by copying the previously
+generated `etc/nixos/configuration.nix` and
+`/etc/nixos/hardware-configuration.nix`. Add a new entry in `flake.nix`
+following the existing examples.
 
 Build the system:
 
 ```consoule
-# nixos-rebuild switch \
-  -I nixos-config=/home/mark/projects/mrkkrp/nixos-config/devices/<device>/configuration.nix \
-  -I nixpkgs=/home/mark/nixpkgs
+# nixos-rebuild switch --flake .#<hostname>
 ```
 
 Reboot.
 
-[channels]: https://channels.nix.gsc.io
-[howoldis]: https://howoldis.herokuapp.com/
+## Update
+
+To update the system do:
+
+```console
+$ nix flake update
+# nixos-rebuild switch --flake .#<hostname>
+```

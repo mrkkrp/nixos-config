@@ -101,6 +101,7 @@
       wget
       which
       zip
+      zlib
     ];
   };
 
@@ -134,8 +135,8 @@
       alsaUtils
       cabal-install
       darktable
-      dbeaver
       direnv
+      dmidecode
       docker
       docker-compose
       fd
