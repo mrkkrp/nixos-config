@@ -230,6 +230,9 @@
       set -U fish_greeting ""
       set -U fish_user_paths $fish_user_paths ~/.local/bin
       ${builtins.readFile ./fish/e.fish}
+      ${builtins.readFile ./fish/git-personal.fish}
+      ${builtins.readFile ./fish/git-tweag.fish}
+      ${builtins.readFile ./fish/git-whoami.fish}
       ${builtins.readFile ./fish/p.fish}
       ${builtins.readFile ./fish/p-mk.fish}
       ${builtins.readFile ./fish/p-gh.fish}
