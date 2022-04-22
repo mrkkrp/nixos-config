@@ -96,13 +96,17 @@ specified directory."
   (interactive)
   (find-file (f-expand "~/notes.md")))
 
-(defun mk-show-date (&optional stamp)
-  "Show current date in the minibuffer.
+(defun mk-show-date (&optional stamp arg)
+  "Show the current date in the minibuffer.
 
-If STAMP is not NIL, insert date at point."
+If STAMP is not NIL, insert date at point.
+
+If ARG is given, insert the date this many days in the future."
   (interactive)
-  (funcall (if stamp #'insert #'message)
-           (format-time-string "%A, %e %B, %Y")))
+  (let* ((days-to-add (or arg current-prefix-arg 0))
+         (time (time-add (current-time) (days-to-time days-to-add))))
+    (funcall (if stamp #'insert #'message)
+             (format-time-string "%A, %e %B, %Y" time))))
 
 (defun mk-file-name-to-kill-ring (arg)
   "Put name of file into kill ring.
