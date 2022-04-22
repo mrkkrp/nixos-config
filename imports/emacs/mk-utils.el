@@ -91,6 +91,11 @@ specified directory."
       #'string-lessp))))
   (find-file (f-expand file default-directory)))
 
+(defun mk-find-notes ()
+  "Open notes.md in the home directory (create if necessary)."
+  (interactive)
+  (find-file (f-expand "~/notes.md")))
+
 (defun mk-show-date (&optional stamp)
   "Show current date in the minibuffer.
 

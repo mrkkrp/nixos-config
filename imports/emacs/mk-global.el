@@ -62,6 +62,7 @@
 
 (mk-set-key "<next>" nil)
 
+(mk-set-key "<f8>" 'mk-find-notes)
 (mk-set-key "<next> d a" (mk-iwrap 'mk-show-date))
 (mk-set-key "<next> d b" 'mk-double-buffer)
 (mk-set-key "<next> f n" 'mk-file-name-to-kill-ring)
