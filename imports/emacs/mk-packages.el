@@ -491,10 +491,10 @@ HEIGHT, if supplied, specifies height of letters to use."
    highlight-symbol-prev
    highlight-symbol)
   :bind
-  ("<next> h a" . highlight-symbol-remove-all)
-  ("<next> h n" . highlight-symbol-next)
-  ("<next> h p" . highlight-symbol-prev)
-  ("<next> h s" . highlight-symbol))
+  ("<f9>" . highlight-symbol)
+  ("<f10>" . highlight-symbol-next)
+  ("<f11>" . highlight-symbol-prev)
+  ("M-<f9>" . highlight-symbol-remove-all))
 
 (use-package hl-todo
   :hook
