@@ -220,6 +220,7 @@
     shellInit = ''
       set -U fish_greeting ""
       set -U fish_user_paths $fish_user_paths ~/.local/bin
+      ${builtins.readFile ./fish/copy-from-camera.fish}
       ${builtins.readFile ./fish/e.fish}
       ${builtins.readFile ./fish/git-personal.fish}
       ${builtins.readFile ./fish/git-tweag.fish}
