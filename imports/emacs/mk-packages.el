@@ -381,7 +381,6 @@ HEIGHT, if supplied, specifies height of letters to use."
     (mk-set-font "DejaVu Sans Mono" 120)
     (toggle-frame-fullscreen))
   :bind
-  ("<next> d f" . delete-frame)
   ("<next> f o" . mk-set-font)
   ("<next> n f" . make-frame)
   ("<next> t f" . toggle-frame-fullscreen))
@@ -468,12 +467,16 @@ HEIGHT, if supplied, specifies height of letters to use."
 
 (use-package help
   :bind
-  ("<next> f k" . describe-key))
+  ("<next> d d" . describe-key))
 
 (use-package help-fns
+  :init
+  (setq
+   help-enable-symbol-autoload t)
   :bind
-  ("<next> f f" . describe-function)
-  ("<next> f v" . describe-variable))
+  ("<next> d f" . describe-function)
+  ("<next> d k" . describe-keymap)
+  ("<next> d v" . describe-variable))
 
 (use-package highlight-symbol
   :commands

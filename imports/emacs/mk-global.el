@@ -32,6 +32,7 @@
  scroll-step 1
  sentence-end-double-space nil
  tab-width 4
+ use-short-answers t
  user-full-name "Mark Karpov"
  user-mail-address "markkarpov92@gmail.com"
  x-underline-at-descent-line t
@@ -78,7 +79,6 @@
 ;; Other
 
 (defalias 'display-startup-echo-area-message (mk-iwrap 'mk-show-date))
-(defalias 'yes-or-no-p 'y-or-n-p)
 
 (advice-add 'process-kill-buffer-query-function
             :override

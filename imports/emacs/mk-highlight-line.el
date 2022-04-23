@@ -28,7 +28,7 @@ positive, and disable it otherwise.  If called from Lisp, enable
 the mode if ARG is omitted or NIL, and toggle it if ARG is
 ‘toggle’.
 
-This minor mode is global. When it's active, major modes listed
+This minor mode is global.  When it's active, major modes listed
 in ‘mk-highlight-line-target-modes’ activate ‘hl-line-mode’
 automatically."
   :global t

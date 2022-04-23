@@ -62,4 +62,4 @@ let
     ];
   };
 in
-pkgs.emacs28WithPackages (epkgs: [ (mkConfig epkgs) ])
+pkgs.emacs28NativeComp.pkgs.withPackages (epkgs: [ (mkConfig epkgs) ])
