@@ -139,7 +139,7 @@ following the existing examples.
 Build the system (execute from `~/projects/mrkkrp/nixos-config`):
 
 ```consoule
-# nixos-rebuild switch --flake .#<hostname>
+$ nixos-rebuild --use-remote-sudo switch --flake .#<hostname>
 ```
 
 Reboot.
