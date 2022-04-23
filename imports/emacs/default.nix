@@ -24,7 +24,6 @@ let
       flycheck
       flycheck-color-mode-line
       flycheck-mmark
-      flyspell-lazy
       git-link
       git-modes
       haskell-mode

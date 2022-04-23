@@ -363,15 +363,6 @@ move the point."
    (text-mode . flyspell-mode)
    (yaml-mode . flyspell-prog-mode)))
 
-(use-package flyspell-lazy
-  :after (flyspell)
-  :init
-  (setq-default
-   flyspell-lazy-disallow-buffers nil
-   flyspell-lazy-idle-seconds 1)
-  :config
-  (flyspell-lazy-mode 1))
-
 (use-package frame
   :preface
   (defun mk-set-font (font &optional height)
