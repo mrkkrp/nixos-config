@@ -157,8 +157,6 @@
       inotify-tools
       insomnia
       nixpkgs-fmt
-      ocaml
-      ocamlPackages.ocaml-lsp
       okular
       openconnect
       openssl
@@ -167,7 +165,6 @@
       pwsafe
       python3Full
       qbittorrent
-      qiv
       ripgrep
       rustup
       shellcheck
@@ -175,7 +172,6 @@
       tdesktop
       tmate
       tmux
-      virtualbox
       vlc
       wmctrl
       zoom-us
