@@ -38,20 +38,16 @@
   services.chrony.enable = true;
   services.logrotate = {
     enable = true;
-    paths = {
+    settings = {
       journal = {
-        path = "/var/log/journal";
-        user = "root";
-        group = "systemd-journal";
+        files = ["/var/log/journal"];
         frequency = "daily";
-        keep = 10;
+        rotate = 10;
       };
       nginx = {
-        path = "/var/log/nginx";
-        user = "mark";
-        group = "nginx";
+        files = ["/var/log/nginx/*.log"];
         frequency = "daily";
-        keep = 10;
+        rotate = 10;
       };
     };
   };

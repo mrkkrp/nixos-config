@@ -944,7 +944,7 @@ Type=SIMPLE_ACTION_DATA
 ActionsCount=1
 
 [Data_6Actions0]
-CommandURL=wmctrl -a "emacs@" || wmctrl -a "ediff" || emacs
+CommandURL=wmctrl -a "660c03ad-0f61-438c-9342-957f73cd9b05" || emacs
 Type=COMMAND_URL
 
 [Data_6Conditions]

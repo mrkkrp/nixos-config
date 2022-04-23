@@ -19,6 +19,7 @@
  echo-keystrokes 0.1
  enable-recursive-minibuffers t
  fill-column 76
+ frame-title-format "660c03ad-0f61-438c-9342-957f73cd9b05"
  gc-cons-threshold 2000000
  indent-tabs-mode nil
  indicate-empty-lines t
