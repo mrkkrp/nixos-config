@@ -128,7 +128,6 @@
     packages = with pkgs; [
       (import ./emacs pkgs)
       (import ./project-jumper pkgs)
-      (wine.override { wineBuild = "wineWow"; })
       alacritty
       alsaLib
       alsaOss
