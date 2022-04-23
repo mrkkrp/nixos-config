@@ -150,5 +150,5 @@ To update the system do:
 
 ```console
 $ nix flake update
-# nixos-rebuild switch --flake .#<hostname>
+$ nixos-rebuild --use-remote-sudo switch --flake .#<hostname>
 ```
