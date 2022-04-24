@@ -153,7 +153,6 @@
       hunspellDicts.en-us-large
       hunspellDicts.fr-moderne
       hunspellDicts.ru-ru
-      inkscape
       inotify-tools
       insomnia
       nixpkgs-fmt
