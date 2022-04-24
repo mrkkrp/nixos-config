@@ -13,6 +13,7 @@
 ;; Set variables
 
 (setq-default
+ auto-save-no-message t
  cursor-in-non-selected-windows nil
  cursor-type '(bar . 1)
  custom-file (f-expand ".emacs-custom.el" user-emacs-directory)
