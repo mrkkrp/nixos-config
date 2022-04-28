@@ -976,6 +976,11 @@ input method."
   :bind
   ("<next> q q" . vr/query-replace))
 
+(use-package warnings
+  :init
+  (setq
+   warning-suppress-types '((comp))))
+
 (use-package wdired
   :after (dired)
   :init
