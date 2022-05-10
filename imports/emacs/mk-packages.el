@@ -57,7 +57,9 @@
   :init
   (setq
    browse-url-browser-function 'browse-url-generic
-   browse-url-generic-program "google-chrome-stable"))
+   browse-url-generic-program "google-chrome-stable")
+  :bind
+  ("<next> b f" . browse-url-of-file))
 
 (use-package calc
   :commands (calc)
