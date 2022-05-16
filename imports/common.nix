@@ -1,5 +1,5 @@
 # These are the options which are shared between all configurations/devices.
-{ config, pkgs, ... }:
+nixpkgs_input: { config, pkgs, ... }:
 {
   system.stateVersion = "19.09";
 
@@ -23,6 +23,8 @@
     '';
     gc.automatic = false;
     package = pkgs.nixUnstable;
+    registry.nixpkgs.flake = nixpkgs_input;
+    nixPath = [ "nixpkgs=/etc/channels/nixpkgs" ];
   };
 
   nixpkgs = {
@@ -101,6 +103,7 @@
       zip
       zlib
     ];
+    etc."channels/nixpkgs".source = nixpkgs_input.outPath;
   };
 
   security.sudo.enable = true;

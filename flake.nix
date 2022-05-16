@@ -21,7 +21,7 @@
         system = "x86_64-linux";
         modules = [
           ./devices/old/configuration.nix
-          ./imports/common.nix
+          (import ./imports/common.nix nixpkgs)
           ./imports/location-paris.nix
           ./imports/nginx.nix
           ./imports/pulseaudio.nix
@@ -34,7 +34,7 @@
         modules = [
           ./devices/pad/configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
-          ./imports/common.nix
+          (import ./imports/common.nix nixpkgs)
           ./imports/location-paris.nix
           ./imports/nginx.nix
           ./imports/pulseaudio.nix
