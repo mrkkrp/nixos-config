@@ -39,6 +39,7 @@
           ./imports/nginx.nix
           ./imports/pulseaudio.nix
           ./imports/iohk-binary-cache.nix
+          ./imports/for-client.nix
         ];
       };
     };
