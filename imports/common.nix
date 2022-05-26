@@ -142,6 +142,7 @@ nixpkgs_input: { config, pkgs, ... }:
       fd
       fish
       flac
+      fx
       ghc
       gimp
       git
