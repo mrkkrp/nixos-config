@@ -808,9 +808,10 @@ input method."
 (use-package python
   :commands (python-mode)
   :mode
-  ("\\.bzl$" . python-mode)
   ("BUILD$" . python-mode)
   ("WORKSPACE$" . python-mode)
+  ("\\.bazel$" . python-mode)
+  ("\\.bzl$" . python-mode)
   :init
   (setq-default
    python-fill-docstring-style 'pep-257-nn
