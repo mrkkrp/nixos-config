@@ -234,6 +234,7 @@ nixpkgs_input: { config, pkgs, ... }:
       direnv hook fish | source
     '';
     shellAliases = {
+      cal = "cal -m";
       ls = "ls --human-readable --almost-all --color=auto";
     };
   };
