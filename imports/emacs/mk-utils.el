@@ -69,13 +69,6 @@ specified directory."
   (find-file
    (f-expand project-name "~/projects")))
 
-(defun mk-grep (regexp)
-  "Grep for REGEXP in current directory recursively."
-  (interactive
-   (list
-    (read-string "Grep: ")))
-  (ripgrep-regexp regexp default-directory))
-
 (defun mk-find-file (file)
   "Find a FILE under current ‘default-directory’."
   (interactive

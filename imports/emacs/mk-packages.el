@@ -845,8 +845,27 @@ input method."
 (use-package ripgrep
   :demand
   :commands (ripgrep-regexp)
+  :preface
+  (defun mk-ripgrep-types ()
+    "Return a list of all file types that ripgrep supports."
+    (cons
+     "all"
+     (with-temp-buffer
+       (call-process
+        ripgrep-executable nil (current-buffer) nil
+        "--type-list")
+       (split-string (buffer-string) "\n" t " "))))
+
+  (defun mk-ripgrep (regexp type)
+    "Grep for REGEXP in file TYPE in current directory recursively."
+    (interactive
+     (list
+      (read-string "Grep: ")
+      (completing-read "Type: " (mk-ripgrep-types) nil t nil nil "all")))
+    (let ((parsed-type (car (split-string type ":"))))
+      (ripgrep-regexp regexp default-directory (list "--type" parsed-type))))
   :bind
-  ("<next> g r" . mk-grep))
+  ("<next> g r" . mk-ripgrep))
 
 (use-package rust-mode
   :hook
