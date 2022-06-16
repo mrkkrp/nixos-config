@@ -814,8 +814,7 @@ input method."
   ("\\.bzl$" . python-mode)
   :init
   (setq-default
-   python-fill-docstring-style 'pep-257-nn
-   python-indent-offset 2)
+   python-fill-docstring-style 'pep-257-nn)
   :bind
   ("<next> p y" . python-mode))
 
