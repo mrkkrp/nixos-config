@@ -141,7 +141,6 @@ nixpkgs_input: { config, pkgs, ... }:
       docker-compose
       fd
       fish
-      flac
       fx
       ghc
       gimp
@@ -172,7 +171,6 @@ nixpkgs_input: { config, pkgs, ... }:
       rustup
       shellcheck
       shutter
-      tdesktop
       tmate
       tmux
       vlc
