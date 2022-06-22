@@ -149,6 +149,5 @@ Reboot.
 To update the system do:
 
 ```console
-$ nix flake update
-$ nixos-rebuild --use-remote-sudo switch --flake .#<hostname>
+$ nixos-switch
 ```

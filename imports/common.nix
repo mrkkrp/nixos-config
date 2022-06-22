@@ -227,9 +227,10 @@ nixpkgs_input: { config, pkgs, ... }:
       ${builtins.readFile ./fish/git-tweag.fish}
       ${builtins.readFile ./fish/git-whoami.fish}
       ${builtins.readFile ./fish/hdu.fish}
-      ${builtins.readFile ./fish/p.fish}
-      ${builtins.readFile ./fish/p-mk.fish}
+      ${builtins.readFile ./fish/nixos-switch.fish}
       ${builtins.readFile ./fish/p-gh.fish}
+      ${builtins.readFile ./fish/p-mk.fish}
+      ${builtins.readFile ./fish/p.fish}
       direnv hook fish | source
     '';
     shellAliases = {
