@@ -132,7 +132,7 @@ $ git clone git@github.com:mrkkrp/nixos-config.git nixos-config
 ```
 
 Create a new configuration under `devices` by copying the previously
-generated `etc/nixos/configuration.nix` and
+generated `/etc/nixos/configuration.nix` and
 `/etc/nixos/hardware-configuration.nix`. Add a new entry in `flake.nix`
 following the existing examples.
 
