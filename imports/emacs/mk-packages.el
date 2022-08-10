@@ -202,6 +202,7 @@
 (use-package dired-x
   :init
   (setq
+   dired-clean-confirm-killing-deleted-buffers nil
    dired-clean-up-buffers-too t))
 
 (use-package direnv
