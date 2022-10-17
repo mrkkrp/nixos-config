@@ -128,11 +128,11 @@ nixpkgs_input: { config, pkgs, ... }:
       (import ./emacs pkgs)
       (import ./project-jumper pkgs)
       alacritty
-      alsaLib
-      alsaOss
-      alsaPlugins
-      alsaTools
-      alsaUtils
+      alsa-lib
+      alsa-oss
+      alsa-plugins
+      alsa-tools
+      alsa-utils
       cabal-install
       darktable
       direnv
