@@ -13,9 +13,19 @@
   "Home row Dvorak keys.")
 
 (use-package ace-link
+  :after (avy)
   :commands (ace-link ace-link-org)
   :init
-  (setq-default ace-link-fallback-function 'ace-link-org)
+  (setq-default ace-link-fallback-function 'mk-ace-link)
+  :preface
+  (defun mk-ace-link ()
+    "Open a visible link the browser."
+    (interactive)
+    (require 'org)
+    (let ((pt (avy-process (mapcar #'cdr (ace-link--org-collect)))))
+      (goto-char pt)
+      (browse-url-at-point)
+      t))
   :config
   (ace-link-setup-default)
   :bind
