@@ -557,9 +557,21 @@ HEIGHT, if supplied, specifies height of letters to use."
   :config
   )
 
+(use-package lsp-mode
+  :init
+  (setq
+   lsp-lens-enable nil
+   lsp-modeline-code-actions-enable nil))
+
+(use-package lsp-lens
+  :bind
+  (("<next> ' l" . lsp-lens-mode)))
+
 (use-package lsp-ui
   :config
-  (setq lsp-ui-doc-enable nil)
+  (setq
+   lsp-ui-doc-enable nil
+   lsp-ui-doc-show-with-mouse nil)
   :bind
   (("<next> ' '" . lsp-execute-code-action)
    ("<next> ' d" . lsp-describe-thing-at-point)
