@@ -151,7 +151,7 @@ nixpkgs_input: { config, pkgs, ... }:
       haskellPackages.haskell-language-server
       haskellPackages.hlint
       haskellPackages.implicit-hie
-      # haskellPackages.mmark-cli
+      hugin
       hunspell
       hunspellDicts.en-us-large
       hunspellDicts.fr-moderne
