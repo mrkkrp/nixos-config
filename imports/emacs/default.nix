@@ -16,7 +16,7 @@ let
       char-menu
       counsel
       cyphejor
-      direnv
+      envrc
       f
       fish-mode
       fix-input

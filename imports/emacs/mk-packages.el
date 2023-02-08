@@ -215,10 +215,6 @@
    dired-clean-confirm-killing-deleted-buffers nil
    dired-clean-up-buffers-too t))
 
-(use-package direnv
-  :config
-  (direnv-mode 1))
-
 (use-package eldoc
   :init
   (setq eldoc-idle-delay 0.1)
@@ -249,6 +245,10 @@
   :hook
   ((emacs-lisp-mode . mk-set-sentence-end-double-space)
    (lisp-interaction-mode . eldoc-mode)))
+
+(use-package envrc
+  :after (lsp-mode)
+  :init (envrc-global-mode))
 
 (use-package files
   :demand
@@ -476,7 +476,7 @@ HEIGHT, if supplied, specifies height of letters to use."
    ("}" . nil)
    ("]" . nil))
   :hook
-  ((haskell-mode . lsp)))
+  ((haskell-mode . lsp-deferred)))
 
 (use-package help
   :bind
@@ -553,11 +553,10 @@ HEIGHT, if supplied, specifies height of letters to use."
   ("<next> a a" . kill-or-bury-alive-purge-buffers))
 
 (use-package lsp-haskell
-  :demand
-  :config
-  )
+  :demand)
 
 (use-package lsp-mode
+  :commands (lsp lsp-deferred)
   :init
   (setq
    lsp-lens-enable nil
@@ -892,7 +891,7 @@ input method."
 
 (use-package rust-mode
   :hook
-  ((rust-mode . lsp)))
+  ((rust-mode . lsp-deferred)))
 
 (use-package scroll-bar
   :demand
@@ -1010,7 +1009,7 @@ input method."
 (use-package tuareg-mode
   :after (lsp-mode)
   :hook
-  ((tuareg-mode . lsp)))
+  ((tuareg-mode . lsp-deferred)))
 
 (use-package typit
   :bind
