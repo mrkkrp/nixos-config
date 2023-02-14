@@ -134,6 +134,7 @@ nixpkgs_input: { config, pkgs, ... }:
       alsa-tools
       alsa-utils
       cabal-install
+      codespell
       darktable
       direnv
       dmidecode
