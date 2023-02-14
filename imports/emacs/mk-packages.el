@@ -314,6 +314,16 @@ exit."
    flycheck-disabled-checkers '(haskell-stack-ghc
                                 haskell-ghc
                                 haskell-hlint))
+  (flycheck-define-checker codespell
+    "Flycheck checker using codespell."
+    :command ("codespell" "-")
+    :standard-input t
+    :error-patterns
+    ((warning line-start line ":" (zero-or-more not-newline) "\n"
+              blank (message) line-end))
+    :modes (text-mode markdown-mode gfm-mode message-mode org-mode)
+    :next-checkers ((warning . proselint)))
+  (add-to-list 'flycheck-checkers 'codespell)
   :bind
   ("<next> f l" . flycheck-list-errors)
   :hook
