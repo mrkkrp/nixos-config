@@ -99,7 +99,7 @@ If ARG is given, insert the date this many days in the future."
   (let* ((days-to-add (or arg current-prefix-arg 0))
          (time (time-add (current-time) (days-to-time days-to-add))))
     (funcall (if stamp #'insert #'message)
-             (format-time-string "%A, %e %B, %Y" time))))
+             (format-time-string "%A, %e %B %Y" time))))
 
 (defun mk-file-name-to-kill-ring (arg)
   "Put name of file into kill ring.
