@@ -165,6 +165,7 @@ nixpkgs_input: { config, pkgs, ... }:
       openssl
       openvpn
       postgresql
+      proselint
       pwsafe
       python3Full
       qbittorrent
