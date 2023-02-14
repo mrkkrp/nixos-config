@@ -168,7 +168,6 @@ nixpkgs_input: { config, pkgs, ... }:
       python3Full
       qbittorrent
       ripgrep
-      rustup
       shellcheck
       shutter
       tmate
