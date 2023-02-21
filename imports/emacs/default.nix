@@ -16,6 +16,7 @@ let
       char-menu
       counsel
       cyphejor
+      dockerfile-mode
       envrc
       f
       fish-mode
