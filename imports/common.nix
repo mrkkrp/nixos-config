@@ -225,6 +225,7 @@ nixpkgs_input: { config, pkgs, ... }:
       ${builtins.readFile ./fish/copy-from-camera.fish}
       ${builtins.readFile ./fish/e.fish}
       ${builtins.readFile ./fish/git-personal.fish}
+      ${builtins.readFile ./fish/git-prune.fish}
       ${builtins.readFile ./fish/git-tweag.fish}
       ${builtins.readFile ./fish/git-whoami.fish}
       ${builtins.readFile ./fish/hdu.fish}
