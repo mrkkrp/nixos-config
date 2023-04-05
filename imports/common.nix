@@ -148,7 +148,6 @@ nixpkgs_input: { config, pkgs, ... }:
       git
       git-lfs
       google-chrome
-      google-cloud-sdk
       haskellPackages.haskell-language-server
       haskellPackages.hlint
       haskellPackages.implicit-hie
@@ -158,13 +157,10 @@ nixpkgs_input: { config, pkgs, ... }:
       hunspellDicts.fr-moderne
       hunspellDicts.ru-ru
       inotify-tools
-      insomnia
       nixpkgs-fmt
       okular
       openconnect
       openssl
-      openvpn
-      postgresql
       proselint
       pwsafe
       python3Full
