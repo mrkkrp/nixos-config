@@ -563,7 +563,10 @@ HEIGHT, if supplied, specifies height of letters to use."
   ("<next> a a" . kill-or-bury-alive-purge-buffers))
 
 (use-package lsp-haskell
-  :demand)
+  :demand
+  :config
+  (setq
+   lsp-haskell-server-path "haskell-language-server"))
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
