@@ -13,15 +13,22 @@
       owner = "NixOS";
       repo = "nixos-hardware";
     };
+    raw-glue = {
+      type = "github";
+      owner = "mrkkrp";
+      repo = "raw-glue";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware }: {
+  outputs = { self, nixpkgs, nixos-hardware, raw-glue }@attrs: {
     nixosConfigurations = {
       old = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = attrs;
         modules = [
           ./devices/old/configuration.nix
-          (import ./imports/common.nix nixpkgs)
+          ./imports/common.nix
           ./imports/location-paris.nix
           ./imports/nginx.nix
           ./imports/pulseaudio.nix
@@ -31,10 +38,11 @@
 
       pad = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = attrs;
         modules = [
           ./devices/pad/configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
-          (import ./imports/common.nix nixpkgs)
+          ./imports/common.nix
           ./imports/location-paris.nix
           ./imports/nginx.nix
           ./imports/pulseaudio.nix

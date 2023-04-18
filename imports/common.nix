@@ -1,5 +1,5 @@
 # These are the options which are shared between all configurations/devices.
-nixpkgs_input: { config, pkgs, ... }:
+{ config, pkgs, nixpkgs, raw-glue, ... }:
 {
   system.stateVersion = "19.09";
 
@@ -23,7 +23,7 @@ nixpkgs_input: { config, pkgs, ... }:
     '';
     gc.automatic = false;
     package = pkgs.nixUnstable;
-    registry.nixpkgs.flake = nixpkgs_input;
+    registry.nixpkgs.flake = nixpkgs;
     nixPath = [ "nixpkgs=/etc/channels/nixpkgs" ];
   };
 
@@ -103,7 +103,7 @@ nixpkgs_input: { config, pkgs, ... }:
       zip
       zlib
     ];
-    etc."channels/nixpkgs".source = nixpkgs_input.outPath;
+    etc."channels/nixpkgs".source = nixpkgs.outPath;
   };
 
   security.sudo.enable = true;
@@ -151,7 +151,6 @@ nixpkgs_input: { config, pkgs, ... }:
       haskellPackages.haskell-language-server
       haskellPackages.hlint
       haskellPackages.implicit-hie
-      hugin
       hunspell
       hunspellDicts.en-us-large
       hunspellDicts.fr-moderne
@@ -165,6 +164,7 @@ nixpkgs_input: { config, pkgs, ... }:
       pwsafe
       python3Full
       qbittorrent
+      raw-glue.packages.x86_64-linux.default
       ripgrep
       shellcheck
       shutter
