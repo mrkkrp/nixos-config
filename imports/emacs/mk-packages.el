@@ -898,7 +898,10 @@ input method."
       (read-string "Grep: ")
       (completing-read "Type: " (mk-ripgrep-types) nil t nil nil "all")))
     (let ((parsed-type (car (split-string type ":"))))
-      (ripgrep-regexp regexp default-directory (list "--type" parsed-type))))
+      (ripgrep-regexp regexp
+                      default-directory
+                      (unless (string-equal parsed-type "all")
+                        (list "--type" parsed-type)))))
   :bind
   ("<next> g r" . mk-ripgrep))
 
