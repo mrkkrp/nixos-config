@@ -62,6 +62,9 @@
   programs.gnupg.agent.enable = true;
 
   environment = {
+    shells = with pkgs; [
+      nushell
+    ];
     systemPackages = with pkgs; [
       autoconf
       automake
@@ -94,6 +97,7 @@
       networkmanager
       nginxMainline
       ntfs3g
+      nushell
       patch
       sudo
       unzip
@@ -141,7 +145,6 @@
       docker
       docker-compose
       fd
-      fish
       fx
       ghc
       gimp
@@ -174,13 +177,15 @@
       wmctrl
       zoom-us
     ];
-    shell = "${pkgs.fish}/bin/fish";
+    shell = pkgs.nushell;
 
     symlinks = {
       ".alacritty.yml" = ./.config/.alacritty.yml;
       ".config/kglobalshortcutsrc" = ./.config/kglobalshortcutsrc;
       ".config/khotkeysrc" = ./.config/khotkeysrc;
       ".config/kwinrulesrc" = ./.config/kwinrulesrc;
+      ".config/nushell/config.nu" = ./.config/nushell/config.nu;
+      ".config/nushell/env.nu" = ./.config/nushell/env.nu;
       ".emacs.d/init.el" = ./emacs/init.el;
       ".gitconfig" = pkgs.gitconfig;
       ".nixpkgs/config.nix" = pkgs.nixconfig;
@@ -210,30 +215,6 @@
         kwriteconfig5 --file $HOME/.config/kxkbrc --group Layout --key Options "terminate:ctrl_alt_bksp,compose:sclk"
         kwriteconfig5 --file $HOME/.config/kxkbrc --group Layout --key ResetOldOptions --type bool true
       '';
-    };
-  };
-
-  programs.fish = {
-    enable = true;
-    shellInit = ''
-      set -U fish_greeting ""
-      set -U fish_user_paths $fish_user_paths ~/.local/bin
-      ${builtins.readFile ./fish/copy-from-camera.fish}
-      ${builtins.readFile ./fish/e.fish}
-      ${builtins.readFile ./fish/git-personal.fish}
-      ${builtins.readFile ./fish/git-prune.fish}
-      ${builtins.readFile ./fish/git-tweag.fish}
-      ${builtins.readFile ./fish/git-whoami.fish}
-      ${builtins.readFile ./fish/hdu.fish}
-      ${builtins.readFile ./fish/nixos-switch.fish}
-      ${builtins.readFile ./fish/p-gh.fish}
-      ${builtins.readFile ./fish/p-mk.fish}
-      ${builtins.readFile ./fish/p.fish}
-      direnv hook fish | source
-    '';
-    shellAliases = {
-      cal = "cal -m";
-      ls = "ls --human-readable --almost-all --color=auto";
     };
   };
 
