@@ -23,7 +23,19 @@ def create_left_prompt [] {
             $e.item | str substring 0..1
         }}
         | path join)
-    let path_segment = $"(ansi green_bold)($dir_shortened)"
+    let path = $"(ansi green_bold)($dir_shortened)"
+
+    let git_branch_raw = (do { git branch } | complete)
+    let git_branch = if $git_branch_raw.exit_code != 0 {
+        ""
+    } else {
+        let branch_name = ($git_branch_raw.stdout
+            | lines
+            | filter { |x| $x | str starts-with '* ' }
+            | get 0
+            | str substring 2..)
+        $" (ansi reset)\(($branch_name)\)"
+    }
 
     let exit_code = if $env.LAST_EXIT_CODE != 0 {
         $" (ansi red_bold)[($env.LAST_EXIT_CODE)]"
@@ -31,7 +43,7 @@ def create_left_prompt [] {
         ""
     }
 
-    $user_and_host ++ $path_segment ++ $exit_code
+    $user_and_host ++ $path ++ $git_branch ++ $exit_code
 }
 
 def create_right_prompt [] {
