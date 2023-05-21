@@ -419,7 +419,7 @@ def hdu [
     }
     let entries = ($dir_entries
         | append $file_entries
-        | sort-by --reverse physical
+        | sort-by --reverse apparent physical
         | first 10
         | insert type {|e| $e.path | path type })
     $entries
