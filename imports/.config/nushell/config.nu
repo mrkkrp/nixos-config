@@ -407,9 +407,18 @@ def hdu [
     dir: path = '.' # directory to analyze
 ] {
     let raw_result = (du --all $dir)
-    let entries = (
-        ($raw_result | get directories.0 | select path apparent physical)
-        | append ($raw_result | get files.0 | select path apparent physical)
+    let dir_entries = if ($raw_result | get directories.0 | is-empty) {
+        []
+    } else {
+        $raw_result | get directories.0 | select path apparent physical
+    }
+    let file_entries = if ($raw_result | get files.0 | is-empty) {
+        []
+    } else {
+        $raw_result | get files.0 | select path apparent physical
+    }
+    let entries = ($dir_entries
+        | append $file_entries
         | sort-by --reverse physical
         | first 10
         | insert type {|e| $e.path | path type })
