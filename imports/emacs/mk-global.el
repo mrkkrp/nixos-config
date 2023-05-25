@@ -32,6 +32,7 @@
  scroll-margin 3
  scroll-step 1
  sentence-end-double-space nil
+ shell-file-name "bash"
  tab-width 4
  use-short-answers t
  user-full-name "Mark Karpov"
