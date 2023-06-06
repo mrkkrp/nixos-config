@@ -900,8 +900,10 @@ input method."
     (let ((parsed-type (car (split-string type ":"))))
       (ripgrep-regexp regexp
                       default-directory
-                      (unless (string-equal parsed-type "all")
-                        (list "--type" parsed-type)))))
+                      (cons
+                       "--hidden"
+                       (unless (string-equal parsed-type "all")
+                         (list "--type" parsed-type))))))
   :bind
   ("<next> g r" . mk-ripgrep))
 
