@@ -1024,7 +1024,7 @@ input method."
   :config
   (display-time-mode 1))
 
-(use-package tuareg-mode
+(use-package tuareg
   :after (lsp-mode)
   :hook
   ((tuareg-mode . lsp-deferred)))
