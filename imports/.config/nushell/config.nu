@@ -396,10 +396,13 @@ def "git whoami" [] {
 def "git purge" [
     remote: string = "origin" # remote to align to
 ] {
-    # TODO perhaps this can be improved with gstat and a more nushelly approach
     git fetch $remote
     git remote prune $remote
-    git branch -vv | grep ': gone]' |  grep -v '*' | awk '{ print $1; }' | xargs -r git branch -D
+    git branch -vv
+        | grep ': gone]'
+        |  grep -v '*'
+        | awk '{ print $1; }'
+        | xargs -r git branch -D
 }
 
 # Output biggest entries in a given directory.
