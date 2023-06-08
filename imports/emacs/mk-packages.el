@@ -388,6 +388,10 @@ move the point."
 
 (use-package frame
   :preface
+  (defvar mk-normal-font-height 120
+    "Normal font height I use.")
+  (defvar mk-enlarged-font-height 160
+    "Font height that I use e.g. when I do screen sharing.")
   (defun mk-set-font (font &optional height)
     "Set font FONT as main font for all frames.
 
@@ -398,13 +402,26 @@ HEIGHT, if supplied, specifies height of letters to use."
     (when height
       (set-face-attribute 'default nil :height height))
     (set-face-attribute 'variable-pitch nil :family font))
+  (defun mk-toggle-font-size ()
+    "Switch to a bigger font size and back.
+
+Useful when doing screen-sharing."
+    (interactive)
+    (set-face-attribute
+     'default
+     nil
+     :height
+     (if (= (face-attribute 'default :height) mk-normal-font-height)
+         mk-enlarged-font-height
+       mk-normal-font-height)))
   :config
   (blink-cursor-mode 0)
   (when window-system
-    (mk-set-font "DejaVu Sans Mono" 120)
+    (mk-set-font "DejaVu Sans Mono" mk-normal-font-height)
     (toggle-frame-fullscreen))
   :bind
   ("<next> f o" . mk-set-font)
+  ("<next> f f" . mk-toggle-font-size)
   ("<next> n f" . make-frame)
   ("<next> t f" . toggle-frame-fullscreen))
 
