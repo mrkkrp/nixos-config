@@ -171,6 +171,7 @@
       ripgrep
       shellcheck
       shutter
+      telegram-desktop
       tmate
       tmux
       vlc
