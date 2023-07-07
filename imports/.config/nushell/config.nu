@@ -450,3 +450,8 @@ def copy-from-camera [] {
         cp -v $e.name $"($target_subdir)/($basename)"
     } | ignore
 }
+
+# Format all Haskell files in the current git repository.
+def "ormolu all" [] {
+    ormolu -i (git ls-files '*.hs' | lines)
+}
