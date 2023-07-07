@@ -19,9 +19,14 @@
       repo = "raw-glue";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ormolu = {
+      type = "github";
+      owner = "tweag";
+      repo = "ormolu";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, raw-glue }@attrs: {
+  outputs = { self, nixpkgs, nixos-hardware, raw-glue, ormolu }@attrs: {
     nixosConfigurations = {
       old = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

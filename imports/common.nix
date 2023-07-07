@@ -1,5 +1,5 @@
 # These are the options which are shared between all configurations/devices.
-{ config, pkgs, nixpkgs, raw-glue, ... }:
+{ config, pkgs, nixpkgs, raw-glue, ormolu, ... }:
 {
   system.stateVersion = "19.09";
 
@@ -163,6 +163,7 @@
       okular
       openconnect
       openssl
+      ormolu.packages.x86_64-linux.default
       proselint
       pwsafe
       python3Full
