@@ -19,6 +19,7 @@
  custom-file (f-expand ".emacs-custom.el" user-emacs-directory)
  echo-keystrokes 0.1
  enable-recursive-minibuffers t
+ explicit-shell-file-name "bash"
  fill-column 76
  frame-title-format "660c03ad-0f61-438c-9342-957f73cd9b05"
  gc-cons-threshold 2000000
