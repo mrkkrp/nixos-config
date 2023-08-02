@@ -59,7 +59,10 @@
     temperature.night = 3700;
   };
   virtualisation.docker.enable = true;
-  programs.gnupg.agent.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   environment = {
     shells = with pkgs; [
