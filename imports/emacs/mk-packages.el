@@ -1041,6 +1041,12 @@ input method."
   :config
   (display-time-mode 1))
 
+(use-package tramp-sh
+  :init
+  (setq
+   tramp-ssh-controlmaster-options
+   "-o ControlMaster=auto -o ControlPath=tramp.%%C -o ControlPersist=600"))
+
 (use-package tuareg
   :after (lsp-mode)
   :hook
