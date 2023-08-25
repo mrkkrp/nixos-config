@@ -41,6 +41,7 @@ let
       modalka
       mustache-mode
       nix-mode
+      nushell-mode
       proof-general
       rainbow-delimiters
       rich-minority
