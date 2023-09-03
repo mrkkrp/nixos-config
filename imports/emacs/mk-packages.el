@@ -1140,7 +1140,7 @@ input method."
 
 (use-package zzz-to-char
   :bind
-  ("M-z" . zzz-up-to-char))
+  ("M-z" . zzz-to-char-up-to-char))
 
 (provide 'mk-packages)
 
