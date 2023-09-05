@@ -10,7 +10,7 @@ def create_left_prompt [] {
     let home = $env.HOME
     let i = ($home | str length)
     let dir = ([
-        ($env.PWD | str substring 0..$i | str replace -s $home "~"),
+        ($env.PWD | str substring 0..$i | str replace $home "~"),
         ($env.PWD | str substring $i..)
     ] | str join)
     let dir_segments = ($dir | path split)
