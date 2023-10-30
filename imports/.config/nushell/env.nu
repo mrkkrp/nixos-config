@@ -32,8 +32,9 @@ def create_left_prompt [] {
         let branch_name = ($git_branch_raw.stdout
             | lines
             | filter { |x| $x | str starts-with '* ' }
-            | get 0
-            | str substring 2..)
+            | each { |x| str substring 2.. }
+            | get --ignore-errors 0
+            | default "master" )
         $" (ansi reset)\(($branch_name)\)"
     }
 
