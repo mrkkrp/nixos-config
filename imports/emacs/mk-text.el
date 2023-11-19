@@ -71,16 +71,13 @@ supplied, specifies how many times the operation should be
 performed."
   (interactive "p")
   (dotimes (_ (or arg 1))
-    (let ((col (current-column)))
-      (kill-ring-save
-       (progn
-         (move-beginning-of-line 1)
-         (point))
-       (progn
-         (forward-line 1)
-         (point)))
-      (yank)
-      (forward-line -1)
+    (let* ((col (current-column))
+           (start (line-beginning-position))
+           (end (line-end-position))
+           (fragment-to-duplicate (buffer-substring-no-properties start end)))
+      (move-beginning-of-line 1)
+      (insert fragment-to-duplicate)
+      (newline)
       (move-to-column col))))
 
 ;;;###autoload
