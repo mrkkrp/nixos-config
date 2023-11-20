@@ -443,7 +443,7 @@ def copy-from-camera [] {
         }
     }
     ls ($source_dir ++ "/*.CR3") | each { |e|
-        let modification_date = ($e.modified | date format "%Y-%m-%d")
+        let modification_date = ($e.modified | format date "%Y-%m-%d")
         let target_subdir = $"($target_dir)/($modification_date)"
         let basename = (basename $e.name)
         mkdir $target_subdir
