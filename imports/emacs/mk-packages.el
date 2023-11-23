@@ -294,6 +294,8 @@ exit."
    (before-save . mk-single-empty-line)))
 
 (use-package fd-dired
+  :config
+  (setq fd-dired-pre-fd-args "-0 -c never --hidden")
   :preface
   (defun mk-fd-dired()
     (interactive)
