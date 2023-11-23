@@ -293,9 +293,14 @@ exit."
   ((before-save . whitespace-cleanup)
    (before-save . mk-single-empty-line)))
 
-(use-package find-dired
+(use-package fd-dired
+  :preface
+  (defun mk-fd-dired()
+    (interactive)
+    (call-interactively #'fd-dired)
+    (select-window (get-buffer-window "*Fd*")))
   :bind
-  ("<next> f d" . find-dired))
+  ("<next> f d" . mk-fd-dired))
 
 (use-package fix-input
   :demand

@@ -19,6 +19,7 @@ let
       dockerfile-mode
       envrc
       f
+      fd-dired
       fish-mode
       fix-input
       fix-word
