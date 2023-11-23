@@ -69,21 +69,6 @@ specified directory."
   (find-file
    (f-expand project-name "~/projects")))
 
-(defun mk-find-file (file)
-  "Find a FILE under current ‘default-directory’."
-  (interactive
-   (list
-    (completing-read
-     "Files: "
-     (cl-sort
-      (with-temp-buffer
-        (call-process
-         "fd" nil (current-buffer) nil
-         "--type" "file" "--ignore-case" ".")
-        (split-string (buffer-string) "\n" t " "))
-      #'string-lessp))))
-  (find-file (f-expand file default-directory)))
-
 (defun mk-find-notes ()
   "Open notes.md in the home directory (create if necessary)."
   (interactive)

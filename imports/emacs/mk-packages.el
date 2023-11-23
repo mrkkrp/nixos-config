@@ -293,6 +293,10 @@ exit."
   ((before-save . whitespace-cleanup)
    (before-save . mk-single-empty-line)))
 
+(use-package find-dired
+  :bind
+  ("<next> f d" . find-dired))
+
 (use-package fix-input
   :demand
   :config
