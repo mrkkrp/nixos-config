@@ -185,7 +185,7 @@
     "Jump to the first file in current directory."
     (interactive)
     (goto-char (point-min))
-    (dired-next-line 2))
+    (dired-next-line 1))
 
   (defun mk-dired-last-file ()
     "Jump to the last file in current directory."
