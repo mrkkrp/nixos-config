@@ -95,18 +95,18 @@ file at point, but if point is not placed at any file, put name
 of actual directory into kill ring.  Argument ARG, if given,
 makes result string be quoted as for yanking into shell."
   (interactive "P")
-  (let ((φ (if (cl-find major-mode
+  (let ((x (if (cl-find major-mode
                         '(dired-mode wdired-mode))
                (or (dired-get-filename nil t)
                    default-directory)
              (buffer-file-name))))
-    (when φ
-      (message "%s → kill ring"
-               (kill-new
-                (expand-file-name
-                 (if arg
-                     (shell-quote-argument φ)
-                   φ)))))))
+    (when x
+      (kill-new
+       (expand-file-name
+        (if arg
+            (shell-quote-argument x)
+          x)))
+      (message "%s → kill ring" x))))
 
 (provide 'mk-utils)
 
