@@ -10,8 +10,8 @@
         }
       ];
       locations."/" = {
-        root = "/home/mark/projects/mrkkrp/markkarpov.com/result/";
-        index = "posts.html index.htm";
+        root = "/home/mark/projects/mrkkrp/markkarpov.art/result/";
+        index = "exhibitions.html index.htm";
         extraConfig = "error_page 404 = /404.html;";
       };
     };
