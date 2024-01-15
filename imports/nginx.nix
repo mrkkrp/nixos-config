@@ -14,6 +14,9 @@
         index = "exhibitions.html index.htm";
         extraConfig = "error_page 404 = /404.html;";
       };
+      locations."/static/" = {
+        alias = "/home/mark/projects/mrkkrp/markkarpov.art/static/";
+      };
     };
   };
   services.nginx.user = "mark";
