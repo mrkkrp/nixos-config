@@ -1063,11 +1063,6 @@ input method."
   :hook
   ((tuareg-mode . lsp-deferred)))
 
-(use-package typit
-  :bind
-  ;; ("<next> t y" . typit-advanced-test)
-  )
-
 (use-package visual-regexp
   :bind
   ("<next> q q" . vr/query-replace))

@@ -53,7 +53,6 @@ let
       swiper
       terraform-mode
       tuareg
-      typit
       use-package
       visual-regexp
       whole-line-or-region
