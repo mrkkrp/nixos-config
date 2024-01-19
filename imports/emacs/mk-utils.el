@@ -69,6 +69,19 @@ specified directory."
   (find-file
    (f-expand project-name "~/projects")))
 
+(defun mk-toggle-done ()
+  "Make the current line as done."
+  (interactive)
+  (save-excursion
+    (beginning-of-line)
+    (forward-char 2)
+    (just-one-space)
+    (if (looking-at "DONE[[:blank:]]")
+        (progn
+          (delete-char 4)
+          (just-one-space))
+      (insert "DONE "))))
+
 (defun mk-insert-day-template (&optional arg)
   "Insert the standard day template.
 
