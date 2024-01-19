@@ -69,6 +69,21 @@ specified directory."
   (find-file
    (f-expand project-name "~/projects")))
 
+(defun mk-insert-day-template (&optional arg)
+  "Insert the standard day template.
+
+By default the template is generated for today.  Argument ARG, if
+supplied, indicates how many days should be added to today."
+  (interactive "P")
+  (beginning-of-line)
+  (insert "## ")
+  (mk-show-date t arg)
+  (newline 2)
+  (let ((template-file (f-expand "~/day-template.md")))
+    (when (f-file-p template-file)
+      (insert (f-read-text template-file))
+      (newline))))
+
 (defun mk-find-notes ()
   "Open notes.md in the home directory (create if necessary)."
   (interactive)
