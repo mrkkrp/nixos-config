@@ -14,6 +14,9 @@
 (require 'f)
 (require 'subr-x)
 
+(defconst mk-notes-file (f-expand "~/notes.md")
+  "The file where day-to-day notes and tasks are recorded.")
+
 (defmacro mk-translate-kbd (from to)
   "Translate combinations of keys FROM to TO combination."
   `(define-key key-translation-map (kbd ,from) (kbd ,to)))
@@ -83,36 +86,46 @@ specified directory."
       (insert "DONE "))))
 
 (defun mk-insert-day-template (&optional arg)
-  "Insert the standard day template.
+  "Insert the standard day template or a diary header.
 
-By default the template is generated for today.  Argument ARG, if
-supplied, indicates how many days should be added to today."
+If the user is editing `mk-notes-file' then a day template is
+inserted, otherwise a diary header.
+
+By default the date is today.  Argument ARG, if supplied,
+indicates how many days should be added to today."
   (interactive "P")
-  (beginning-of-line)
-  (insert "## ")
-  (mk-show-date t arg)
-  (newline 2)
-  (let ((template-file (f-expand "~/day-template.md")))
-    (when (f-file-p template-file)
-      (insert (f-read-text template-file))
-      (newline))))
+  (if (string-equal (buffer-file-name) mk-notes-file)
+      (let ((template-file (f-expand "~/day-template.md")))
+        (beginning-of-line)
+        (insert "## ")
+        (mk-show-date t arg)
+        (newline 2)
+        (when (f-file-p template-file)
+          (insert (f-read-text template-file))
+          (newline)))
+    (newline)
+    (insert "## ")
+    (mk-show-date t arg "%d.%m.%Y, %A")
+    (newline 2)))
 
 (defun mk-find-notes ()
   "Open notes.md in the home directory (create if necessary)."
   (interactive)
-  (find-file (f-expand "~/notes.md")))
+  (find-file mk-notes-file))
 
-(defun mk-show-date (&optional stamp arg)
+(defun mk-show-date (&optional stamp arg format)
   "Show the current date in the minibuffer.
 
 If STAMP is not NIL, insert date at point.
 
-If ARG is given, insert the date this many days in the future."
+If ARG is given, insert the date this many days in the future.
+
+If FORMAT is given, it is the custom format string to use."
   (interactive)
   (let* ((days-to-add (or arg current-prefix-arg 0))
          (time (time-add (current-time) (days-to-time days-to-add))))
     (funcall (if stamp #'insert #'message)
-             (format-time-string "%A, %e %B %Y" time))))
+             (format-time-string (or format "%A, %e %B %Y") time))))
 
 (defun mk-file-name-to-kill-ring (arg)
   "Put name of file into kill ring.
