@@ -1,5 +1,5 @@
 # These are the options which are shared between all configurations/devices.
-{ config, pkgs, nixpkgs, raw-glue, ormolu, ... }:
+{ config, pkgs, nixpkgs, ormolu, ... }:
 {
   system.stateVersion = "19.09";
 
@@ -171,7 +171,6 @@
       pwsafe
       python3Full
       qbittorrent
-      raw-glue.packages.x86_64-linux.default
       ripgrep
       shellcheck
       shutter
