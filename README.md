@@ -149,5 +149,5 @@ Reboot.
 To update the system do:
 
 ```console
-$ nixos-switch
+$ nixos switch
 ```
