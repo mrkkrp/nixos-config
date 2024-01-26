@@ -374,6 +374,23 @@ def-env "p gh" [
 def "nixos switch" [] {
     cd $"($env.HOME)/projects/mrkkrp/nixos-config"
     nixos-rebuild --use-remote-sudo switch --flake $'.#(hostname)'
+    nixos diff
+}
+
+# Show the diff between the current system and the one N generations earlier.
+def "nixos diff" [
+    n: int = 1 # how many generations back to go
+] {
+    let generations = (ls /nix/var/nix/profiles/system-*-link
+        | get name
+        | sort -nr)
+    if $n < ($generations | length) {
+       nvd diff ($generations | get $n) /nix/var/nix/profiles/system
+    } else {
+        error make {
+            msg: $"There are ($generations | length) generations in total"
+        }
+    }
 }
 
 # Make the current git repository default to the email from the global config.

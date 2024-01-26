@@ -163,6 +163,7 @@
       hunspellDicts.ru-ru
       inotify-tools
       nixpkgs-fmt
+      nvd
       okular
       openconnect
       openssl
