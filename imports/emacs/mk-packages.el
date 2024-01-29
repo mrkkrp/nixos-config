@@ -620,7 +620,9 @@ Useful when doing screen-sharing."
 
 (use-package magit
   :init
-  (setq magit-clone-set-remote.pushDefault t)
+  (setq
+   magit-clone-set-remote.pushDefault t
+   magit-diff-refine-hunk 'all)
   :bind
   (("<next> m b" . magit-blame)
    ("<next> m c" . magit-clone)
