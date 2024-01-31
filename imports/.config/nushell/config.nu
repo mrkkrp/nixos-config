@@ -345,14 +345,14 @@ def e [
 }
 
 # Go to a project directory.
-def-env p [
+def --env p [
     project: string # name of the project (or its part)
 ] {
     cd (project-jumper $project)
 }
 
 # Ensure that a directory corresponding to org/repo exists and switch to it.
-def-env "p mk" [
+def --env "p mk" [
     org: string # GitHub organization
     repo: string # GitHub repo
 ] {
@@ -362,7 +362,7 @@ def-env "p mk" [
 }
 
 # Setup a project directory by clonning from GitHub.
-def-env "p gh" [
+def --env "p gh" [
     org: string # GitHub organization
     repo: string # GitHub repo
 ] {
