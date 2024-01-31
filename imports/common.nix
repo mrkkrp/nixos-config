@@ -185,7 +185,7 @@
     shell = pkgs.nushell;
 
     symlinks = {
-      ".alacritty.yml" = ./.config/.alacritty.yml;
+      ".alacritty.toml" = ./.config/.alacritty.toml;
       ".config/kglobalshortcutsrc" = ./.config/kglobalshortcutsrc;
       ".config/khotkeysrc" = ./.config/khotkeysrc;
       ".config/kwinrulesrc" = ./.config/kwinrulesrc;
