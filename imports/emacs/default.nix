@@ -3,6 +3,7 @@ pkgs:
 let
   mkConfig = epkgs: epkgs.trivialBuild {
     pname = "mk-config";
+    version = "0.0.0.0";
     src = pkgs.lib.sourceByRegex ./. [
       "^.*\.el$"
     ];

@@ -201,7 +201,7 @@
   services.xserver = {
     enable = true;
     dpi = null;
-    layout = "us";
+    xkb.layout = "us";
     libinput.enable = true;
 
     desktopManager = {
