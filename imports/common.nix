@@ -185,7 +185,7 @@
     shell = pkgs.nushell;
 
     symlinks = {
-      ".alacritty.toml" = ./.config/.alacritty.toml;
+      ".alacritty.toml" = ./.config/alacritty.toml;
       ".config/kglobalshortcutsrc" = ./.config/kglobalshortcutsrc;
       ".config/khotkeysrc" = ./.config/khotkeysrc;
       ".config/kwinrulesrc" = ./.config/kwinrulesrc;
@@ -194,7 +194,7 @@
       ".emacs.d/init.el" = ./emacs/init.el;
       ".gitconfig" = pkgs.gitconfig;
       ".nixpkgs/config.nix" = pkgs.nixconfig;
-      ".tmux.conf" = ./.config/.tmux.conf;
+      ".tmux.conf" = ./.config/tmux.conf;
     };
   };
 
