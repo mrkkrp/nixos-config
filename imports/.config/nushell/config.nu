@@ -465,5 +465,5 @@ def copy-from-camera [] {
 
 # Format all Haskell files in the current git repository.
 def "ormolu all" [] {
-    ormolu -i (git ls-files '*.hs' '*.hs-boot' | lines)
+    ormolu -i ...(git ls-files '*.hs' '*.hs-boot' | lines)
 }
