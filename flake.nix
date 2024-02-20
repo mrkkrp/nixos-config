@@ -22,19 +22,6 @@
 
   outputs = { self, nixpkgs, nixos-hardware, ormolu }@attrs: {
     nixosConfigurations = {
-      old = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = attrs;
-        modules = [
-          ./devices/old/configuration.nix
-          ./imports/common.nix
-          ./imports/location-paris.nix
-          ./imports/nginx.nix
-          ./imports/pulseaudio.nix
-          ./imports/iohk-binary-cache.nix
-        ];
-      };
-
       pad = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = attrs;
