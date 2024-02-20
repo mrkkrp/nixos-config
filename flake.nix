@@ -45,6 +45,7 @@
           ./imports/location-paris.nix
           ./imports/nginx.nix
           ./imports/pulseaudio.nix
+          ./imports/printer.nix
           ./imports/iohk-binary-cache.nix
           ./imports/for-client.nix
         ];
