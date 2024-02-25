@@ -134,7 +134,6 @@
     packages = with pkgs; [
       (import ./emacs pkgs)
       (import ./project-jumper pkgs)
-      alacritty
       alsa-lib
       alsa-oss
       alsa-plugins
@@ -178,15 +177,14 @@
       shutter
       telegram-desktop
       tmate
-      tmux
       vlc
+      wezterm
       wmctrl
       zoom-us
     ];
     shell = pkgs.nushell;
 
     symlinks = {
-      ".alacritty.toml" = ./.config/alacritty.toml;
       ".config/kglobalshortcutsrc" = ./.config/kglobalshortcutsrc;
       ".config/khotkeysrc" = ./.config/khotkeysrc;
       ".config/kwinrulesrc" = ./.config/kwinrulesrc;
@@ -195,7 +193,7 @@
       ".emacs.d/init.el" = ./emacs/init.el;
       ".gitconfig" = pkgs.gitconfig;
       ".nixpkgs/config.nix" = pkgs.nixconfig;
-      ".tmux.conf" = ./.config/tmux.conf;
+      ".wezterm.lua" = ./.config/wezterm.lua;
     };
   };
 

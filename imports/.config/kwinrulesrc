@@ -30,22 +30,5 @@ wmclass=google-chrome
 wmclasscomplete=false
 wmclassmatch=1
 
-[3]
-Description=Window settings for alacritty
-clientmachinematch=0
-fullscreen=true
-fullscreenrule=3
-noborder=true
-noborderrule=3
-position=0,0
-positionrule=3
-screen=1
-screenrule=3
-titlematch=0
-types=1
-wmclass=alacritty
-wmclasscomplete=false
-wmclassmatch=1
-
 [General]
 count=3
