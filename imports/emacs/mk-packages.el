@@ -541,6 +541,10 @@ Useful when doing screen-sharing."
   ("<f11>" . highlight-symbol-prev)
   ("M-<f9>" . highlight-symbol-remove-all))
 
+(use-package hl-line
+  :bind
+  ("<next> h l" . hl-line-mode))
+
 (use-package hl-todo
   :hook
   ((gitignore-mode . hl-todo-mode)
