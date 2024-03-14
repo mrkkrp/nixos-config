@@ -646,11 +646,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1708594753,
-        "narHash": "sha256-c/gH7iXS/IYH9NrFOT+aJqTq+iEBkvAkpWuUHGU3+f0=",
+        "lastModified": 1710123225,
+        "narHash": "sha256-j3oWlxRZxB7cFsgEntpH3rosjFHRkAo/dhX9H3OfxtY=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "3f7d0bca003eac1a1a7f4659bbab9c8f8c2a0958",
+        "rev": "ad2fd7b978d5e462048729a6c635c45d3d33c9ba",
         "type": "github"
       },
       "original": {
@@ -661,11 +661,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1709038661,
-        "narHash": "sha256-Ys611iT6pChGv954aa4f8oKoDKJG3IXjJjPhnj6uaLY=",
+        "lastModified": 1710377395,
+        "narHash": "sha256-KMubsUWtVr7L55pXMBibBDBdmk3xrjbBPduc0E8z28c=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8520c158aee718c6e87b56881105fc4223c3c723",
+        "rev": "db001797591bf76f7b8d4c4ed3b49233391e0c97",
         "type": "github"
       },
       "original": {
@@ -964,11 +964,11 @@
         "purs-nix": "purs-nix"
       },
       "locked": {
-        "lastModified": 1708515257,
-        "narHash": "sha256-ko9DXdrIws1fozQuxS55RJuhM56cQkOzGigC+BGQngE=",
+        "lastModified": 1710232848,
+        "narHash": "sha256-si/UiAvN7kn9CuEV48q/M9l7DgcCcM7eK6/XXmVLuoM=",
         "owner": "tweag",
         "repo": "ormolu",
-        "rev": "7e000cb1f62e8a713e424f8f354288053c7e39e8",
+        "rev": "607978708809d97945c6036a60b8ffb9b719bc60",
         "type": "github"
       },
       "original": {
