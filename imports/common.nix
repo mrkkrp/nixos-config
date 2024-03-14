@@ -165,7 +165,6 @@
       nvd
       okular
       openconnect
-      openmw
       openssl
       ormolu.packages.x86_64-linux.default
       proselint
