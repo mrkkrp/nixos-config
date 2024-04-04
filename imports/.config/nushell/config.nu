@@ -454,7 +454,7 @@ def copy-from-camera [] {
             msg: $"($target_dir) must exist!"
         }
     }
-    ls ($source_dir ++ "/*.CR3") | each { |e|
+    ls ($source_dir ++ "/*.CR3" | into glob) | each { |e|
         let modification_date = ($e.modified | format date "%Y-%m-%d")
         let target_subdir = $"($target_dir)/($modification_date)"
         let basename = (basename $e.name)
