@@ -1141,10 +1141,13 @@ input method."
    ("z" . mk-ztree-dir)))
 
 (use-package zygospore
-  :after (modalka)
+  :after (magit modalka)
   :commands (zygospore-toggle-delete-other-windows)
   :bind
   (:map
+   magit-mode-map
+   ("I" . zygospore-toggle-delete-other-windows)
+   :map
    modalka-mode-map
    ("I" . zygospore-toggle-delete-other-windows)
    :map
