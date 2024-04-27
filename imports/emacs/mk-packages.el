@@ -598,6 +598,7 @@ Useful when doing screen-sharing."
   :demand
   :config
   (setq
+   lsp-haskell-plugin-stan-global-on nil
    lsp-haskell-server-path "haskell-language-server"))
 
 (use-package lsp-mode
