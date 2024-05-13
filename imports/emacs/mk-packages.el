@@ -170,6 +170,7 @@
   ("<next> d c" . describe-char))
 
 (use-package dired
+  :after (zygospore)
   :init
   (setq
    delete-by-moving-to-trash t
@@ -203,6 +204,7 @@
    dired-mode-map
    ("<down>" . mk-dired-last-file)
    ("<up>" . mk-dired-first-file)
+   ("I" . zygospore-toggle-delete-other-windows)
    ("b" . dired-up-directory)
    ("e" . mk-dired-open-external)
    ("w" . wdired-change-to-wdired-mode))
@@ -624,6 +626,7 @@ Useful when doing screen-sharing."
    ("<next> ' s" . lsp-find-definition)))
 
 (use-package magit
+  :after (zygospore)
   :init
   (setq
    magit-clone-set-remote.pushDefault t
@@ -636,7 +639,10 @@ Useful when doing screen-sharing."
    :map
    git-commit-mode-map
    ("M-n" . mk-transpose-line-down)
-   ("M-p" . mk-transpose-line-up)))
+   ("M-p" . mk-transpose-line-up)
+   :map
+   magit-mode-map
+   ("I" . zygospore-toggle-delete-other-windows)))
 
 (use-package markdown-mode
   :init
@@ -658,7 +664,7 @@ Useful when doing screen-sharing."
   (minibuffer-electric-default-mode 1))
 
 (use-package modalka
-  :after (mk-text mk-utils)
+  :after (mk-text mk-utils zygospore)
   :init
   (setq-default
    modalka-cursor-type 'box)
@@ -764,6 +770,7 @@ Useful when doing screen-sharing."
   (("<return>" . modalka-mode)
    :map
    modalka-mode-map
+   ("I" . zygospore-toggle-delete-other-windows)
    ("Q" . mk-sort-lines-dwim)
    ("X" . mk-open-default-dir))
   :hook
@@ -1142,18 +1149,8 @@ input method."
    ("z" . mk-ztree-dir)))
 
 (use-package zygospore
-  :after (magit modalka)
-  :commands (zygospore-toggle-delete-other-windows)
-  :bind
-  (:map
-   magit-mode-map
-   ("I" . zygospore-toggle-delete-other-windows)
-   :map
-   modalka-mode-map
-   ("I" . zygospore-toggle-delete-other-windows)
-   :map
-   dired-mode-map
-   ("I" . zygospore-toggle-delete-other-windows)))
+  :demand
+  :commands (zygospore-toggle-delete-other-windows))
 
 (use-package zzz-to-char
   :bind
