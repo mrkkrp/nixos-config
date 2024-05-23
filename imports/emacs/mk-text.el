@@ -78,7 +78,7 @@ be used as a delta to the column of the point."
         (let ((column-delta (or (funcall action start* end*) 0)))
           (goto-char (point-min))
           (forward-line (- original-line 1))
-          (move-to-column (+ original-col column-delta)))))))
+          (move-to-column (max 0 (+ original-col column-delta))))))))
 
 (defun mk-for-line (start end action)
   "Traverse lines in the region between START and END while invoking ACTION."
@@ -240,6 +240,43 @@ block."
       (lambda ()
         (move-end-of-line 1)
         (insert text))))))
+
+;;;###autoload
+(defun mk-remove-from-beginnig-of-lines (&optional arg)
+  "Remove characters from beginning of lines in a block.
+
+ARG, if given, specifies how many characters to delete.
+
+See `mk-with-smart-region' for semantics of what constitutes a
+block."
+  (interactive "p")
+  (mk-with-smart-region
+   (lambda (start end)
+     (mk-for-line
+      start
+      end
+      (lambda ()
+        (move-beginning-of-line 1)
+        (delete-char arg)))
+     (- arg))))
+
+;;;###autoload
+(defun mk-remove-from-end-of-lines (&optional arg)
+  "Remove characters from end of lines in a block.
+
+ARG, if given, specifies how many characters to delete.
+
+See `mk-with-smart-region' for semantics of what constitutes a
+block."
+  (interactive "p")
+  (mk-with-smart-region
+   (lambda (start end)
+     (mk-for-line
+      start
+      end
+      (lambda ()
+        (move-end-of-line 1)
+        (delete-char (- arg)))))))
 
 ;;;###autoload
 (defun mk-sort-lines (&optional reverse)

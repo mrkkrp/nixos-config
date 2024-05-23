@@ -810,6 +810,8 @@ Useful when doing screen-sharing."
    mk-narrow-to-region
    mk-add-to-beginning-of-lines
    mk-add-to-end-of-lines
+   mk-remove-from-beginnig-of-lines
+   mk-remove-from-end-of-lines
    mk-sort-lines
    mk-increase-indentation
    mk-decrease-indentation)
@@ -822,8 +824,10 @@ Useful when doing screen-sharing."
   ("M-n" . mk-transpose-line-down)
   ("M-p" . mk-transpose-line-up)
   ("M-r" . mk-duplicate-line)
-  ("<next> b l" . mk-add-to-beginning-of-lines)
-  ("<next> e l" . mk-add-to-end-of-lines)
+  ("<next> a b" . mk-add-to-beginning-of-lines)
+  ("<next> a e" . mk-add-to-end-of-lines)
+  ("<next> r b" . mk-remove-from-beginnig-of-lines)
+  ("<next> r e" . mk-remove-from-end-of-lines)
   ("<next> n n" . mk-narrow-to-region)
   ("<next> n w" . widen)
   ("<next> y p" . mk-yank-primary)
