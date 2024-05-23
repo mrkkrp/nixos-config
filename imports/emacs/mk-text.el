@@ -31,6 +31,60 @@ before target non-white space character."
           (1- (point))
         this-end))))
 
+(defun mk-with-smart-region (action)
+  "Automatically detect the relevant block of lines and invoke ACTION on it.
+
+If there is an active region, use that; otherwise select a region
+with the same indentation level around the point.  This function
+takes care of preserving the position of the point.  It also
+deactivates the mark when necessary.
+
+ACTION will be called with two arguments: the beginning of the
+region to edit and its end."
+  (cl-destructuring-bind (start* . end*)
+      (if (region-active-p)
+          (cons (min (point) (mark))
+                (max (point) (mark)))
+        (save-excursion
+          (let* ((origin
+                  (progn
+                    (back-to-indentation)
+                    (point)))
+                 (indent (current-column))
+                 (start
+                  (progn
+                    (while (and (= (current-column) indent)
+                                (not (looking-at "^[[:space:]]*$"))
+                                (/= (point) (point-min)))
+                      (backward-to-indentation 1))
+                    (unless (= (point) (point-min))
+                      (forward-line 1))
+                    (pos-bol)))
+                 (end
+                  (progn
+                    (goto-char origin)
+                    (while (and (= (current-column) indent)
+                                (not (looking-at "^[[:space:]]*$"))
+                                (/= (point) (point-max)))
+                      (forward-to-indentation 1))
+                    (pos-bol))))
+            (cons start end))))
+    (let ((origin (point)))
+      (save-excursion
+        (deactivate-mark)
+        (funcall action start* end*)
+        (goto-char origin)))))
+
+(defun mk-for-line (start end action)
+  "Traverse lines in the region between START and END while invoking ACTION."
+  (goto-char start)
+  (cl-do ((i 0)
+          (total (count-lines start end)))
+      ((= i total))
+    (funcall action)
+    (forward-line 1)
+    (setq i (1+ i))))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Text editing commands
@@ -142,73 +196,91 @@ ARG, if given, specifies how many symbols to eat."
 
 ;;;###autoload
 (defun mk-narrow-to-region ()
-  "Narrow to region and deactivate the selection."
+  "Narrow a block and deactivate the selection.
+
+See `mk-with-smart-region' for semantics of what constitutes a
+block."
   (interactive)
-  (call-interactively #'narrow-to-region)
-  (deactivate-mark))
+  (mk-with-smart-region #'narrow-to-region))
 
 ;;;###autoload
-(defun mk-add-to-end-of-lines (beg end text)
-  "Append to end of lines between BEG and END given text TEXT.
+(defun mk-add-to-beginning-of-lines (text)
+  "Append TEXT to end of lines in a block.
 
-Interactively, apply it to lines in active region and prompt for
-text."
-  (interactive "r\nMAdd text: ")
-  (save-excursion
-    (deactivate-mark)
-    (goto-char beg)
-    (cl-do ((i 0)
-            (total (count-lines beg end)))
-        ((= i total))
-      (move-end-of-line 1)
-      (insert text)
-      (forward-line 1)
-      (setq i (1+ i)))))
+See `mk-with-smart-region' for semantics of what constitutes a
+block."
+  (interactive "MAdd to the beginning of lines: ")
+  (mk-with-smart-region
+   (lambda (start end)
+     (mk-for-line
+      start
+      end
+      (lambda ()
+        (move-beginning-of-line 1)
+        (insert text))))))
 
 ;;;###autoload
-(defun mk-sort-lines-dwim (&optional reverse)
+(defun mk-add-to-end-of-lines (text)
+  "Append TEXT to end of lines in a block.
+
+See `mk-with-smart-region' for semantics of what constitutes a
+block."
+  (interactive "MAdd to the end of lines: ")
+  (mk-with-smart-region
+   (lambda (start end)
+     (mk-for-line
+      start
+      end
+      (lambda ()
+        (move-end-of-line 1)
+        (insert text))))))
+
+;;;###autoload
+(defun mk-sort-lines (&optional reverse)
   "Automatically detect and sort block of lines with point in it.
-
-This detects where block of lines with the same indentation
-begins and ends and then sorts the entire block.  The block
-doesn't not necessarily form a paragraph, sometimes it's just a
-part of a paragraph.
 
 When argument REVERSE is not NIL, use descending sort.
 
-When region is active, the command operates within the selected
-region between BEG and END."
+See `mk-with-smart-region' for semantics of what constitutes a
+block."
   (interactive "P")
-  (cl-destructuring-bind (beg* . end*)
-      (if (region-active-p)
-          (cons (point) (mark))
-        (save-excursion
-          (let* ((origin
-                  (progn
-                    (back-to-indentation)
-                    (point)))
-                 (indent (current-column))
-                 (beg
-                  (progn
-                    (while (and (= (current-column) indent)
-                                (not (looking-at "^[[:space:]]*$"))
-                                (/= (point) (point-min)))
-                      (backward-to-indentation 1))
-                    (unless (= (point) (point-min))
-                      (forward-line 1))
-                    (pos-bol)))
-                 (end
-                  (progn
-                    (goto-char origin)
-                    (while (and (= (current-column) indent)
-                                (not (looking-at "^[[:space:]]*$"))
-                                (/= (point) (point-max)))
-                      (forward-to-indentation 1))
-                    (pos-bol))))
-            (cons beg end))))
-    (let ((origin (point)))
-      (sort-lines reverse beg* end*)
-      (goto-char origin))))
+  (mk-with-smart-region
+   (lambda (start end)
+     (sort-lines reverse start end))))
+
+;;;###autoload
+(defun mk-increase-indentation ()
+  "Increase indentation in the block by `tab-width'.
+
+See `mk-with-smart-region' for semantics of what constitutes a
+block."
+  (interactive)
+  (mk-with-smart-region
+   (lambda (start end)
+     (mk-for-line
+      start
+      end
+      (lambda ()
+        (move-beginning-of-line 1)
+        (insert-char 32 tab-width))))))
+
+;;;###autoload
+(defun mk-decrease-indentation ()
+  "Decrease indentation in the block by `tab-width'.
+
+See `mk-with-smart-region' for semantics of what constitutes a
+block."
+  (interactive)
+  (mk-with-smart-region
+   (lambda (start end)
+     (mk-for-line
+      start
+      end
+      (lambda ()
+        (move-beginning-of-line 1)
+        (dotimes (_ tab-width)
+          (when (looking-at "[[:blank:]]")
+            (delete-char 1))))))))
 
 (provide 'mk-text)
 

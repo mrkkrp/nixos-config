@@ -771,7 +771,7 @@ Useful when doing screen-sharing."
    :map
    modalka-mode-map
    ("I" . zygospore-toggle-delete-other-windows)
-   ("Q" . mk-sort-lines-dwim)
+   ("Q" . mk-sort-lines)
    ("X" . mk-open-default-dir))
   :hook
   ((compilation-mode . modalka-mode)
@@ -808,8 +808,11 @@ Useful when doing screen-sharing."
    mk-copy-buffer
    mk-yark-primary
    mk-narrow-to-region
+   mk-add-to-beginning-of-lines
    mk-add-to-end-of-lines
-   mk-sort-lines-dwim)
+   mk-sort-lines
+   mk-increase-indentation
+   mk-decrease-indentation)
   :bind
   ("C-SPC" . mk-mark-command)
   ("C-r" . mk-smart-indent)
@@ -819,10 +822,13 @@ Useful when doing screen-sharing."
   ("M-n" . mk-transpose-line-down)
   ("M-p" . mk-transpose-line-up)
   ("M-r" . mk-duplicate-line)
+  ("<next> b l" . mk-add-to-beginning-of-lines)
   ("<next> e l" . mk-add-to-end-of-lines)
   ("<next> n n" . mk-narrow-to-region)
   ("<next> n w" . widen)
-  ("<next> y p" . mk-yank-primary))
+  ("<next> y p" . mk-yank-primary)
+  ("<next> i i" . mk-increase-indentation)
+  ("<next> d i" . mk-decrease-indentation))
 
 (use-package mule
   :preface
