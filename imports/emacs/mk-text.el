@@ -40,7 +40,8 @@ takes care of preserving the position of the point.  It also
 deactivates the mark when necessary.
 
 ACTION will be called with two arguments: the beginning of the
-region to edit and its end."
+region to edit and its end.  It should return a number which will
+be used as a delta to the column of the point."
   (cl-destructuring-bind (start* . end*)
       (if (region-active-p)
           (cons (min (point) (mark))
@@ -69,11 +70,15 @@ region to edit and its end."
                       (forward-to-indentation 1))
                     (pos-bol))))
             (cons start end))))
-    (let ((origin (point)))
-      (save-excursion
+    (atomic-change-group
+      (let ((original-col (current-column))
+            (original-line (line-number-at-pos)))
         (deactivate-mark)
-        (funcall action start* end*)
-        (goto-char origin)))))
+        (undo-boundary)
+        (let ((column-delta (or (funcall action start* end*) 0)))
+          (goto-char (point-min))
+          (forward-line (- original-line 1))
+          (move-to-column (+ original-col column-delta)))))))
 
 (defun mk-for-line (start end action)
   "Traverse lines in the region between START and END while invoking ACTION."
@@ -217,7 +222,8 @@ block."
       end
       (lambda ()
         (move-beginning-of-line 1)
-        (insert text))))))
+        (insert text)))
+     (length text))))
 
 ;;;###autoload
 (defun mk-add-to-end-of-lines (text)
@@ -259,12 +265,14 @@ block."
   (interactive "P")
   (mk-with-smart-region
    (lambda (start end)
-     (mk-for-line
-      start
-      end
-      (lambda ()
-        (move-beginning-of-line 1)
-        (insert-char 32 (or arg tab-width)))))))
+     (let ((delta (or arg tab-width)))
+       (mk-for-line
+        start
+        end
+        (lambda ()
+          (move-beginning-of-line 1)
+          (insert-char 32 delta)))
+       delta))))
 
 ;;;###autoload
 (defun mk-decrease-indentation (&optional arg)
@@ -277,14 +285,16 @@ block."
   (interactive "P")
   (mk-with-smart-region
    (lambda (start end)
-     (mk-for-line
-      start
-      end
-      (lambda ()
-        (move-beginning-of-line 1)
-        (dotimes (_ (or arg tab-width))
-          (when (looking-at "[[:blank:]]")
-            (delete-char 1))))))))
+     (let ((delta (or arg tab-width)))
+       (mk-for-line
+        start
+        end
+        (lambda ()
+          (move-beginning-of-line 1)
+          (dotimes (_ delta)
+            (when (looking-at "[[:blank:]]")
+              (delete-char 1)))))
+       (- delta)))))
 
 (provide 'mk-text)
 
