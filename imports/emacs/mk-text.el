@@ -249,12 +249,14 @@ block."
      (sort-lines reverse start end))))
 
 ;;;###autoload
-(defun mk-increase-indentation ()
+(defun mk-increase-indentation (&optional arg)
   "Increase indentation in the block by `tab-width'.
 
+ARG, if given, specifies how many spaces to insert.
+
 See `mk-with-smart-region' for semantics of what constitutes a
 block."
-  (interactive)
+  (interactive "P")
   (mk-with-smart-region
    (lambda (start end)
      (mk-for-line
@@ -262,15 +264,17 @@ block."
       end
       (lambda ()
         (move-beginning-of-line 1)
-        (insert-char 32 tab-width))))))
+        (insert-char 32 (or arg tab-width)))))))
 
 ;;;###autoload
-(defun mk-decrease-indentation ()
+(defun mk-decrease-indentation (&optional arg)
   "Decrease indentation in the block by `tab-width'.
+
+ARG, if given, specifies how many spaces to remove.
 
 See `mk-with-smart-region' for semantics of what constitutes a
 block."
-  (interactive)
+  (interactive "P")
   (mk-with-smart-region
    (lambda (start end)
      (mk-for-line
@@ -278,7 +282,7 @@ block."
       end
       (lambda ()
         (move-beginning-of-line 1)
-        (dotimes (_ tab-width)
+        (dotimes (_ (or arg tab-width))
           (when (looking-at "[[:blank:]]")
             (delete-char 1))))))))
 
