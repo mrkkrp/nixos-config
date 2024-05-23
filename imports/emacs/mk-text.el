@@ -210,7 +210,7 @@ block."
 
 ;;;###autoload
 (defun mk-add-to-beginning-of-lines (text)
-  "Append TEXT to end of lines in a block.
+  "Append TEXT to the beginning of lines in a block.
 
 See `mk-with-smart-region' for semantics of what constitutes a
 block."
@@ -227,7 +227,7 @@ block."
 
 ;;;###autoload
 (defun mk-add-to-end-of-lines (text)
-  "Append TEXT to end of lines in a block.
+  "Append TEXT to the end of lines in a block.
 
 See `mk-with-smart-region' for semantics of what constitutes a
 block."
@@ -243,7 +243,7 @@ block."
 
 ;;;###autoload
 (defun mk-remove-from-beginnig-of-lines (&optional arg)
-  "Remove characters from beginning of lines in a block.
+  "Remove characters from the beginning of lines in a block.
 
 ARG, if given, specifies how many characters to delete.
 
@@ -262,7 +262,7 @@ block."
 
 ;;;###autoload
 (defun mk-remove-from-end-of-lines (&optional arg)
-  "Remove characters from end of lines in a block.
+  "Remove characters from the end of lines in a block.
 
 ARG, if given, specifies how many characters to delete.
 
@@ -280,9 +280,9 @@ block."
 
 ;;;###autoload
 (defun mk-sort-lines (&optional reverse)
-  "Automatically detect and sort block of lines with point in it.
+  "Sort a block of lines.
 
-When argument REVERSE is not NIL, use descending sort.
+When REVERSE is not NIL, use descending sort.
 
 See `mk-with-smart-region' for semantics of what constitutes a
 block."
@@ -293,7 +293,7 @@ block."
 
 ;;;###autoload
 (defun mk-increase-indentation (&optional arg)
-  "Increase indentation in the block by `tab-width'.
+  "Increase indentation in a block by `tab-width'.
 
 ARG, if given, specifies how many spaces to insert.
 
@@ -313,7 +313,7 @@ block."
 
 ;;;###autoload
 (defun mk-decrease-indentation (&optional arg)
-  "Decrease indentation in the block by `tab-width'.
+  "Decrease indentation in a block by `tab-width'.
 
 ARG, if given, specifies how many spaces to remove.
 
