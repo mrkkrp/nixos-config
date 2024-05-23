@@ -659,7 +659,7 @@ Useful when doing screen-sharing."
   :demand
   :init
   (setq
-   minibuffer-eldef-shorten-default t)
+   minibuffer-default-prompt-format " [%s]")
   :config
   (minibuffer-electric-default-mode 1))
 

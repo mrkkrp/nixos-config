@@ -196,7 +196,7 @@ region between BEG and END."
                       (backward-to-indentation 1))
                     (unless (= (point) (point-min))
                       (forward-line 1))
-                    (point-at-bol)))
+                    (pos-bol)))
                  (end
                   (progn
                     (goto-char origin)
@@ -204,7 +204,7 @@ region between BEG and END."
                                 (not (looking-at "^[[:space:]]*$"))
                                 (/= (point) (point-max)))
                       (forward-to-indentation 1))
-                    (point-at-bol))))
+                    (pos-bol))))
             (cons beg end))))
     (let ((origin (point)))
       (sort-lines reverse beg* end*)
