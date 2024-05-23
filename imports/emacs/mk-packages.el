@@ -902,8 +902,13 @@ input method."
   :init
   (setq-default
    python-fill-docstring-style 'pep-257-nn)
+  :preface
+  (defun mk-python-mode-hook ()
+    (setq-local tab-width 4))
   :bind
-  ("<next> p y" . python-mode))
+  ("<next> p y" . python-mode)
+  :hook
+  ((python-mode . mk-python-mode-hook)))
 
 (use-package rainbow-delimiters
   :hook
