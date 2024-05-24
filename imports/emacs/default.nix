@@ -21,7 +21,6 @@ let
       envrc
       f
       fd-dired
-      fish-mode
       fix-input
       fix-word
       flycheck
@@ -52,8 +51,6 @@ let
       smart-mode-line
       smartparens
       swiper
-      terraform-mode
-      tuareg
       use-package
       visual-regexp
       whole-line-or-region

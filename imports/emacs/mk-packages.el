@@ -1087,11 +1087,6 @@ input method."
    tramp-ssh-controlmaster-options
    "-o ControlMaster=auto -o ControlPath=tramp.%%C -o ControlPersist=600"))
 
-(use-package tuareg
-  :after (lsp-mode)
-  :hook
-  ((tuareg-mode . lsp-deferred)))
-
 (use-package visual-regexp
   :bind
   ("<next> q q" . vr/query-replace))
