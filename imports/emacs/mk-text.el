@@ -83,12 +83,9 @@ be used as a delta to the column of the point."
 (defun mk-for-line (start end action)
   "Traverse lines in the region between START and END while invoking ACTION."
   (goto-char start)
-  (cl-do ((i 0)
-          (total (count-lines start end)))
-      ((= i total))
+  (dotimes (_ (count-lines start end))
     (funcall action)
-    (forward-line 1)
-    (setq i (1+ i))))
+    (forward-line 1)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -257,7 +254,7 @@ block."
       end
       (lambda ()
         (move-beginning-of-line 1)
-        (delete-char arg)))
+        (delete-char (min arg (- (pos-eol) (point))))))
      (- arg))))
 
 ;;;###autoload
@@ -276,7 +273,7 @@ block."
       end
       (lambda ()
         (move-end-of-line 1)
-        (delete-char (- arg)))))))
+        (delete-char (- (min arg (- (point) (pos-bol))))))))))
 
 ;;;###autoload
 (defun mk-sort-lines (&optional reverse)
@@ -308,7 +305,8 @@ block."
         end
         (lambda ()
           (move-beginning-of-line 1)
-          (insert-char 32 delta)))
+          (unless (looking-at "^$")
+            (insert-char 32 delta))))
        delta))))
 
 ;;;###autoload
