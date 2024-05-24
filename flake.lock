@@ -1194,7 +1194,7 @@
       },
       "original": {
         "owner": "input-output-hk",
-        "repo": "empty-flake",
+        "repo": "stackage.nix",
         "type": "github"
       }
     },

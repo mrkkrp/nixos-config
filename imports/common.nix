@@ -22,7 +22,6 @@
       experimental-features = nix-command flakes
     '';
     gc.automatic = false;
-    package = pkgs.nixUnstable;
     registry.nixpkgs.flake = nixpkgs;
     nixPath = [ "nixpkgs=/etc/channels/nixpkgs" ];
   };
@@ -196,29 +195,29 @@
     };
   };
 
-  services.xserver = {
-    enable = true;
-    dpi = null;
-    xkb.layout = "us";
-    libinput.enable = true;
-
-    desktopManager = {
-      plasma5.enable = true;
+  services = {
+    xserver = {
+      enable = true;
+      dpi = null;
+      xkb.layout = "us";
+      displayManager = {
+        sessionCommands = ''
+          export PATH=$HOME/.local/bin:$PATH
+          export PATH=$HOME/.cabal/bin:$PATH
+          kwriteconfig5 --file $HOME/.config/kaccessrc --group Keyboard --key StickyKeys --type bool true
+          kwriteconfig5 --file $HOME/.config/kcminputrc --group Keyboard --key RepeatDelay 600
+          kwriteconfig5 --file $HOME/.config/kcminputrc --group Keyboard --key RepeatRate 50
+          kwriteconfig5 --file $HOME/.config/kxkbrc --group Layout --key Options "terminate:ctrl_alt_bksp,compose:sclk"
+          kwriteconfig5 --file $HOME/.config/kxkbrc --group Layout --key ResetOldOptions --type bool true
+        '';
+      };
     };
-
+    libinput.enable = true;
     displayManager = {
       sddm.enable = true;
-      defaultSession = "plasma";
-      sessionCommands = ''
-        export PATH=$HOME/.local/bin:$PATH
-        export PATH=$HOME/.cabal/bin:$PATH
-        kwriteconfig5 --file $HOME/.config/kaccessrc --group Keyboard --key StickyKeys --type bool true
-        kwriteconfig5 --file $HOME/.config/kcminputrc --group Keyboard --key RepeatDelay 600
-        kwriteconfig5 --file $HOME/.config/kcminputrc --group Keyboard --key RepeatRate 50
-        kwriteconfig5 --file $HOME/.config/kxkbrc --group Layout --key Options "terminate:ctrl_alt_bksp,compose:sclk"
-        kwriteconfig5 --file $HOME/.config/kxkbrc --group Layout --key ResetOldOptions --type bool true
-      '';
+      defaultSession = "plasmax11";
     };
+    desktopManager.plasma6.enable = true;
   };
 
   i18n = {

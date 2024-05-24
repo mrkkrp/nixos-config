@@ -1,14 +1,10 @@
-[1]
-Description=Window settings for emacs
-clientmachinematch=0
-position=3840,0
-positionrule=3
-screen=2
+[4b580581-a8fe-4933-9b99-d3c040478c63]
+Description=Application settings for Emacs
+clientmachine=localhost
+screen=1
 screenrule=3
-titlematch=0
-types=1
-wmclass=emacs
-wmclasscomplete=false
+wmclass=emacs Emacs
+wmclasscomplete=true
 wmclassmatch=1
 
 [2]
@@ -31,4 +27,5 @@ wmclasscomplete=false
 wmclassmatch=1
 
 [General]
-count=3
+count=2
+rules=4b580581-a8fe-4933-9b99-d3c040478c63
