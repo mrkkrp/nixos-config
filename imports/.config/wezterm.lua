@@ -56,4 +56,7 @@ wezterm.on('gui-startup', function(cmd)
   }
   window:gui_window():toggle_fullscreen()
 end)
+wezterm.on('format-window-title', function(cmd)
+  return "92b2708d-7a7a-41cf-ad6b-69503c4f95bd"
+end)
 return config
