@@ -498,6 +498,8 @@ Useful when doing screen-sharing."
    haskell-process-show-debug-tips nil
    haskell-process-type 'cabal-new-repl)
   :preface
+  (defun mk-haskell-mode-hook ()
+    (setq-local tab-width 4))
   (defun mk-haskell-insert-symbol ()
     "Insert one of the Haskell symbols that are difficult to type."
     (interactive)
@@ -516,7 +518,8 @@ Useful when doing screen-sharing."
    ("}" . nil)
    ("]" . nil))
   :hook
-  ((haskell-mode . lsp-deferred)))
+  ((haskell-mode . lsp-deferred)
+   (haskell-mode . mk-haskell-mode-hook)))
 
 (use-package help
   :bind
