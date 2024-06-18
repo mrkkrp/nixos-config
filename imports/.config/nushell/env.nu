@@ -20,7 +20,7 @@ def create_left_prompt [] {
         | each {|e| if $e.index == ($segments_total - 1) {
             $e.item
         } else {
-            $e.item | str substring 0..1
+            $e.item | str substring 0..0
         }}
         | path join)
     let path = $"(ansi green_bold)($dir_shortened)"
