@@ -217,6 +217,11 @@
    dired-clean-confirm-killing-deleted-buffers nil
    dired-clean-up-buffers-too t))
 
+(use-package ediff
+  :init
+  (setq-default
+   ediff-autostore-merges nil))
+
 (use-package eldoc
   :init
   (setq eldoc-idle-delay 0.1)
