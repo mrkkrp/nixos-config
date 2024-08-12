@@ -834,13 +834,14 @@ Useful when doing screen-sharing."
   ("M-r" . mk-duplicate-line)
   ("<next> a b" . mk-add-to-beginning-of-lines)
   ("<next> a e" . mk-add-to-end-of-lines)
-  ("<next> r b" . mk-remove-from-beginnig-of-lines)
-  ("<next> r e" . mk-remove-from-end-of-lines)
+  ("<next> d i" . mk-decrease-indentation)
+  ("<next> i i" . mk-increase-indentation)
   ("<next> n n" . mk-narrow-to-region)
   ("<next> n w" . widen)
-  ("<next> y p" . mk-yank-primary)
-  ("<next> i i" . mk-increase-indentation)
-  ("<next> d i" . mk-decrease-indentation))
+  ("<next> r b" . mk-remove-from-beginnig-of-lines)
+  ("<next> r d" . mk-remove-duplicate-lines)
+  ("<next> r e" . mk-remove-from-end-of-lines)
+  ("<next> y p" . mk-yank-primary))
 
 (use-package mule
   :preface

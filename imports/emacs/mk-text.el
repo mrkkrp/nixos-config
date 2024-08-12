@@ -289,6 +289,32 @@ block."
      (sort-lines reverse start end))))
 
 ;;;###autoload
+(defun mk-remove-duplicate-lines ()
+  "Remove duplicate lines in a block of lines.
+
+See `mk-with-smart-region' for semantics of what constitutes a
+block."
+  (interactive)
+  (mk-with-smart-region
+   (lambda (start end)
+     (let ((line-set (make-hash-table :test 'equal))
+           (lines-to-delete nil))
+       (mk-for-line
+        start
+        end
+        (lambda ()
+          (let ((current-line (buffer-substring-no-properties
+                               (line-beginning-position)
+                               (line-end-position))))
+            (if (gethash current-line line-set)
+                (push (line-number-at-pos) lines-to-delete)
+              (puthash current-line t line-set)))))
+       (dolist (line lines-to-delete)
+         (goto-char (point-max))
+         (forward-line (- (- (line-number-at-pos) line)))
+         (delete-line))))))
+
+;;;###autoload
 (defun mk-increase-indentation (&optional arg)
   "Increase indentation in a block by `tab-width'.
 
