@@ -68,7 +68,9 @@ be used as a delta to the column of the point."
                                 (not (looking-at "^[[:space:]]*$"))
                                 (/= (point) (point-max)))
                       (forward-to-indentation 1))
-                    (pos-bol))))
+                    (if (= (point) (point-max))
+                        (point-max)
+                      (pos-bol)))))
             (cons start end))))
     (atomic-change-group
       (let ((original-col (current-column))
