@@ -36,6 +36,7 @@ config.keys = {
 config.color_scheme = 'Zenburn'
 config.font = wezterm.font('DejaVu Sans Mono')
 config.font_size = 46.0
+config.front_end = 'WebGpu'
 config.audible_bell = 'Disabled'
 config.window_padding = {
   left = 0,
