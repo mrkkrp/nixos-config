@@ -31,7 +31,7 @@
           ./imports/common.nix
           ./imports/location-paris.nix
           ./imports/nginx.nix
-          ./imports/pulseaudio.nix
+          ./imports/pipewire.nix
           ./imports/printer.nix
           ./imports/iohk-binary-cache.nix
           ./imports/for-client.nix
