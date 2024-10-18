@@ -2,6 +2,6 @@
 { config, pkgs, ... }:
 {
   users.users.mark.packages = with pkgs; [
-    pkgs.coder_2_9_1
+    pkgs.coder_2_14_3
   ];
 }
