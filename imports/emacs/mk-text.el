@@ -220,7 +220,7 @@ block."
       start
       end
       (lambda ()
-        (move-beginning-of-line 1)
+        (back-to-indentation)
         (insert text)))
      (length text))))
 
