@@ -424,7 +424,7 @@ def "git purge" [
 def hdu [
     dir: path = '.' # directory to analyze
 ] {
-    let raw_result = (du --all $dir)
+    let raw_result = (du --long $dir)
     let dir_entries = if ($raw_result | get directories.0 | is-empty) {
         []
     } else {
