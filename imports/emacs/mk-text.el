@@ -255,7 +255,7 @@ block."
       start
       end
       (lambda ()
-        (move-beginning-of-line 1)
+        (back-to-indentation)
         (delete-char (min arg (- (pos-eol) (point))))))
      (- arg))))
 
