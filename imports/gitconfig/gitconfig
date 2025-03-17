@@ -15,3 +15,5 @@
 	clean = git-lfs clean -- %f
 [rebase]
 	autosquash = true
+[merge]
+    conflictstyle = diff3
