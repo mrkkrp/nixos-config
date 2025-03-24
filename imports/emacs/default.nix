@@ -62,4 +62,4 @@ let
     ];
   };
 in
-pkgs.emacs29.pkgs.withPackages (epkgs: [ (mkConfig epkgs) ])
+pkgs.emacs30.pkgs.withPackages (epkgs: [ (mkConfig epkgs) ])
