@@ -160,9 +160,9 @@
       hunspellDicts.fr-moderne
       hunspellDicts.ru-ru
       inotify-tools
+      kdePackages.okular
       nixpkgs-fmt
       nvd
-      okular
       openconnect
       openssl
       ormolu.packages.x86_64-linux.default
