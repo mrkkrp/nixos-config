@@ -26,7 +26,7 @@
  indent-tabs-mode nil
  indicate-empty-lines t
  inhibit-startup-screen t
- initial-scratch-message (concat ";; Emacs " emacs-version "\n\n")
+ initial-scratch-message (concat ";; Emacs " emacs-version " -*- lexical-binding: t; -*-\n\n")
  major-mode 'text-mode
  resize-mini-windows t
  ring-bell-function 'ignore
