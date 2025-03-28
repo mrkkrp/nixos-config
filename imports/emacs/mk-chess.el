@@ -161,30 +161,37 @@ Each endgame is represented as a 3-element list.  The first element is
 the name of the endgame, the second is the tutorial page, and the third
 element is the practice page.")
 
-(defun mk-chess-insert-daily-tasks ()
-  "Insert a complete daily routine for chess: puzzles, an opening, and an endgame."
-  (interactive)
-  (mk-chess-insert-puzzles)
-  (mk-chess-insert-opening)
-  (mk-chess-insert-endgame))
+(defun mk-chess-insert-daily-tasks (&optional arg)
+  "Insert a complete daily routine for chess: puzzles, an opening, and an endgame.
 
-(defun mk-chess-insert-puzzles ()
-  "Insert a task about doing some tactic puzzles."
-  (interactive)
+If ARG is given, insert the task for this many days in the future."
+  (interactive "P")
+  (mk-chess-insert-puzzles arg)
+  (mk-chess-insert-opening arg)
+  (mk-chess-insert-endgame arg))
+
+(defun mk-chess-insert-puzzles (&optional _arg)
+  "Insert a task about doing some tactic puzzles.
+If ARG is given, insert the task for this many days in the future."
+  (interactive "P")
   (insert "* Chess puzzles https://www.chess.com/puzzles/rated\n"))
 
-(defun mk-chess-insert-opening ()
-  "Insert today's task suggestion for chess openings."
-  (interactive)
+(defun mk-chess-insert-opening (&optional arg)
+  "Insert today's task suggestion for chess openings.
+
+If ARG is given, insert the task for this many days in the future."
+  (interactive "P")
   (cl-destructuring-bind (topic tutorial practice)
-      (mk-select-element-of-the-day mk-chess-openings)
+      (mk-select-element-of-the-day mk-chess-openings arg)
     (mk-insert-tutorial-and-practice topic tutorial practice)))
 
-(defun mk-chess-insert-endgame ()
-  "Insert today's task suggestion for chess endgames."
-  (interactive)
+(defun mk-chess-insert-endgame (&optional arg)
+  "Insert today's task suggestion for chess endgames.
+
+If ARG is given, insert the task for this many days in the future."
+  (interactive "P")
   (cl-destructuring-bind (topic tutorial practice)
-      (mk-select-element-of-the-day mk-chess-endgames)
+      (mk-select-element-of-the-day mk-chess-endgames arg)
     (mk-insert-tutorial-and-practice topic tutorial practice)))
 
 (defun mk-insert-tutorial-and-practice (topic tutorial practice)
@@ -198,11 +205,15 @@ element is the practice page.")
    practice
    "\n"))
 
-(defun mk-select-element-of-the-day (list)
-  "Given a LIST, select an element that corresponds to the current day."
+(defun mk-select-element-of-the-day (list &optional arg)
+  "Given a LIST, select an element that corresponds to the current day.
+
+If ARG is given, select the element for this many days in the future."
   (let* ((total (length list))
-         (current-day (time-to-day-in-year (current-time)))
-         (i (mod current-day total)))
+         (days-to-add (or arg current-prefix-arg 0))
+         (target-day (+ (time-to-day-in-year (current-time))
+                        days-to-add))
+         (i (mod target-day total)))
     (nth i list)))
 
 (provide 'mk-chess)
