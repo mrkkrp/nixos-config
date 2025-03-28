@@ -797,6 +797,11 @@ Useful when doing screen-sharing."
    (yaml-mode . modalka-mode)
    (ztree-mode . modalka-mode)))
 
+(use-package mk-chess
+  :demand
+  :bind
+  ("<next> c h" . mk-chess-insert-daily-tasks))
+
 (use-package mk-highlight-line
   :demand
   :config
