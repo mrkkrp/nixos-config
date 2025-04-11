@@ -274,12 +274,27 @@
    version-control t)
   :preface
 
+  (defvar mk-whitespace-cleanup-enabled t
+    "Whether to clean up whitespace before saving.")
+
+  (defvar mk-single-empty-line-enabled t
+    "Whether to eliminate consecutive blank lines before saving.")
+
   (defun mk-single-empty-line ()
-    "Make sure we don't have too wide gaps."
+    "Make sure we don't have more than one consecutive blank line."
+    (interactive)
     (save-excursion
       (goto-char (point-min))
       (while (re-search-forward "[ \t]*\n[ \t]*\n\\([ \t]*\n\\)+" nil t)
         (replace-match "\n\n"))))
+
+  (defun mk-whitespace-cleanup ()
+    "A combination of `whitespace-cleanup' and `mk-single-empty-line'."
+    (interactive)
+    (when mk-whitespace-cleanup-enabled
+      (whitespace-cleanup)
+      (when mk-single-empty-line-enabled
+        (mk-single-empty-line))))
 
   (defun mk-exit-emacs (&optional arg)
     "Exit Emacs: save all file-visiting buffers, kill terminal.
@@ -297,8 +312,7 @@ exit."
   ("<next> a s" . write-file)
   ("<next> r r" . revert-buffer)
   :hook
-  ((before-save . whitespace-cleanup)
-   (before-save . mk-single-empty-line)))
+  ((before-save . mk-whitespace-cleanup)))
 
 (use-package fd-dired
   :config
