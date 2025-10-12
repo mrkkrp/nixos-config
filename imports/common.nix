@@ -161,7 +161,7 @@
       hunspellDicts.ru-ru
       inotify-tools
       kdePackages.okular
-      lilypond
+      lilypond-unstable-with-fonts
       nixpkgs-fmt
       nvd
       openconnect
