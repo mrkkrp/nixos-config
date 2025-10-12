@@ -25,6 +25,7 @@ let
       fix-word
       flycheck
       flycheck-color-mode-line
+      flycheck-lilypond
       flycheck-mmark
       git-link
       git-modes

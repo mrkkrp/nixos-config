@@ -359,7 +359,8 @@ exit."
   :bind
   ("<next> f l" . flycheck-list-errors)
   :hook
-  ((gitignore-mode . flycheck-mode)
+  ((LilyPond-mode . flycheck-mode)
+   (gitignore-mode . flycheck-mode)
    (markdown-mode . flycheck-mode)
    (prog-mode . flycheck-mode)
    (proof-mode . flycheck-mode)
@@ -376,6 +377,9 @@ exit."
   :after (flycheck)
   :hook
   ((flycheck-mode . flycheck-mmark-setup)))
+
+(use-package flycheck-lilypond
+  :ensure t)
 
 (use-package flyspell
   :preface
@@ -796,7 +800,8 @@ Useful when doing screen-sharing."
    ("Q" . mk-sort-lines)
    ("X" . mk-open-default-dir))
   :hook
-  ((compilation-mode . modalka-mode)
+  ((LilyPond-mode . modalka-mode)
+   (compilation-mode . modalka-mode)
    (conf-toml-mode . modalka-mode)
    (conf-unix-mode . modalka-mode)
    (diff-mode . modalka-mode)
@@ -820,6 +825,12 @@ Useful when doing screen-sharing."
   :demand
   :config
   (mk-highlight-line-mode 1))
+
+(use-package lilypond-mode
+  :ensure t
+  :mode
+  ("\\.ly\\'"  . LilyPond-mode)
+  ("\\.ily\\'" . LilyPond-mode))
 
 (use-package mk-text
   :demand

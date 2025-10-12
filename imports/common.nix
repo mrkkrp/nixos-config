@@ -161,7 +161,7 @@
       hunspellDicts.ru-ru
       inotify-tools
       kdePackages.okular
-      musescore
+      lilypond
       nixpkgs-fmt
       nvd
       openconnect
