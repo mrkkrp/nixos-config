@@ -359,7 +359,7 @@ exit."
   :bind
   ("<next> f l" . flycheck-list-errors)
   :hook
-  ((LilyPond-mode . flycheck-mode)
+  ((lilypond-mode . flycheck-mode)
    (gitignore-mode . flycheck-mode)
    (markdown-mode . flycheck-mode)
    (prog-mode . flycheck-mode)
@@ -829,6 +829,13 @@ Useful when doing screen-sharing."
   :mode
   ("\\.ly\\'"  . lilypond-mode)
   ("\\.ily\\'" . lilypond-mode)
+  :bind
+  (:map
+   lilypond-mode-map
+   (")" . self-insert-command)
+   (">" . self-insert-command)
+   ("}" . self-insert-command)
+   ("]" . self-insert-command))
   :hook
   ((lilypond-mode . mk-lilypond-mode-hook)))
 
