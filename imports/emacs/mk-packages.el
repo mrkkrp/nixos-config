@@ -800,7 +800,7 @@ Useful when doing screen-sharing."
    ("Q" . mk-sort-lines)
    ("X" . mk-open-default-dir))
   :hook
-  ((LilyPond-mode . modalka-mode)
+  ((lilypond-mode . modalka-mode)
    (compilation-mode . modalka-mode)
    (conf-toml-mode . modalka-mode)
    (conf-unix-mode . modalka-mode)
@@ -823,9 +823,14 @@ Useful when doing screen-sharing."
 
 (use-package lilypond-mode
   :ensure t
+  :preface
+  (defun mk-lilypond-mode-hook ()
+    (setq-local tab-width 2))
   :mode
-  ("\\.ly\\'"  . LilyPond-mode)
-  ("\\.ily\\'" . LilyPond-mode))
+  ("\\.ly\\'"  . lilypond-mode)
+  ("\\.ily\\'" . lilypond-mode)
+  :hook
+  ((lilypond-mode . mk-lilypond-mode-hook)))
 
 (use-package mk-text
   :demand
