@@ -33,7 +33,7 @@ def create_left_prompt [] {
             | lines
             | where { |x| $x | str starts-with '* ' }
             | each { |x| str substring 2.. }
-            | get --ignore-errors 0
+            | get --optional 0
             | default "master" )
         $" (ansi reset)\(($branch_name)\)"
     }
