@@ -169,7 +169,7 @@
       ormolu.packages.x86_64-linux.default
       proselint
       pwsafe
-      python3Full
+      python3
       qbittorrent
       ripgrep
       shellcheck
