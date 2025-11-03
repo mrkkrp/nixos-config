@@ -31,7 +31,7 @@ def create_left_prompt [] {
     } else {
         let branch_name = ($git_branch_raw.stdout
             | lines
-            | filter { |x| $x | str starts-with '* ' }
+            | where { |x| $x | str starts-with '* ' }
             | each { |x| str substring 2.. }
             | get --ignore-errors 0
             | default "master" )
