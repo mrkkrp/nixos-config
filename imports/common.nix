@@ -24,6 +24,7 @@
     gc.automatic = false;
     registry.nixpkgs.flake = nixpkgs;
     nixPath = [ "nixpkgs=/etc/channels/nixpkgs" ];
+    package = pkgs.nixVersions.latest;
   };
 
   nixpkgs = {
