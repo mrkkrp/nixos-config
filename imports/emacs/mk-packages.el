@@ -466,6 +466,9 @@ Useful when doing screen-sharing."
   :bind
   ("<next> g g" . git-link))
 
+(use-package go-mode
+  :mode "\\.go$")
+
 (use-package ispell
   :after (fix-input)
   :init

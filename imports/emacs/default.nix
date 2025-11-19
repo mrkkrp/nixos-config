@@ -29,6 +29,7 @@ let
       flycheck-mmark
       git-link
       git-modes
+      go-mode
       haskell-mode
       highlight-symbol
       hl-todo
