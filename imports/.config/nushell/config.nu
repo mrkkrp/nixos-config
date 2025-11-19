@@ -370,7 +370,7 @@ def --env "p gh" [
 # Rebuild the system from the current configuration and switch to it.
 def "nixos switch" [] {
     cd $"($env.HOME)/projects/mrkkrp/nixos-config"
-    nixos-rebuild --use-remote-sudo switch --flake $'.#(hostname)'
+    nixos-rebuild --sudo switch --flake $'.#(hostname)'
     nixos diff
 }
 
