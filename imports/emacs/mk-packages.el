@@ -1130,6 +1130,17 @@ input method."
   :config
   (display-time-mode 1))
 
+(use-package tramp
+  :init
+  (setq tramp-remote-path
+        '("/run/wrappers/bin"
+          "/home/mkarpov/.nix-profile/bin"
+          "/nix/profile/bin"
+          "/home/mkarpov/.local/state/nix/profile/bin"
+          "/etc/profiles/per-user/mkarpov/bin"
+          "/nix/var/nix/profiles/default/bin"
+          "/run/current-system/sw/bin")))
+
 (use-package tramp-sh
   :init
   (setq tramp-use-connection-share nil))
