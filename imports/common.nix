@@ -62,6 +62,10 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+    settings = {
+      default-cache-ttl = 8 * 3600;
+      max-cache-ttl = 8 * 3600;
+    };
   };
 
   environment = {
