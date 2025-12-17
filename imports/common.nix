@@ -119,7 +119,14 @@
     etc."channels/nixpkgs".source = nixpkgs.outPath;
   };
 
-  security.sudo.enable = true;
+  security = {
+    sudo.enable = true;
+    pam.services = {
+      login.enableKwallet = true;
+      sddm.enableKwallet = true;
+    };
+  };
+
   users.mutableUsers = false;
   users.defaultUserShell = pkgs.bash;
 
