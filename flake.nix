@@ -35,6 +35,7 @@
           ./imports/printer.nix
           ./imports/iohk-binary-cache.nix
           ./imports/for-client.nix
+          ./imports/steam.nix
         ];
       };
     };
