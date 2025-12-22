@@ -1,7 +1,7 @@
 [4b580581-a8fe-4933-9b99-d3c040478c63]
 Description=Application settings for Emacs
 clientmachine=localhost
-screen=1
+screen=2
 screenrule=3
 wmclass=emacs Emacs
 wmclasscomplete=true
