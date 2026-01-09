@@ -18,6 +18,7 @@
 
   nix = {
     settings.auto-optimise-store = true;
+    settings.trusted-users = ["mark"];
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
