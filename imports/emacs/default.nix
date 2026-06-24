@@ -46,6 +46,7 @@ let
       nix-mode
       nushell-mode
       proof-general
+      protobuf-mode
       rainbow-delimiters
       rich-minority
       ripgrep

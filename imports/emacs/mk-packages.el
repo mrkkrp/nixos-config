@@ -941,6 +941,9 @@ input method."
    ("M-n" . mk-transpose-line-down)
    ("M-p" . mk-transpose-line-up)))
 
+(use-package protobuf-mode
+  :mode "\\.proto$")
+
 (use-package python
   :commands (python-mode)
   :mode
