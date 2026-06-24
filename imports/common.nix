@@ -24,7 +24,11 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    gc.automatic = false;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
     registry.nixpkgs.flake = nixpkgs;
     nixPath = [ "nixpkgs=/etc/channels/nixpkgs" ];
     package = pkgs.nixVersions.latest;
