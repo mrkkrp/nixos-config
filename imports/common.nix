@@ -17,8 +17,10 @@
   };
 
   nix = {
-    settings.auto-optimise-store = true;
-    settings.trusted-users = ["mark"];
+    settings = {
+      auto-optimise-store = true;
+      trusted-users = ["mark"];
+    };
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
