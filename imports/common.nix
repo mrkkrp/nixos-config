@@ -19,7 +19,7 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      trusted-users = ["mark"];
+      trusted-users = [ "mark" ];
     };
     extraOptions = ''
       experimental-features = nix-command flakes
