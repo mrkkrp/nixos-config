@@ -145,6 +145,7 @@
       "audio"
       "docker"
       "jackaudio"
+      "libvirtd"
       "networkmanager"
       "video"
       "wheel"

@@ -2,5 +2,7 @@
 { config, pkgs, ... }:
 {
   users.users.mark.packages = with pkgs; [
+    minikube
   ];
+  virtualisation.libvirtd.enable = true;
 }
