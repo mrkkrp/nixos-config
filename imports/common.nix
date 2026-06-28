@@ -112,7 +112,6 @@
       nano
       networkmanager
       nginxMainline
-      ntfs3g
       nushell
       patch
       sudo
@@ -170,7 +169,6 @@
       fd
       fx
       ghc
-      gimp
       git
       git-lfs
       google-chrome
@@ -183,7 +181,6 @@
       hunspellDicts.ru-ru
       inotify-tools
       kdePackages.okular
-      lilypond-unstable-with-fonts
       nixpkgs-fmt
       nvd
       openconnect
