@@ -31,7 +31,6 @@ let
       git-modes
       go-mode
       haskell-mode
-      highlight-symbol
       hl-todo
       js2-mode
       kill-or-bury-alive
@@ -41,6 +40,7 @@ let
       magit
       marginalia
       markdown-mode
+      minions
       modalka
       mustache-mode
       nix-mode
@@ -49,11 +49,10 @@ let
       proof-general
       protobuf-mode
       rainbow-delimiters
-      rich-minority
-      ripgrep
       rust-mode
       smart-mode-line
       smartparens
+      symbol-overlay
       use-package
       vertico
       visual-regexp

@@ -560,18 +560,6 @@ Useful when doing screen-sharing."
   ("<next> d k" . describe-keymap)
   ("<next> d v" . describe-variable))
 
-(use-package highlight-symbol
-  :commands
-  (highlight-symbol-remove-all
-   highlight-symbol-next
-   highlight-symbol-prev
-   highlight-symbol)
-  :bind
-  ("<f9>" . highlight-symbol)
-  ("<f10>" . highlight-symbol-next)
-  ("<f11>" . highlight-symbol-prev)
-  ("M-<f9>" . highlight-symbol-remove-all))
-
 (use-package hl-line
   :bind
   ("<next> h l" . hl-line-mode))
@@ -670,6 +658,14 @@ Useful when doing screen-sharing."
    minibuffer-default-prompt-format " [%s]")
   :config
   (minibuffer-electric-default-mode 1))
+
+(use-package minions
+  :demand
+  :init
+  (setq
+   minions-prominent-modes '(modalka-mode))
+  :config
+  (minions-mode 1))
 
 (use-package modalka
   :after (mk-text mk-utils zygospore)
@@ -964,41 +960,33 @@ input method."
   ("<next> r c" . copy-to-register)
   ("<next> r i" . insert-register))
 
-(use-package rich-minority
-  :init
-  (setq
-   rm-whitelist "^↑$"
-   rm-text-properties '(("^↑$" 'face 'font-lock-doc-face)))
-  :config
-  (rich-minority-mode 1))
-
-(use-package ripgrep
-  :demand
-  :commands (ripgrep-regexp)
+(use-package mk-ripgrep
+  :no-require
   :preface
   (defun mk-ripgrep-types ()
     "Return a list of all file types that ripgrep supports."
     (cons
      "all"
      (with-temp-buffer
-       (call-process
-        ripgrep-executable nil (current-buffer) nil
-        "--type-list")
+       (call-process "rg" nil (current-buffer) nil "--type-list")
        (split-string (buffer-string) "\n" t " "))))
 
-  (defun mk-ripgrep (regexp type)
-    "Grep for REGEXP in file TYPE in current directory recursively."
+  (defun mk-ripgrep (type)
+    "Grep with ‘consult-ripgrep’ in file TYPE in current directory.
+
+The search is performed recursively, including hidden files."
     (interactive
      (list
-      (read-string "Grep: ")
       (completing-read "Type: " (mk-ripgrep-types) nil t nil nil "all")))
-    (let ((parsed-type (car (split-string type ":"))))
-      (ripgrep-regexp regexp
-                      default-directory
-                      (cons
-                       "--hidden"
-                       (unless (string-equal parsed-type "all")
-                         (list "--type" parsed-type))))))
+    (require 'consult)
+    (let* ((parsed-type (car (split-string type ":")))
+           (consult-ripgrep-args
+            (concat
+             consult-ripgrep-args
+             " --hidden"
+             (unless (string-equal parsed-type "all")
+               (concat " --type " parsed-type)))))
+      (consult-ripgrep default-directory)))
   :bind
   ("<next> g r" . mk-ripgrep))
 
@@ -1100,6 +1088,18 @@ input method."
    ("M-h" . sp-select-next-thing)
    ("M-k" . sp-kill-hybrid-sexp)
    ("M-t" . sp-add-to-previous-sexp)))
+
+(use-package symbol-overlay
+  :commands
+  (symbol-overlay-put
+   symbol-overlay-jump-next
+   symbol-overlay-jump-prev
+   symbol-overlay-remove-all)
+  :bind
+  ("<f9>" . symbol-overlay-put)
+  ("<f10>" . symbol-overlay-jump-next)
+  ("<f11>" . symbol-overlay-jump-prev)
+  ("M-<f9>" . symbol-overlay-remove-all))
 
 (use-package tabify
   :preface
