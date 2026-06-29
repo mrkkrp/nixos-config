@@ -50,7 +50,6 @@ let
       smartparens
       symbol-overlay
       treesit-grammars.with-all-grammars
-      use-package
       vertico
       visual-replace
       whole-line-or-region
