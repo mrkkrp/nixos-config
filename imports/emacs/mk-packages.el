@@ -1099,6 +1099,8 @@ The search is performed recursively, including hidden files."
    symbol-overlay-jump-next
    symbol-overlay-jump-prev
    symbol-overlay-remove-all)
+  :config
+  (setq symbol-overlay-map (make-sparse-keymap))
   :bind
   ("<f9>" . symbol-overlay-put)
   ("<f10>" . symbol-overlay-jump-next)
