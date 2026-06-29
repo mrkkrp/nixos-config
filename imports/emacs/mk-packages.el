@@ -120,10 +120,10 @@
   :bind
   ("<next> DEL" . char-menu))
 
-(use-package counsel
-  :commands (counsel-M-x)
+(use-package consult
+  :commands (consult-line)
   :bind
-  ("M-x" . counsel-M-x))
+  ("C-s" . consult-line))
 
 (use-package custom
   :preface
@@ -585,32 +585,6 @@ Useful when doing screen-sharing."
    (proof-mode . hl-todo-mode)
    (yaml-mode . hl-todo-mode)))
 
-(use-package ivy
-  :init
-  (setq-default
-   ivy-use-selectable-prompt t)
-  :preface
-  (defun mk-anti-ivy-advice (func &rest args)
-    "Temporarily disable Ivy and call function FUNC with arguments ARGS."
-    (interactive)
-    (let ((completing-read-function #'completing-read-default))
-      (if (called-interactively-p 'any)
-          (call-interactively func)
-        (apply func args))))
-  :config
-  (advice-add 'dired-create-directory :around 'mk-anti-ivy-advice)
-  (dolist (buffer '("^\\*Backtrace\\*$"
-                    "^\\*Compile-Log\\*$"
-                    "^\\*.+Completions\\*$"
-                    "^\\*Flycheck error messages\\*$"
-                    "^\\*Help\\*$"
-                    "^\\*Ibuffer\\*$"
-                    "^\\*Messages\\*$"
-                    "^\\*inferior-lisp\\*$"
-                    "^\\*scratch\\*$"))
-    (add-to-list 'ivy-ignore-buffers buffer))
-  (ivy-mode 1))
-
 (use-package js2-mode
   :after (mk-text)
   :mode "\\.js$"
@@ -672,6 +646,11 @@ Useful when doing screen-sharing."
    :map
    magit-mode-map
    ("I" . zygospore-toggle-delete-other-windows)))
+
+(use-package marginalia
+  :demand
+  :config
+  (marginalia-mode 1))
 
 (use-package markdown-mode
   :init
@@ -912,6 +891,13 @@ input method."
 (use-package nix-mode
   :mode "\\.nix$")
 
+(use-package orderless
+  :demand
+  :init
+  (setq
+   completion-styles '(orderless basic)
+   completion-category-overrides '((file (styles basic partial-completion)))))
+
 (use-package package
   :bind
   ("<next> p f" . package-install-file)
@@ -1115,10 +1101,6 @@ input method."
    ("M-k" . sp-kill-hybrid-sexp)
    ("M-t" . sp-add-to-previous-sexp)))
 
-(use-package swiper
-  :bind
-  ("C-s" . swiper))
-
 (use-package tabify
   :preface
   (defun mk-untabify ()
@@ -1151,6 +1133,14 @@ input method."
 (use-package tramp-sh
   :init
   (setq tramp-use-connection-share nil))
+
+(use-package vertico
+  :demand
+  :init
+  (setq
+   vertico-cycle t)
+  :config
+  (vertico-mode 1))
 
 (use-package visual-regexp
   :bind

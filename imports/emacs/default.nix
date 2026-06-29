@@ -15,7 +15,7 @@ let
       avy
       avy-menu
       char-menu
-      counsel
+      consult
       cyphejor
       dockerfile-mode
       envrc
@@ -33,18 +33,19 @@ let
       haskell-mode
       highlight-symbol
       hl-todo
-      ivy
       js2-mode
       kill-or-bury-alive
       lsp-haskell
       lsp-mode
       lsp-ui
       magit
+      marginalia
       markdown-mode
       modalka
       mustache-mode
       nix-mode
       nushell-mode
+      orderless
       proof-general
       protobuf-mode
       rainbow-delimiters
@@ -53,8 +54,8 @@ let
       rust-mode
       smart-mode-line
       smartparens
-      swiper
       use-package
+      vertico
       visual-regexp
       whole-line-or-region
       yaml-mode
