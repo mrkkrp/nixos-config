@@ -17,7 +17,6 @@ let
       char-menu
       consult
       cyphejor
-      dockerfile-mode
       envrc
       f
       fd-dired
@@ -29,10 +28,8 @@ let
       flycheck-mmark
       git-link
       git-modes
-      go-mode
       haskell-mode
       hl-todo
-      js2-mode
       kill-or-bury-alive
       lsp-haskell
       lsp-mode
@@ -43,21 +40,20 @@ let
       minions
       modalka
       mustache-mode
-      nix-mode
+      nix-ts-mode
       nushell-mode
       orderless
       proof-general
       protobuf-mode
       rainbow-delimiters
-      rust-mode
       smart-mode-line
       smartparens
       symbol-overlay
+      treesit-grammars.with-all-grammars
       use-package
       vertico
-      visual-regexp
+      visual-replace
       whole-line-or-region
-      yaml-mode
       zenburn-theme
       ztree
       zygospore

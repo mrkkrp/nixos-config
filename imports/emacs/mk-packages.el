@@ -217,6 +217,9 @@
    dired-clean-confirm-killing-deleted-buffers nil
    dired-clean-up-buffers-too t))
 
+(use-package dockerfile-ts-mode
+  :mode "\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'")
+
 (use-package ediff
   :init
   (setq-default
@@ -364,7 +367,7 @@ exit."
    (markdown-mode . flycheck-mode)
    (prog-mode . flycheck-mode)
    (proof-mode . flycheck-mode)
-   (yaml-mode . flycheck-mode))
+   (yaml-ts-mode . flycheck-mode))
   :custom-face
   (flycheck-fringe-error ((t (:background "#6C3333" :weight bold)))))
 
@@ -420,7 +423,7 @@ move the point."
    (prog-mode . flyspell-prog-mode)
    (proof-mode . flyspell-prog-mode)
    (text-mode . flyspell-mode)
-   (yaml-mode . flyspell-prog-mode)))
+   (yaml-ts-mode . flyspell-prog-mode)))
 
 (use-package frame
   :preface
@@ -466,7 +469,7 @@ Useful when doing screen-sharing."
   :bind
   ("<next> g g" . git-link))
 
-(use-package go-mode
+(use-package go-ts-mode
   :mode "\\.go$")
 
 (use-package ispell
@@ -571,14 +574,14 @@ Useful when doing screen-sharing."
    (markdown-mode . hl-todo-mode)
    (prog-mode . hl-todo-mode)
    (proof-mode . hl-todo-mode)
-   (yaml-mode . hl-todo-mode)))
+   (yaml-ts-mode . hl-todo-mode)))
 
-(use-package js2-mode
+(use-package js
   :after (mk-text)
-  :mode "\\.js$"
+  :mode ("\\.js$" . js-ts-mode)
   :bind
   (:map
-   js2-mode-map
+   js-ts-mode-map
    ("M-j" . mk-join-lines)))
 
 (use-package kill-or-bury-alive
@@ -791,7 +794,7 @@ Useful when doing screen-sharing."
    (prog-mode . modalka-mode)
    (proof-mode . modalka-mode)
    (text-mode . mk-modalka-mode-no-git-commit)
-   (yaml-mode . modalka-mode)
+   (yaml-ts-mode . modalka-mode)
    (ztree-mode . modalka-mode)))
 
 (use-package mk-highlight-line
@@ -884,7 +887,7 @@ input method."
   :config
   (mouse-wheel-mode 0))
 
-(use-package nix-mode
+(use-package nix-ts-mode
   :mode "\\.nix$")
 
 (use-package orderless
@@ -990,9 +993,10 @@ The search is performed recursively, including hidden files."
   :bind
   ("<next> g r" . mk-ripgrep))
 
-(use-package rust-mode
+(use-package rust-ts-mode
+  :mode "\\.rs$"
   :hook
-  ((rust-mode . lsp-deferred)))
+  ((rust-ts-mode . lsp-deferred)))
 
 (use-package scroll-bar
   :demand
@@ -1046,7 +1050,7 @@ The search is performed recursively, including hidden files."
    (prog-mode . mk-auto-fill-mode)
    (proof-mode . mk-auto-fill-mode)
    (text-mode . auto-fill-mode)
-   (yaml-mode . mk-auto-fill-mode)))
+   (yaml-ts-mode . mk-auto-fill-mode)))
 
 (use-package smart-mode-line
   :init
@@ -1142,9 +1146,10 @@ The search is performed recursively, including hidden files."
   :config
   (vertico-mode 1))
 
-(use-package visual-regexp
+(use-package visual-replace
+  :commands (visual-replace)
   :bind
-  ("<next> q q" . vr/query-replace))
+  ("<next> q q" . visual-replace))
 
 (use-package warnings
   :init
@@ -1173,7 +1178,7 @@ The search is performed recursively, including hidden files."
    (prog-mode . whitespace-mode)
    (proof-mode . whitespace-mode)
    (text-mode . whitespace-mode)
-   (yaml-mode . whitespace-mode)))
+   (yaml-ts-mode . whitespace-mode)))
 
 (use-package whole-line-or-region
   :config
@@ -1190,6 +1195,9 @@ The search is performed recursively, including hidden files."
   (setq
    xref-after-jump-hook (list #'recenter)
    xref-after-return-hook nil))
+
+(use-package yaml-ts-mode
+  :mode "\\.ya?ml\\'")
 
 (use-package zenburn-theme
   :config
