@@ -1075,9 +1075,13 @@ input method."
    (yaml-mode . mk-auto-fill-mode)))
 
 (use-package smart-mode-line
+  :init
+  (setq
+   sml/mode-width nil
+   sml/shorten-modes nil
+   sml/no-confirm-load-theme t)
   :config
-  (let ((sml/no-confirm-load-theme t))
-    (sml/setup)))
+  (sml/setup))
 
 (use-package smartparens
   :demand
