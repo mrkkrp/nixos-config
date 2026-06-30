@@ -1149,6 +1149,8 @@ The search is performed recursively, including hidden files."
   :demand
   :init
   (setq
+   read-buffer-completion-ignore-case t
+   read-file-name-completion-ignore-case t
    vertico-cycle t)
   :config
   (vertico-mode 1))
