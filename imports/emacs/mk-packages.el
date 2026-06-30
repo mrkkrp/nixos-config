@@ -914,6 +914,10 @@ input method."
   :config
   (show-paren-mode 1))
 
+(use-package prescient
+  :config
+  (prescient-persist-mode 1))
+
 (use-package proof-general
   :after (proof-script proof-useropts)
   :init
@@ -1148,6 +1152,17 @@ The search is performed recursively, including hidden files."
    vertico-cycle t)
   :config
   (vertico-mode 1))
+
+(use-package vertico-prescient
+  :after (prescient vertico)
+  :demand
+  :init
+  (setq
+   ;; Keep orderless for filtering; use prescient only for sorting.
+   vertico-prescient-enable-filtering nil
+   vertico-prescient-enable-sorting t)
+  :config
+  (vertico-prescient-mode 1))
 
 (use-package visual-replace
   :commands (visual-replace)

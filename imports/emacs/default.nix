@@ -43,6 +43,7 @@ let
       nix-ts-mode
       nushell-mode
       orderless
+      prescient
       proof-general
       protobuf-mode
       rainbow-delimiters
@@ -51,6 +52,7 @@ let
       symbol-overlay
       treesit-grammars.with-all-grammars
       vertico
+      vertico-prescient
       visual-replace
       whole-line-or-region
       zenburn-theme
