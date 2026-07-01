@@ -992,7 +992,7 @@ The search is performed recursively, including hidden files."
            (consult-ripgrep-args
             (concat
              consult-ripgrep-args
-             " --hidden"
+             " --hidden --glob !.git/"
              (unless (string-equal parsed-type "all")
                (concat " --type " parsed-type)))))
       (consult-ripgrep default-directory)))
