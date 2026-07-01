@@ -17,6 +17,8 @@ let
       char-menu
       consult
       cyphejor
+      embark
+      embark-consult
       envrc
       f
       fd-dired

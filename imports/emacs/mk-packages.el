@@ -256,6 +256,18 @@
   ((emacs-lisp-mode . mk-set-sentence-end-double-space)
    (lisp-interaction-mode . eldoc-mode)))
 
+(use-package embark
+  :commands (embark-export)
+  :bind
+  (:map minibuffer-local-map
+        ("<next>" . nil)
+        ("<next> e x" . embark-export)))
+
+(use-package embark-consult
+  :after (embark consult)
+  :hook
+  ((embark-collect-mode . consult-preview-at-point-mode)))
+
 (use-package envrc
   :after (lsp-mode)
   :init (envrc-global-mode))
