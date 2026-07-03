@@ -576,7 +576,6 @@ Useful when doing screen-sharing."
   ("<next> d v" . describe-variable))
 
 (use-package hl-line
-  :demand t
   :bind
   ("<next> h l" . hl-line-mode))
 
@@ -1233,12 +1232,9 @@ The search is performed recursively, including hidden files."
   :mode "\\.ya?ml\\'")
 
 (use-package zenburn-theme
-  :after (hl-line)
   :config
   (when window-system
-    (load-theme 'zenburn t)
-    (zenburn-with-color-variables
-      (set-face-attribute 'hl-line nil :background zenburn-bg-1))))
+    (load-theme 'zenburn t)))
 
 (use-package ztree
   :after (dired)
