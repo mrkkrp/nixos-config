@@ -18,9 +18,13 @@
       owner = "tweag";
       repo = "ormolu";
     };
+    vcmi = {
+      url = "path:/home/mark/projects/vcmi/vcmi?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, ormolu }@attrs: {
+  outputs = { self, nixpkgs, nixos-hardware, ormolu, vcmi }@attrs: {
     nixosConfigurations = {
       pad = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -36,6 +40,7 @@
           ./imports/iohk-binary-cache.nix
           ./imports/for-client.nix
           ./imports/steam.nix
+          ./imports/vcmi.nix
         ];
       };
     };

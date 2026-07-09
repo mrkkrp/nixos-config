@@ -196,7 +196,6 @@
       shutter
       telegram-desktop
       tmate
-      vcmi
       vlc
       wezterm
       wmctrl
