@@ -169,6 +169,7 @@
       docker-compose
       fd
       fx
+      gh
       ghc
       git
       git-lfs
