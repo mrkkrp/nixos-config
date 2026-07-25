@@ -220,6 +220,20 @@
 (use-package dockerfile-ts-mode
   :mode "\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'")
 
+(use-package dumb-jump
+  :preface
+
+  (defun mk-xref-show-first (fetcher alist)
+    "Jump straight to the first xref candidate from FETCHER.
+Ignore ALIST and never show the candidate buffer."
+    (let ((xrefs (funcall fetcher)))
+      (xref-pop-to-location (car xrefs)
+                            (assoc-default 'display-action alist))))
+
+  :init
+  (setq xref-show-definitions-function #'mk-xref-show-first)
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate t))
+
 (use-package ediff
   :init
   (setq-default
@@ -1192,7 +1206,10 @@ The search is performed recursively, including hidden files."
   :init
   (setq
    xref-after-jump-hook (list #'recenter)
-   xref-after-return-hook nil))
+   xref-after-return-hook nil)
+  :bind
+  (("<next> ." . xref-find-definitions)
+   ("<next> ," . xref-go-back)))
 
 (use-package yaml-ts-mode
   :mode "\\.ya?ml\\'")

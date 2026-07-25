@@ -17,6 +17,7 @@ let
       char-menu
       consult
       cyphejor
+      dumb-jump
       embark
       embark-consult
       envrc
