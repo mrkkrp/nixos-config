@@ -269,7 +269,6 @@
   ((embark-collect-mode . consult-preview-at-point-mode)))
 
 (use-package envrc
-  :after (lsp-mode)
   :init (envrc-global-mode))
 
 (use-package files
@@ -532,7 +531,6 @@ Useful when doing screen-sharing."
    ("C-c r" . haskell-process-restart)))
 
 (use-package haskell-mode
-  :after (lsp-haskell)
   :init
   (setq
    haskell-process-load-or-reload-prompt t
@@ -559,8 +557,7 @@ Useful when doing screen-sharing."
    ("}" . nil)
    ("]" . nil))
   :hook
-  ((haskell-mode . lsp-deferred)
-   (haskell-mode . mk-haskell-mode-hook)))
+  ((haskell-mode . mk-haskell-mode-hook)))
 
 (use-package help
   :bind
@@ -601,35 +598,6 @@ Useful when doing screen-sharing."
   :bind
   ("<escape>" . kill-or-bury-alive)
   ("<next> a a" . kill-or-bury-alive-purge-buffers))
-
-(use-package lsp-haskell
-  :demand
-  :config
-  (setq
-   lsp-haskell-plugin-stan-global-on nil
-   lsp-haskell-server-path "haskell-language-server"))
-
-(use-package lsp-mode
-  :commands (lsp lsp-deferred)
-  :init
-  (setq
-   lsp-lens-enable nil
-   lsp-modeline-code-actions-enable nil))
-
-(use-package lsp-lens
-  :bind
-  (("<next> ' l" . lsp-lens-mode)))
-
-(use-package lsp-ui
-  :config
-  (setq
-   lsp-ui-doc-enable nil
-   lsp-ui-doc-show-with-mouse nil)
-  :bind
-  (("<next> ' '" . lsp-execute-code-action)
-   ("<next> ' d" . lsp-describe-thing-at-point)
-   ("<next> ' f" . lsp-format-buffer)
-   ("<next> ' s" . lsp-find-definition)))
 
 (use-package magit
   :after (zygospore)
@@ -1011,9 +979,7 @@ The search is performed recursively, including hidden files."
   ("<next> g r" . mk-ripgrep))
 
 (use-package rust-ts-mode
-  :mode "\\.rs$"
-  :hook
-  ((rust-ts-mode . lsp-deferred)))
+  :mode "\\.rs$")
 
 (use-package scroll-bar
   :demand

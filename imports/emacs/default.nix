@@ -33,9 +33,6 @@ let
       haskell-mode
       hl-todo
       kill-or-bury-alive
-      lsp-haskell
-      lsp-mode
-      lsp-ui
       magit
       marginalia
       markdown-mode
