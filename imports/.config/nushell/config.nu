@@ -395,11 +395,6 @@ def "git personal" [] {
     git config --unset user.email | complete | ignore
 }
 
-# Make the current git repository use my work email.
-def "git tweag" [] {
-    git config --local user.email "mark.karpov@tweag.io" | complete | ignore
-}
-
 # Print who git thinks I am.
 def "git whoami" [] {
     git config --get user.name
