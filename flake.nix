@@ -15,7 +15,7 @@
     };
     ormolu = {
       type = "github";
-      owner = "tweag";
+      owner = "mrkkrp";
       repo = "ormolu";
     };
   };
