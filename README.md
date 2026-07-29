@@ -93,8 +93,9 @@ bootstrapping:
 * Make sure that the system has `git` and a normal user.
 * Make sure to set `networking.networkmanager.enable = true`, otherwise you
   won't have WiFi when you boot into your new system.
-* Make sure to enable SDDM and Plasma (just uncomment the relevant lines in
-  the template).
+* Make sure to enable SDDM and Plasma. This config uses Plasma 6
+  (`services.desktopManager.plasma6.enable`) with `plasmax11` as the default
+  session; see `imports/common.nix` for the exact options.
 
 ## Installation
 
@@ -121,6 +122,12 @@ Now is the right time to do that. Be sure to set `600` mode for
 $ chmod 600 ~/.ssh/id_rsa
 ```
 
+Import your GPG keys as well:
+
+```console
+$ gpg --import secret-key.asc
+```
+
 ## The final rebuild
 
 Clone this repo:
@@ -138,16 +145,25 @@ following the existing examples.
 
 Build the system (execute from `~/projects/mrkkrp/nixos-config`):
 
-```consoule
-$ nixos-rebuild --use-remote-sudo switch --flake .#<hostname>
+```console
+$ nixos-rebuild --sudo switch --flake .#<hostname>
 ```
 
 Reboot.
 
 ## Update
 
-To update the system do:
+To rebuild and switch to the current configuration use the `nixos switch`
+custom Nushell command defined in this config (see
+`imports/.config/nushell/config.nu`). It `cd`s into this repo, runs the
+rebuild, and prints the diff:
 
 ```console
 $ nixos switch
+```
+
+Outside of that Nushell environment the equivalent is:
+
+```console
+$ nixos-rebuild --sudo switch --flake .#<hostname>
 ```
