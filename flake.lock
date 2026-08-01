@@ -141,19 +141,18 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "host": "gitlab.haskell.org",
         "lastModified": 1771125696,
         "narHash": "sha256-+90XoM7PUfgD7383ki/aHC0cLKS32XVnYgI672pegcY=",
-        "owner": "ghc",
+        "owner": "haskell-wasm",
         "repo": "ghc-wasm-meta",
         "rev": "4e1f900e9933966634bc2e29dbeb81d09ce36727",
-        "type": "gitlab"
+        "type": "github"
       },
       "original": {
-        "host": "gitlab.haskell.org",
-        "owner": "ghc",
+        "owner": "haskell-wasm",
         "repo": "ghc-wasm-meta",
-        "type": "gitlab"
+        "rev": "4e1f900e9933966634bc2e29dbeb81d09ce36727",
+        "type": "github"
       }
     },
     "gitignore": {
@@ -773,11 +772,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1785056199,
-        "narHash": "sha256-naJt5B/E1cAldUehYLTsis59w/77rgOXhVt4u2ra2ZQ=",
+        "lastModified": 1785588160,
+        "narHash": "sha256-3F7hL2MB+q5KlPMNsHzVo9AJ5LozjOS4fetSKdeeyzI=",
         "owner": "mrkkrp",
         "repo": "ormolu",
-        "rev": "b38abedf546ba5090b8aebd321bcb754b94f4dde",
+        "rev": "ce4872e173f9d2deba64587bbe0fbbf437a4941c",
         "type": "github"
       },
       "original": {
