@@ -885,6 +885,9 @@ input method."
 (use-package nix-ts-mode
   :mode "\\.nix$")
 
+(use-package nushell-ts-mode
+  :mode "\\.nu\\'")
+
 (use-package orderless
   :demand
   :init

@@ -1,6 +1,20 @@
 pkgs:
 
 let
+  # The nushell-ts-mode in nixpkgs is a stale MELPA snapshot (2023) whose
+  # font-lock queries are incompatible with the current tree-sitter-nu
+  # grammar, so build it from upstream instead.  Upstream tracks the modern
+  # grammar (fixes merged 2026-07-05).
+  nushell-ts-mode = epkgs: epkgs.trivialBuild {
+    pname = "nushell-ts-mode";
+    version = "unstable-2026-07-05";
+    src = pkgs.fetchFromGitHub {
+      owner = "herbertjones";
+      repo = "nushell-ts-mode";
+      rev = "49915cd99d62b7e743bd8cf9023a5819479d166f";
+      hash = "sha256-QgBHTUsNOiGM9NojEPjBhORDttL8kGwgdvsqRYOVqa4=";
+    };
+  };
   mkConfig = epkgs: epkgs.trivialBuild {
     pname = "mk-config";
     version = "0.0.0.0";
@@ -41,7 +55,7 @@ let
       modalka
       mustache-mode
       nix-ts-mode
-      nushell-mode
+      (nushell-ts-mode epkgs)
       orderless
       prescient
       proof-general
