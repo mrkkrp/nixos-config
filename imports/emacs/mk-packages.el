@@ -1125,6 +1125,11 @@ The search is performed recursively, including hidden files."
   :config
   (display-time-mode 1))
 
+(use-package typescript-ts-mode
+  :mode
+  (("\\.ts\\'" . typescript-ts-mode)
+   ("\\.tsx\\'" . tsx-ts-mode)))
+
 (use-package tramp
   :init
   (setq tramp-remote-path
