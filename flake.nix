@@ -38,6 +38,22 @@
           ./imports/steam.nix
         ];
       };
+      frame = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = attrs;
+        modules = [
+          ./devices/frame/configuration.nix
+          nixos-hardware.nixosModules.framework-16-amd-ai-300-series
+          ./imports/common.nix
+          ./imports/location-paris.nix
+          ./imports/nginx.nix
+          ./imports/pipewire.nix
+          ./imports/printer.nix
+          ./imports/binary-caches.nix
+          ./imports/for-client.nix
+          ./imports/steam.nix
+        ];
+      };
     };
   };
 }
