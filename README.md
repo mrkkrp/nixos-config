@@ -122,12 +122,6 @@ Now is the right time to do that. Be sure to set `600` mode for
 $ chmod 600 ~/.ssh/id_rsa
 ```
 
-Import your GPG keys as well:
-
-```console
-$ gpg --import secret-key.asc
-```
-
 ## The final rebuild
 
 Clone this repo:
