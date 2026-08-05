@@ -1,4 +1,7 @@
 { ... }:
+let
+  externalScreen = 1;
+in
 {
   programs.plasma = {
     enable = true;
@@ -45,6 +48,8 @@
       };
     };
 
+    krunner.position = "top";
+
     window-rules = [
       {
         description = "Application settings for Emacs";
@@ -53,14 +58,41 @@
           match-whole = true;
         };
         apply.screen = {
-          value = 2;
+          value = externalScreen;
           apply = "initially";
+        };
+      }
+      {
+        description = "KRunner always starts on the external screen";
+        match.window-class = {
+          value = "krunner krunner";
+          match-whole = true;
+        };
+        apply.screen = {
+          value = externalScreen;
+          apply = "force";
+        };
+      }
+      {
+        description = "Google Chrome account chooser starts on the external screen";
+        match.window-class = {
+          value = "Google-chrome";
+          match-whole = false;
+        };
+        match.title = {
+          value = "Google Chrome";
+          type = "exact";
+        };
+        match.window-types = [ "normal" ];
+        apply.screen = {
+          value = externalScreen;
+          apply = "force";
         };
       }
       {
         description = "Window settings for google-chrome";
         match.window-class = {
-          value = "google-chrome";
+          value = "Google-chrome";
           match-whole = false;
         };
         match.window-role = {
@@ -72,12 +104,8 @@
             value = true;
             apply = "force";
           };
-          position = {
-            value = "3840,0";
-            apply = "initially";
-          };
           screen = {
-            value = 2;
+            value = externalScreen;
             apply = "initially";
           };
         };
