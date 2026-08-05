@@ -619,6 +619,8 @@ Useful when doing screen-sharing."
   (setq
    magit-clone-set-remote.pushDefault t
    magit-diff-refine-hunk 'all)
+  :config
+  (oset (get 'magit-commit 'transient--prefix) default-value nil)
   :bind
   (("<next> m b" . magit-blame)
    ("<next> m c" . magit-clone)
