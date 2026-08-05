@@ -18,9 +18,16 @@
       owner = "mrkkrp";
       repo = "ormolu";
     };
+    home-manager = {
+      type = "github";
+      owner = "nix-community";
+      repo = "home-manager";
+      ref = "master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, ormolu }@attrs: {
+  outputs = { self, nixpkgs, nixos-hardware, ormolu, home-manager }@attrs: {
     nixosConfigurations = {
       pad = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

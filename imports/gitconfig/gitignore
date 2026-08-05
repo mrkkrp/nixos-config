@@ -1,8 +1,0 @@
-*.sw*
-.DS_Store
-.#*
-\#*#
-*~
-result
-result-*
-.flycheck_*

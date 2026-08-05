@@ -1,9 +1,19 @@
 # These are the options which are shared between all configurations/devices.
-{ config, pkgs, nixpkgs, ormolu, ... }:
+{ config, pkgs, nixpkgs, ormolu, home-manager, ... }:
 {
   imports = [
-    ./symlinks/activation-script.nix
+    home-manager.nixosModules.home-manager
   ];
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    # Lets home-manager take over dotfiles that are currently plain
+    # symlinks created by the old imports/symlinks mechanism, by renaming
+    # them out of the way instead of refusing to activate.
+    backupFileExtension = "backup";
+    users.mark = import ./home;
+  };
 
   networking = {
     firewall = {
@@ -37,9 +47,6 @@
     config = {
       allowUnfree = true;
     };
-    overlays = [
-      (import ./overlay.nix)
-    ];
   };
 
   services.chrony.enable = true;
@@ -202,18 +209,6 @@
       zoom-us
     ];
     shell = pkgs.nushell;
-
-    symlinks = {
-      ".config/kglobalshortcutsrc" = ./.config/kglobalshortcutsrc;
-      ".config/khotkeysrc" = ./.config/khotkeysrc;
-      ".config/kwinrulesrc" = ./.config/kwinrulesrc;
-      ".config/nushell/config.nu" = ./.config/nushell/config.nu;
-      ".config/nushell/env.nu" = ./.config/nushell/env.nu;
-      ".emacs.d/init.el" = ./emacs/init.el;
-      ".gitconfig" = pkgs.gitconfig;
-      ".nixpkgs/config.nix" = pkgs.nixconfig;
-      ".wezterm.lua" = ./.config/wezterm.lua;
-    };
   };
 
   services = {
