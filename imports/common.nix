@@ -1,8 +1,6 @@
 # These are the options which are shared between all configurations/devices.
 { config, pkgs, nixpkgs, ormolu, ... }:
 {
-  system.stateVersion = "19.09";
-
   imports = [
     ./symlinks/activation-script.nix
   ];
