@@ -57,9 +57,19 @@ in
           value = "emacs Emacs";
           match-whole = true;
         };
-        apply.screen = {
-          value = externalScreen;
-          apply = "initially";
+        apply = {
+          screen = {
+            value = externalScreen;
+            apply = "initially";
+          };
+          # Emacs refreshes _NET_WM_USER_TIME whenever it merely receives focus,
+          # which makes KWin treat windows launched from KRunner as focus
+          # stealers and open them behind Emacs. Dropping focus protection to
+          # "None" lets those windows activate normally.
+          fpplevel = {
+            value = 0;
+            apply = "force";
+          };
         };
       }
       {
