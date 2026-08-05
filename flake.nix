@@ -25,9 +25,16 @@
       ref = "master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    plasma-manager = {
+      type = "github";
+      owner = "nix-community";
+      repo = "plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, ormolu, home-manager }@attrs: {
+  outputs = { self, nixpkgs, nixos-hardware, ormolu, home-manager, plasma-manager }@attrs: {
     nixosConfigurations = {
       pad = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

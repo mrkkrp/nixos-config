@@ -1,5 +1,5 @@
 # These are the options which are shared between all configurations/devices.
-{ config, pkgs, nixpkgs, ormolu, home-manager, ... }:
+{ config, pkgs, nixpkgs, ormolu, home-manager, plasma-manager, ... }:
 {
   imports = [
     home-manager.nixosModules.home-manager
@@ -12,6 +12,9 @@
     # symlinks created by the old imports/symlinks mechanism, by renaming
     # them out of the way instead of refusing to activate.
     backupFileExtension = "backup";
+    sharedModules = [
+      plasma-manager.homeModules.plasma-manager
+    ];
     users.mark = import ./home;
   };
 
@@ -220,11 +223,6 @@
         sessionCommands = ''
           export PATH=$HOME/.local/bin:$PATH
           export PATH=$HOME/.cabal/bin:$PATH
-          kwriteconfig5 --file $HOME/.config/kaccessrc --group Keyboard --key StickyKeys --type bool true
-          kwriteconfig5 --file $HOME/.config/kcminputrc --group Keyboard --key RepeatDelay 600
-          kwriteconfig5 --file $HOME/.config/kcminputrc --group Keyboard --key RepeatRate 50
-          kwriteconfig5 --file $HOME/.config/kxkbrc --group Layout --key Options "terminate:ctrl_alt_bksp,compose:sclk"
-          kwriteconfig5 --file $HOME/.config/kxkbrc --group Layout --key ResetOldOptions --type bool true
         '';
       };
     };

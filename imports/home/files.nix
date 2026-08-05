@@ -1,9 +1,6 @@
 { ... }:
 {
   xdg.configFile = {
-    "kglobalshortcutsrc".source = ../.config/kglobalshortcutsrc;
-    "khotkeysrc".source = ../.config/khotkeysrc;
-    "kwinrulesrc".source = ../.config/kwinrulesrc;
     "nushell/config.nu".source = ../.config/nushell/config.nu;
     "nushell/env.nu".source = ../.config/nushell/env.nu;
   };

@@ -8,5 +8,6 @@
   imports = [
     ./git.nix
     ./files.nix
+    ./plasma.nix
   ];
 }
