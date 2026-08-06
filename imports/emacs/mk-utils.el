@@ -72,17 +72,39 @@ specified directory."
   (find-file
    (f-expand project-name "~/projects")))
 
+(defconst mk-list-item-regexp
+  "^[[:blank:]]*\\(?:[-*+]\\|[[:digit:]]+[.)]\\)[[:blank:]]+"
+  "Regexp matching the bullet of a Markdown list item.
+
+The match ends where the content of the item begins.")
+
+(defun mk-goto-list-item-content ()
+  "Move point to the beginning of the content of the list item at point.
+
+Return NIL if there is no list item at point, in which case the
+point is left at the beginning of the current line."
+  (beginning-of-line)
+  ;; A continuation line of a multi-line item is indented and not blank, so
+  ;; when we see one the item itself starts on one of the preceding lines.
+  (while (and (not (looking-at mk-list-item-regexp))
+              (looking-at "[[:blank:]]+[^[:space:]]")
+              (not (bobp)))
+    (forward-line -1))
+  (when (looking-at mk-list-item-regexp)
+    (goto-char (match-end 0))))
+
 (defun mk-toggle-done ()
-  "Make the current line as done."
+  "Toggle the DONE marker of the list item at point.
+
+The marker is placed right after the bullet, so the command works
+for items at any nesting level and can be invoked from any line of
+a multi-line item."
   (interactive)
   (save-excursion
-    (beginning-of-line)
-    (forward-char 2)
-    (just-one-space)
-    (if (looking-at "DONE[[:blank:]]")
-        (progn
-          (delete-char 4)
-          (just-one-space))
+    (unless (mk-goto-list-item-content)
+      (user-error "Not inside a list item"))
+    (if (looking-at "DONE[[:blank:]]+")
+        (delete-region (point) (match-end 0))
       (insert "DONE "))))
 
 (defun mk-insert-day-template (&optional arg)
