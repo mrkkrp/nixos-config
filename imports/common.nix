@@ -152,7 +152,6 @@
     extraGroups = [
       "audio"
       "docker"
-      "jackaudio"
       "libvirtd"
       "networkmanager"
       "video"

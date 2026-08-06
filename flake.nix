@@ -48,7 +48,6 @@
           ./imports/pipewire.nix
           ./imports/printer.nix
           ./imports/binary-caches.nix
-          ./imports/for-client.nix
           ./imports/steam.nix
         ];
       };
@@ -64,7 +63,6 @@
           ./imports/pipewire.nix
           ./imports/printer.nix
           ./imports/binary-caches.nix
-          ./imports/for-client.nix
           ./imports/steam.nix
         ];
       };
