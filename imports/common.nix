@@ -68,6 +68,12 @@
       };
     };
   };
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
   services.redshift = {
     enable = true;
     temperature.day = 5500;
@@ -134,6 +140,7 @@
   };
 
   security = {
+    rtkit.enable = true;
     sudo.enable = true;
     pam.services = {
       login.enableKwallet = true;
