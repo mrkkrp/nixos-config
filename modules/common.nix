@@ -201,7 +201,6 @@
       git
       git-lfs
       google-chrome
-      haskellPackages.haskell-language-server
       haskellPackages.hlint
       haskellPackages.implicit-hie
       hunspell
