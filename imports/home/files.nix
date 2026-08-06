@@ -18,6 +18,5 @@ in
       fontSize = weztermFontSize;
     };
     ".emacs.d/init.el".source = ../emacs/init.el;
-    ".nixpkgs/config.nix".source = ../nixconfig/config.nix;
   };
 }
