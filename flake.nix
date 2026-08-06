@@ -57,7 +57,6 @@
           ./modules/common.nix
           ./modules/location-paris.nix
           ./modules/nginx.nix
-          ./modules/steam.nix
         ];
       };
     };
