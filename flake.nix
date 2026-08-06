@@ -45,8 +45,6 @@
           ./imports/common.nix
           ./imports/location-paris.nix
           ./imports/nginx.nix
-          ./imports/printer.nix
-          ./imports/binary-caches.nix
           ./imports/steam.nix
         ];
       };
@@ -59,8 +57,6 @@
           ./imports/common.nix
           ./imports/location-paris.nix
           ./imports/nginx.nix
-          ./imports/printer.nix
-          ./imports/binary-caches.nix
           ./imports/steam.nix
         ];
       };
