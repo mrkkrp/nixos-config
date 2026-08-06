@@ -95,7 +95,7 @@ bootstrapping:
   won't have WiFi when you boot into your new system.
 * Make sure to enable SDDM and Plasma. This config uses Plasma 6
   (`services.desktopManager.plasma6.enable`) with `plasmax11` as the default
-  session; see `imports/common.nix` for the exact options.
+  session; see `modules/common.nix` for the exact options.
 
 ## Installation
 
@@ -149,7 +149,7 @@ Reboot.
 
 To rebuild and switch to the current configuration use the `nixos switch`
 custom Nushell command defined in this config (see
-`imports/.config/nushell/config.nu`). It `cd`s into this repo, runs the
+`home/dotfiles/nushell/config.nu`). It `cd`s into this repo, runs the
 rebuild, and prints the diff:
 
 ```console

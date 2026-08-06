@@ -42,10 +42,10 @@
         modules = [
           ./devices/pad/configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
-          ./imports/common.nix
-          ./imports/location-paris.nix
-          ./imports/nginx.nix
-          ./imports/steam.nix
+          ./modules/common.nix
+          ./modules/location-paris.nix
+          ./modules/nginx.nix
+          ./modules/steam.nix
         ];
       };
       frame = nixpkgs.lib.nixosSystem {
@@ -54,10 +54,10 @@
         modules = [
           ./devices/frame/configuration.nix
           nixos-hardware.nixosModules.framework-16-amd-ai-300-series
-          ./imports/common.nix
-          ./imports/location-paris.nix
-          ./imports/nginx.nix
-          ./imports/steam.nix
+          ./modules/common.nix
+          ./modules/location-paris.nix
+          ./modules/nginx.nix
+          ./modules/steam.nix
         ];
       };
     };

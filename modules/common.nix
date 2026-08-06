@@ -15,7 +15,7 @@
     sharedModules = [
       plasma-manager.homeModules.plasma-manager
     ];
-    users.mark = import ./home;
+    users.mark = import ../home;
   };
 
   networking = {
@@ -179,8 +179,8 @@
     ];
     hashedPassword = "$6$rBDWl6/g.dgUp$l6fYq.V1jzQRzsY9o6hSqsB77XAWVjSTLmcrzbjW7zl9DvNeO2LfjOHEOzH7j9Mr1WFofl6FO3CkyITN/UzRp0";
     packages = with pkgs; [
-      (import ./emacs pkgs)
-      (import ./project-jumper pkgs)
+      (import ../pkgs/emacs pkgs)
+      (import ../pkgs/project-jumper pkgs)
       alsa-lib
       alsa-oss
       alsa-plugins

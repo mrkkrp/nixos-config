@@ -10,13 +10,13 @@ let
 in
 {
   xdg.configFile = {
-    "nushell/config.nu".source = ../.config/nushell/config.nu;
-    "nushell/env.nu".source = ../.config/nushell/env.nu;
+    "nushell/config.nu".source = ./dotfiles/nushell/config.nu;
+    "nushell/env.nu".source = ./dotfiles/nushell/env.nu;
   };
   home.file = {
-    ".wezterm.lua".source = pkgs.replaceVars ../.config/wezterm.lua {
+    ".wezterm.lua".source = pkgs.replaceVars ./dotfiles/wezterm.lua {
       fontSize = weztermFontSize;
     };
-    ".emacs.d/init.el".source = ../emacs/init.el;
+    ".emacs.d/init.el".source = ../pkgs/emacs/init.el;
   };
 }
