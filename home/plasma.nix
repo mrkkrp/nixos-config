@@ -132,6 +132,34 @@ in
         };
       }
       {
+        description = "darktable is always maximized and borderless";
+        match.window-class = {
+          value = "org.darktable.darktable Org.darktable.darktable";
+          match-whole = true;
+        };
+        # Excludes the transient "Welcome to darktable!" window, which is a
+        # normal window sharing darktable's window class.
+        match.title = {
+          value = "^darktable";
+          type = "regex";
+        };
+        match.window-types = [ "normal" ];
+        apply = {
+          noborder = {
+            value = true;
+            apply = "force";
+          };
+          maximizehoriz = {
+            value = true;
+            apply = "force";
+          };
+          maximizevert = {
+            value = true;
+            apply = "force";
+          };
+        };
+      }
+      {
         description = "pwsafe always starts on the external screen";
         match.window-class = {
           value = "pwsafe PasswordSafe";
