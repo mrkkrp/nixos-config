@@ -120,6 +120,28 @@ in
           };
         };
       }
+      {
+        description = "darktable always starts on the external screen";
+        match.window-class = {
+          value = "org.darktable.darktable Org.darktable.darktable";
+          match-whole = true;
+        };
+        apply.screen = {
+          value = externalScreen;
+          apply = "force";
+        };
+      }
+      {
+        description = "pwsafe always starts on the external screen";
+        match.window-class = {
+          value = "pwsafe PasswordSafe";
+          match-whole = true;
+        };
+        apply.screen = {
+          value = externalScreen;
+          apply = "force";
+        };
+      }
     ];
   };
 }
