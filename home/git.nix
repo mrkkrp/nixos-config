@@ -16,6 +16,7 @@
       "result"
       "result-*"
       ".flycheck_*"
+      ".claude/"
     ];
     settings = {
       user = {
