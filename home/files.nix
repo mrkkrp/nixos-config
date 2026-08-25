@@ -3,7 +3,6 @@
 let
   weztermFontSize = {
     frame = "32.0";
-    pad = "46.0";
   }.${osConfig.networking.hostName};
 in
 {
