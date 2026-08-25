@@ -1,8 +1,6 @@
 { pkgs, osConfig, ... }:
 
 let
-  # The right WezTerm font size depends on the resolution of the primary
-  # screen, hence it is per-device.
   weztermFontSize = {
     frame = "32.0";
     pad = "46.0";

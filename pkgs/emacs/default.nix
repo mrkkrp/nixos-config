@@ -76,4 +76,4 @@ let
     ];
   };
 in
-pkgs.emacs30.pkgs.withPackages (epkgs: [ (mkConfig epkgs) ])
+pkgs.emacs30-pgtk.pkgs.withPackages (epkgs: [ (mkConfig epkgs) ])

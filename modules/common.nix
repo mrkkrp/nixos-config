@@ -85,12 +85,8 @@
   # The CUPS web interface is at http://localhost:631/.
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.hplip ];
-  services.redshift = {
-    enable = true;
-    temperature.day = 5500;
-    temperature.night = 3700;
-  };
   virtualisation.docker.enable = true;
+  programs.ssh.enableAskPassword = true;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
@@ -148,6 +144,9 @@
       zlib
     ];
     etc."channels/nixpkgs".source = nixpkgs.outPath;
+    sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+    };
   };
 
   security = {
@@ -179,6 +178,7 @@
     packages = with pkgs; [
       (import ../pkgs/emacs pkgs)
       (import ../pkgs/project-jumper pkgs)
+      (import ../pkgs/raise-or-run pkgs)
       alsa-lib
       alsa-oss
       alsa-plugins
@@ -207,6 +207,8 @@
       hunspellDicts.ru-ru
       inotify-tools
       kdePackages.okular
+      kdePackages.spectacle
+      kdotool
       nixpkgs-fmt
       nvd
       openconnect
@@ -217,13 +219,12 @@
       qbittorrent
       ripgrep
       shellcheck
-      shutter
       telegram-desktop
       tmate
       vcmi
       vlc
       wezterm
-      wmctrl
+      wl-clipboard
       zoom-us
     ];
     shell = pkgs.nushell;
@@ -231,20 +232,14 @@
 
   services = {
     xserver = {
-      enable = true;
-      dpi = null;
+      enable = false;
       xkb.layout = "us";
-      displayManager = {
-        sessionCommands = ''
-          export PATH=$HOME/.local/bin:$PATH
-          export PATH=$HOME/.cabal/bin:$PATH
-        '';
-      };
     };
     libinput.enable = true;
     displayManager = {
       sddm.enable = true;
-      defaultSession = "plasmax11";
+      sddm.wayland.enable = true;
+      defaultSession = "plasma";
     };
     desktopManager.plasma6.enable = true;
   };

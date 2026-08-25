@@ -338,7 +338,7 @@ def e [
     path: path # path to open
 ] {
     emacsclient --no-wait $path
-    wmctrl -a "660c03ad-0f61-438c-9342-957f73cd9b05"
+    kdotool search --name "660c03ad-0f61-438c-9342-957f73cd9b05" windowactivate
 }
 
 # Go to a project directory.

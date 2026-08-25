@@ -94,8 +94,8 @@ bootstrapping:
 * Make sure to set `networking.networkmanager.enable = true`, otherwise you
   won't have WiFi when you boot into your new system.
 * Make sure to enable SDDM and Plasma. This config uses Plasma 6
-  (`services.desktopManager.plasma6.enable`) with `plasmax11` as the default
-  session; see `modules/common.nix` for the exact options.
+  (`services.desktopManager.plasma6.enable`) with `plasma` (Wayland) as the
+  default session; see `modules/common.nix` for the exact options.
 
 ## Installation
 

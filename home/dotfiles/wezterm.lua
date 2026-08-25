@@ -1,5 +1,4 @@
 local wezterm = require 'wezterm'
-local mux = wezterm.mux
 local config = wezterm.config_builder()
 
 config.keys = {
@@ -46,17 +45,13 @@ config.window_padding = {
 }
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = false
-wezterm.on('gui-startup', function(cmd)
-  local args = {}
-  if cmd then
-    args = cmd.args
-  end
-  local tab, pane, window = mux.spawn_window {
-      args = args,
-      position = { x = 0, y = 0, origin = "MainScreen" },
-  }
-  window:gui_window():toggle_fullscreen()
-end)
+-- Fullscreen is forced by a KWin window rule rather than requested here.  A
+-- Wayland client only learns its size from the first xdg_surface.configure,
+-- so calling toggle_fullscreen() after the window exists costs an extra round
+-- trip and makes the terminal grid and the glyph atlas be built twice.  The
+-- old position argument is gone for a related reason: Wayland clients cannot
+-- place themselves, so it was silently ignored; the screen-placement KWin
+-- script does that now.
 wezterm.on('format-window-title', function(cmd)
   return "92b2708d-7a7a-41cf-ad6b-69503c4f95bd"
 end)
