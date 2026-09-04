@@ -4,7 +4,10 @@ pkgs:
 # is no such window.
 pkgs.writeShellApplication {
   name = "raise-or-run";
-  runtimeInputs = [ pkgs.kdotool ];
+  runtimeInputs = [
+    pkgs.kdotool
+    pkgs.systemd
+  ];
   text = ''
     if [ "$#" -lt 2 ]; then
       echo "usage: raise-or-run PATTERN PROGRAM [ARG...]" >&2
@@ -14,15 +17,23 @@ pkgs.writeShellApplication {
     pattern="$1"
     shift
 
-    # kdotool exits with 0 whether or not it found anything, so the output is
-    # the only thing we can go by.  PATTERN must not start with a dash, since
-    # kdotool would take it for an option.
-    mapfile -t windows < <(kdotool search "$pattern")
-
-    if [ "''${#windows[@]}" -gt 0 ]; then
-      exec kdotool windowactivate "''${windows[0]}"
-    else
-      exec "$@"
+    if [ -z "$(kdotool search "$pattern")" ]; then
+      unit="raise-or-run-$(systemd-escape -- "$(basename -- "$1")").service"
+      token=()
+      if [ -n "''${XDG_ACTIVATION_TOKEN:-}" ]; then
+        token=("--setenv=XDG_ACTIVATION_TOKEN=''${XDG_ACTIVATION_TOKEN}")
+      fi
+      if ! error=$(systemd-run --user --collect --quiet \
+                     "''${token[@]}" --unit="$unit" -- "$@" 2>&1); then
+        # A name that is already taken is the answer we were looking for and
+        # not worth reporting; anything else is a real failure.
+        if ! systemctl --user is-active --quiet -- "$unit"; then
+          echo "raise-or-run: $error" >&2
+          exit 1
+        fi
+      fi
     fi
+
+    exec kdotool search "$pattern" windowactivate %@
   '';
 }
