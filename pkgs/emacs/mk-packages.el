@@ -22,9 +22,10 @@
     "Open a visible link the browser."
     (interactive)
     (require 'org)
-    (let ((pt (avy-process (mapcar #'cdr (ace-link--org-collect)))))
-      (goto-char pt)
-      (browse-url-at-point)
+    (let* ((links (ace-link--org-collect))
+           (pt (avy-process (mapcar #'cdr links))))
+      (when (numberp pt)
+        (org-link-open-from-string (car (rassq pt links))))
       t))
   :config
   (ace-link-setup-default)

@@ -134,6 +134,15 @@ in
           value = true;
           apply = "force";
         };
+        # Handing a URL to a running Chrome does not bring it forward on
+        # Wayland: a client may only focus itself when it is given an
+        # activation token, and the likes of Emacs have none to pass along.
+        # Exempt Chrome from focus stealing prevention so that it can raise
+        # itself when it is asked to open something.
+        apply.fsplevel = {
+          value = 0;
+          apply = "force";
+        };
       }
       {
         description = "darktable is always maximized and borderless";
