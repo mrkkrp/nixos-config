@@ -31,12 +31,15 @@
     settings = {
       auto-optimise-store = true;
       substituters = [
-        "https://cache.nixos.org"
         "https://cache.iog.io"
+        "https://cache.nixos.org"
+        "https://cache.zw3rk.com"
       ];
       trusted-public-keys = [
         "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+        "loony-tools:pr9m4BkM/5/eSTZlkQyRt57Jz7OMBxNSUiMC4FkcNfk="
         "markkarpov-sites.cachix.org-1:tzrAG4NHl/VkbtjotbuQJ7kCSaq/dkzj2IaSUgxo4Gs="
+        "tilia.cachix.org-1:bxzzQCOu9D/Suuzll8oRj2RaOb37KVTsETMiTDMLiJ4="
       ];
       trusted-users = [ "mark" ];
     };
