@@ -27,9 +27,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    tilia = {
+      type = "github";
+      owner = "mrkkrp";
+      repo = "tilia";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, plasma-manager }@attrs: {
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, plasma-manager, tilia }@attrs: {
     nixosConfigurations = {
       frame = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

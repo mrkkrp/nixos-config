@@ -1,5 +1,5 @@
 # These are the options which are shared between all configurations/devices.
-{ config, pkgs, nixpkgs, home-manager, plasma-manager, ... }:
+{ config, pkgs, nixpkgs, home-manager, plasma-manager, tilia, ... }:
 {
   imports = [
     home-manager.nixosModules.home-manager
@@ -34,6 +34,7 @@
         "https://cache.iog.io"
         "https://cache.nixos.org"
         "https://cache.zw3rk.com"
+        "https://tilia.cachix.org"
       ];
       trusted-public-keys = [
         "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
@@ -182,6 +183,7 @@
       (import ../pkgs/emacs pkgs)
       (import ../pkgs/project-jumper pkgs)
       (import ../pkgs/raise-or-run pkgs)
+      tilia.packages.${pkgs.stdenv.hostPlatform.system}.default
       alsa-lib
       alsa-oss
       alsa-plugins
