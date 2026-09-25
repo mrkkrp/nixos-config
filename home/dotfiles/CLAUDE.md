@@ -27,3 +27,7 @@ After creating the work tree, switch the session into it with the
 `EnterWorktree` tool (passing its `path`) instead of running commands in it
 from the original checkout, so that the session's working directory, and
 hence the status line, names the work tree.
+
+## PRs
+
+Do not append “Generated with Claude Code” at the end.
