@@ -23,14 +23,28 @@ pkgs.writeShellApplication {
       if [ -n "''${XDG_ACTIVATION_TOKEN:-}" ]; then
         token=("--setenv=XDG_ACTIVATION_TOKEN=''${XDG_ACTIVATION_TOKEN}")
       fi
-      if ! error=$(systemd-run --user --collect --quiet \
-                     "''${token[@]}" --unit="$unit" -- "$@" 2>&1); then
+      launch() {
+        systemd-run --user --collect --quiet \
+          "''${token[@]}" --unit="$unit" -- "$@" 2>&1
+      }
+      fail() {
+        echo "raise-or-run: $1" >&2
+        exit 1
+      }
+      if ! error=$(launch "$@"); then
         # A name that is already taken is the answer we were looking for and
         # not worth reporting; anything else is a real failure.
-        if ! systemctl --user is-active --quiet -- "$unit"; then
-          echo "raise-or-run: $error" >&2
-          exit 1
-        fi
+        case "$(systemctl --user show --property=ActiveState --value -- "$unit")" in
+          active | activating) ;;
+          deactivating)
+            # The window is gone but leftover processes ignoring SIGTERM
+            # keep the name taken until the stop timeout expires.
+            systemctl --user kill --signal=SIGKILL -- "$unit" || true
+            systemctl --user stop -- "$unit" 2>/dev/null || true
+            error=$(launch "$@") || fail "$error"
+            ;;
+          *) fail "$error" ;;
+        esac
       fi
     fi
 
