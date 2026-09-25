@@ -224,7 +224,6 @@
       ripgrep
       shellcheck
       telegram-desktop
-      tmate
       vcmi
       vlc
       wezterm
