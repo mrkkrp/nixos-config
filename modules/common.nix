@@ -64,6 +64,8 @@
     };
   };
 
+  systemd.user.settings.Manager.DefaultOOMPolicy = "continue";
+
   services.chrony.enable = true;
   services.logrotate = {
     enable = true;
