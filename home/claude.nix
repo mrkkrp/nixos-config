@@ -15,6 +15,18 @@ let
     '';
     inherit (pkgs.claude-code) meta;
   };
+
+  # Shows the session's directory and branch, so that sessions in different
+  # work trees can be told apart.
+  statusline = pkgs.writeShellApplication {
+    name = "claude-statusline";
+    runtimeInputs = [ pkgs.jq pkgs.git pkgs.coreutils ];
+    text = ''
+      dir=$(jq -r .workspace.current_dir)
+      branch=$(git -C "$dir" --no-optional-locks branch --show-current 2>/dev/null || true)
+      printf '%s' "$(basename "$dir")''${branch:+ ($branch)}"
+    '';
+  };
 in
 {
   programs.claude-code = {
@@ -27,6 +39,10 @@ in
       theme = "dark";
       permissions.defaultMode = "auto";
       attribution.commit = "";
+      statusLine = {
+        type = "command";
+        command = "${statusline}/bin/claude-statusline";
+      };
     };
     context = ./dotfiles/CLAUDE.md;
   };

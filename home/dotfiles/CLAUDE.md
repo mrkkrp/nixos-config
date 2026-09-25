@@ -22,3 +22,8 @@ directory where the current checkout is located by going one level up and
 appending the `-wt-N` suffix. `N` should be inferred automatically so that
 there are no collisions. For example, when we are working in `foo`, the new
 work tree directory should be `../foo-wt-0` and so on.
+
+After creating the work tree, switch the session into it with the
+`EnterWorktree` tool (passing its `path`) instead of running commands in it
+from the original checkout, so that the session's working directory, and
+hence the status line, names the work tree.
