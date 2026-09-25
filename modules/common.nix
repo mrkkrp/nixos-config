@@ -190,7 +190,6 @@
       alsa-tools
       alsa-utils
       cabal-install
-      claude-code
       codespell
       darktable
       direnv

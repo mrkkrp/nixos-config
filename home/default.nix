@@ -18,6 +18,7 @@
   };
 
   imports = [
+    ./claude.nix
     ./git.nix
     ./files.nix
     ./plasma.nix
