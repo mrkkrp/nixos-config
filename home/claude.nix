@@ -3,15 +3,18 @@
 let
   # Holds a PowerDevil inhibition for as long as the session runs, so the
   # laptop does not suspend while Claude is working.
+  inhibited-claude = pkgs.writeShellScript "claude" ''
+    exec 3<&0
+    exec ${pkgs.kdePackages.kde-cli-tools}/bin/kde-inhibit --power \
+      ${pkgs.runtimeShell} -c 'exec 0<&3 3<&-; exec "$0" "$@"' \
+      ${pkgs.claude-code}/bin/claude "$@"
+  '';
+
   claude-code = pkgs.symlinkJoin {
     name = "claude-code-${pkgs.claude-code.version}";
     paths = [ pkgs.claude-code ];
-    nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
-      mv $out/bin/claude $out/bin/.claude-uninhibited
-      makeWrapper ${pkgs.kdePackages.kde-cli-tools}/bin/kde-inhibit $out/bin/claude \
-        --add-flags --power \
-        --add-flags $out/bin/.claude-uninhibited
+      ln -sf ${inhibited-claude} $out/bin/claude
     '';
     inherit (pkgs.claude-code) meta;
   };
