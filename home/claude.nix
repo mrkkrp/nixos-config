@@ -1,26 +1,19 @@
 { pkgs, ... }:
 
 let
-  # Holds a PowerDevil inhibition for as long as the session runs, so the
-  # laptop does not suspend while Claude is working.
-  inhibited-claude = pkgs.writeShellScript "claude" ''
-    exec 3<&0
-    exec ${pkgs.kdePackages.kde-cli-tools}/bin/kde-inhibit --power \
-      ${pkgs.runtimeShell} -c 'exec 0<&3 3<&-; exec "$0" "$@"' \
-      ${pkgs.claude-code}/bin/claude "$@"
-  '';
-
   claude-code = pkgs.symlinkJoin {
     name = "claude-code-${pkgs.claude-code.version}";
-    paths = [ pkgs.claude-code ];
-    postBuild = ''
-      ln -sf ${inhibited-claude} $out/bin/claude
-    '';
+    paths = [
+      (pkgs.writeShellScriptBin "claude" ''
+        exec 3<&0
+        exec ${pkgs.kdePackages.kde-cli-tools}/bin/kde-inhibit --power \
+          ${pkgs.runtimeShell} -c 'exec 0<&3 3<&-; exec "$0" "$@"' \
+          ${pkgs.claude-code}/bin/claude "$@"
+      '')
+      pkgs.claude-code
+    ];
     inherit (pkgs.claude-code) meta;
   };
-
-  # Shows the session's directory and branch, so that sessions in different
-  # work trees can be told apart.
   statusline = pkgs.writeShellApplication {
     name = "claude-statusline";
     runtimeInputs = [ pkgs.jq pkgs.git pkgs.coreutils ];
@@ -35,7 +28,6 @@ in
   programs.claude-code = {
     enable = true;
     package = claude-code;
-
     settings = {
       model = "opus[1m]";
       theme = "dark";
