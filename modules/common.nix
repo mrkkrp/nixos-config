@@ -218,6 +218,7 @@
       nixpkgs-fmt
       nvd
       openconnect
+      openmw
       openssl
       proselint
       pwsafe
