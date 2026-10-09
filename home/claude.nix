@@ -30,6 +30,7 @@ in
     package = claude-code;
     settings = {
       model = "opus[1m]";
+      modelSettings.claude-opus-5-5.effortLevel = "xhigh";
       theme = "dark";
       permissions.defaultMode = "auto";
       attribution.commit = "";
