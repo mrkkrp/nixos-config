@@ -663,7 +663,7 @@ Useful when doing screen-sharing."
   :demand
   :init
   (setq
-   minions-mode-line-delimiters nil
+   mode-line-modes-delimiters nil
    minions-prominent-modes '(modalka-mode))
   :config
   (minions-mode 1))
