@@ -13,6 +13,10 @@ dominate comments, not the other way around.
 Instead of writing in Claudisms, try to write in a style that is already
 used in the codebase.
 
+Write lines that are no longer than 76 characters, if possible. The same
+applies to commit messages and especially commit headers—they always have to
+be under 76 characters.
+
 ## Work trees
 
 When asked to start a new git work tree look at the name of the directory
