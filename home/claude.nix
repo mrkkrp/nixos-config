@@ -35,6 +35,7 @@ in
       permissions.defaultMode = "auto";
       permissions.allow = [ "Bash(git:*)" ];
       attribution.commit = "";
+      env.CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY = "1";
       statusLine = {
         type = "command";
         command = "${statusline}/bin/claude-statusline";
