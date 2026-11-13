@@ -33,6 +33,7 @@ in
       modelSettings.claude-opus-5-5.effortLevel = "xhigh";
       theme = "dark";
       permissions.defaultMode = "auto";
+      permissions.allow = [ "Bash(git:*)" ];
       attribution.commit = "";
       statusLine = {
         type = "command";
